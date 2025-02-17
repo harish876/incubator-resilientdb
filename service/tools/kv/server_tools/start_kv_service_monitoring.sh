@@ -24,6 +24,7 @@ WORK_PATH=$PWD
 CERT_PATH=${WORK_PATH}/service/tools/data/cert/
 GRAFANA_PORT=8090
 
+#TODO: change this to sidecar
 
 bazel build //service/kv:kv_service --define enable_leveldb=True $@
 nohup sudo pyroscope exec -spy-name ebpfspy -application-name cpp_client_1 $SERVER_PATH $SERVER_CONFIG $CERT_PATH/node1.key.pri $CERT_PATH/cert_1.cert 8090 > server0.log &

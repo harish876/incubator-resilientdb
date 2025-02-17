@@ -26,6 +26,13 @@ cc_library(
 )
 
 cc_library(
+    name = "custom_cache",
+    hdrs = ["custom_cache.h"],
+    deps = [
+    ],
+)
+
+cc_library(
     name = "mock_storage",
     hdrs = ["mock_storage.h"],
     deps = [
@@ -49,10 +56,11 @@ cc_library(
     hdrs = ["leveldb.h"],
     deps = [
         ":storage",
+        ":custom_cache",
         "//chain/storage/proto:kv_cc_proto",
         "//chain/storage/proto:leveldb_config_cc_proto",
         "//common:comm",
-        "//common/lru:lru_cache",
+        # "//common/lru:lru_cache",
         "//platform/statistic:stats",
         "//third_party:leveldb",
     ],

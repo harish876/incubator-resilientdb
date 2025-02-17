@@ -22,8 +22,13 @@
 #include <glog/logging.h>
 #include <unistd.h>
 
+#include <cassert>
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+
 #include "chain/storage/proto/kv.pb.h"
-#include "leveldb/cache.h"
+#include "custom_cache.h"
 #include "leveldb/options.h"
 
 namespace resdb {
@@ -54,9 +59,9 @@ ResLevelDB::ResLevelDB(std::optional<LevelDBInfo> config) {
     }
   }
   if ((*config).enable_block_cache()) {
-    std::unique_ptr<LRUCache<std::string, std::string>> block_cache_ =
-        std::make_unique<LRUCache<std::string, std::string>>(1000);
-    LOG(ERROR) << "initialized block cache" << std::endl;
+    // std::unique_ptr<LRUCache<std::string, std::string>> block_cache_ =
+    //     std::make_unique<LRUCache<std::string, std::string>>(1000);
+    // LOG(ERROR) << "initialized block cache" << std::endl;
   }
   global_stats_ = Stats::GetGlobalStats();
   CreateDB(path);
@@ -69,6 +74,7 @@ void ResLevelDB::CreateDB(const std::string& path) {
   leveldb::Options options;
   options.create_if_missing = true;
   options.write_buffer_size = write_buffer_size_;
+  options.block_cache = NewCustomLRUCache(100);  // 100MB cache
 
   leveldb::DB* db = nullptr;
   leveldb::Status status = leveldb::DB::Open(options, path, &db);
@@ -83,15 +89,15 @@ ResLevelDB::~ResLevelDB() {
   if (db_) {
     db_.reset();
   }
-  if (block_cache_) {
-    block_cache_->Flush();
-  }
+  // if (block_cache_) {
+  //   block_cache_->Flush();
+  // }
 }
 
 int ResLevelDB::SetValue(const std::string& key, const std::string& value) {
-  if (block_cache_) {
-    block_cache_->Put(key, value);
-  }
+  // if (block_cache_) {
+  //   block_cache_->Put(key, value);
+  // }
   batch_.Put(key, value);
 
   if (batch_.ApproximateSize() >= write_batch_size_) {
@@ -111,16 +117,16 @@ int ResLevelDB::SetValue(const std::string& key, const std::string& value) {
 std::string ResLevelDB::GetValue(const std::string& key) {
   std::string value = "";
   std::string cached_result = "";
-  if (block_cache_) {
-    std::string cached_result = block_cache_->Get(key);
-  }
+  // if (block_cache_) {
+  //   std::string cached_result = block_cache_->Get(key);
+  // }
   if (cached_result != "") {
     LOG(ERROR) << "Cache Hit for key: " << key << cached_result;
     GetMetrics();
     return cached_result;
   }
   leveldb::Status status = db_->Get(leveldb::ReadOptions(), key, &value);
-  GetMetrics();
+  // GetMetrics();
   if (status.ok()) {
     return value;
   } else {
@@ -161,16 +167,16 @@ std::string ResLevelDB::GetRange(const std::string& min_key,
 }
 
 void ResLevelDB::GetMetrics() {
-  if (!block_cache_) {
-    return;
-  }
+  // if (!block_cache_) {
+  //   return;
+  // }
   std::string stats;
   std::string approximate_size;
   db_->GetProperty("leveldb.stats", &stats);
   db_->GetProperty("leveldb.approximate-memory-usage", &approximate_size);
   LOG(ERROR) << "LevelDB Stats" << stats << " : " << approximate_size << "\n";
-  global_stats_->SetStorageEngineMetrics(block_cache_->GetCacheHitRatio(),
-                                         stats, approximate_size);
+  // global_stats_->SetStorageEngineMetrics(block_cache_->GetCacheHitRatio(),
+  //                                        stats, approximate_size);
 }
 
 bool ResLevelDB::Flush() {
