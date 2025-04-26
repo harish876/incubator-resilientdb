@@ -58,6 +58,21 @@ cc_library(
     ],
 )
 
+cc_library(
+     name = "docstore",
+     srcs = ["docstore.cpp"],
+     hdrs = ["docstore.h"],
+     deps = [
+         ":storage",
+         "//chain/storage/proto:kv_cc_proto",
+         "//chain/storage/proto:leveldb_config_cc_proto",
+         "//common:comm",
+         "//common/lru:lru_cache",
+         "//platform/statistic:stats",
+         "//third_party:docstore",
+     ],
+)
+
 cc_test(
     name = "kv_storage_test",
     srcs = ["kv_storage_test.cpp"],

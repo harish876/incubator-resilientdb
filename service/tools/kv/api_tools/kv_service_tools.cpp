@@ -68,9 +68,10 @@ static struct option long_options[] = {
 };
 
 void OldAPI(char** argv) {
-  std::string client_config_file = argv[1];
-  std::string cmd = argv[2];
+  std::string client_config_file = argv[2];
+  std::string cmd = argv[4];
   std::string key;
+
   if (cmd != "getvalues") {
     key = argv[3];
   }
@@ -130,7 +131,7 @@ int main(int argc, char** argv) {
   std::string cmd;
 
   if (argc >= 3) {
-    cmd = argv[2];
+    cmd = argv[4];
     if (cmd == "get" || cmd == "set" || cmd == "getvalues" ||
         cmd == "getrange") {
       OldAPI(argv);

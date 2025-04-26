@@ -17,50 +17,42 @@
 # under the License.
 #
 
+licenses(["notice"])
+exports_files(["LICENSE"])
+
 package(default_visibility = ["//visibility:public"])
-
-load("@rules_foreign_cc//foreign_cc:defs.bzl", "configure_make", "make")
-
-cc_library(
-    name = "prometheus",
-    deps = [
-        "@com_github_jupp0r_prometheus_cpp//:prometheus",
-    ],
-)
-
-cc_library(
-    name = "snappy",
-    deps = [
-        "@com_google_snappy//:snappy",
-    ],
-)
-
-cc_library(
-    name = "leveldb",
-    deps = [
-        "@com_google_leveldb//:leveldb",
-    ],
-)
 
 cc_library(
     name = "docstore",
-    deps = [
-        "@com_harish876_docstore//:docstore",
+    srcs = glob(
+        ["**/*.cc"],
+        exclude = [
+            "doc/**",
+            "**/*_test.cc",
+            "db/leveldbutil.cc",
+            "db/db_bench.cc",
+            "benchmarks/*.cc",
+            "util/env_windows.cc",
+            "util/testutil.cc",
+            "http_server/**"
+        ],
+    ),
+    hdrs = glob(
+        ["**/*.h"],
+        exclude = [
+          "doc/**",
+          "util/testutil.h",
+          ],
+    ),
+    defines = [
+        "LEVELDB_PLATFORM_POSIX=1",
+        "LEVELDB_IS_BIG_ENDIAN=0",
     ],
-)
-
-load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
-
-cc_library(
-    name = "evm_lib",
-    deps = [
-        "@eEVM",
-    ],
-)
-
-cc_library(
-    name = "crow",
     deps = [
         "@com_crowcpp_crow//:crow",
+    ],
+    includes = [
+        ".",
+        "include",
     ],
 )

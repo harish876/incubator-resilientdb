@@ -164,6 +164,14 @@ http_archive(
     url = "https://github.com/google/leveldb/archive/refs/tags/1.23.zip",
 )
 
+http_archive(
+    name = "com_harish876_docstore",
+    build_file = "@com_resdb_nexres//third_party:docstore.BUILD",
+    strip_prefix = "docstore-0.0.1-beta",
+    url = "https://github.com/harish876/docstore/archive/refs/tags/0.0.1-beta.zip",
+    sha256 = "10f7a2a8f1644c7558cc016b72636937a4bb1d47b8d246efb74f30a60ba0b749",  
+)
+
 bind(
     name = "snappy",
     actual = "@com_google_snappy//:snappy",
