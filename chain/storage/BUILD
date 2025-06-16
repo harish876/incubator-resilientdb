@@ -70,6 +70,7 @@ cc_library(
          "//common/lru:lru_cache",
          "//platform/statistic:stats",
          "//third_party:docstore",
+         "//third_party:json",
      ],
 )
 

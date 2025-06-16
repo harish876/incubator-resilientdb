@@ -24,8 +24,13 @@
 #include "platform/config/resdb_config_utils.h"
 #include "platform/statistic/stats.h"
 #include "service/utils/server_factory.h"
+
 #ifdef ENABLE_LEVELDB
 #include "chain/storage/leveldb.h"
+#endif
+
+#ifdef ENABLE_DOCSTORE
+#include "chain/storage/docstore.h"
 #endif
 
 using namespace resdb;
@@ -40,6 +45,9 @@ std::unique_ptr<Storage> NewStorage(const std::string& db_path,
 #ifdef ENABLE_LEVELDB
   LOG(INFO) << "use leveldb storage.";
   return NewResLevelDB(db_path, config_data.leveldb_info());
+#elif defined(ENABLE_DOCSTORE)
+  LOG(INFO) << "use docstore storage";
+  return NewResDocstoreDB(db_path, std::nullopt);
 #endif
   LOG(INFO) << "use memory storage.";
   return NewMemoryDB();
@@ -70,8 +78,8 @@ int main(int argc, char** argv) {
       GenerateResDBConfig(config_file, private_key_file, cert_file);
   ResConfigData config_data = config->GetConfigData();
 
-  std::string db_path = std::to_string(config->GetSelfInfo().port()) + "_db/";
-  LOG(INFO) << "db path:" << db_path;
+  std::string db_path = std::to_string(config->GetSelfInfo().port()) + "_db";
+  LOG(ERROR) << "db path:" << db_path;
 
   auto server = GenerateResDBServer(
       config_file, private_key_file, cert_file,

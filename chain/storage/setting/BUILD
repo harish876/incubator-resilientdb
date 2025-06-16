@@ -27,7 +27,7 @@ bool_flag(
 )
 
 bool_flag(
-    name = "enable_docstoredb",
+    name = "enable_docstore",
     build_setting_default = False,
     visibility = ["//visibility:public"],
 )
@@ -36,6 +36,14 @@ config_setting(
     name = "enable_leveldb_setting",
     values = {
         "define": "enable_leveldb=True",
+    },
+    visibility = ["//visibility:public"],
+)
+
+config_setting(
+    name = "enable_docstore_setting",
+    values = {
+        "define": "enable_docstore=True",
     },
     visibility = ["//visibility:public"],
 )

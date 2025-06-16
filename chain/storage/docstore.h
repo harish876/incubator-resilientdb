@@ -19,15 +19,14 @@
 
 #pragma once
 
-#include <memory>
+#include <nlohmann/json.hpp>
 #include <optional>
 #include <string>
 
 #include "chain/storage/proto/leveldb_config.pb.h"
 #include "chain/storage/storage.h"
 #include "common/lru/lru_cache.h"
-#include "external/com_harish876_docstore/include/leveldb/db.h"
-#include "external/com_harish876_docstore/include/leveldb/write_batch.h"
+#include "docstore/document.h"
 #include "platform/statistic/stats.h"
 
 namespace resdb {
@@ -45,15 +44,9 @@ class ResDocstoreDB : public Storage {
   virtual ~ResDocstoreDB();
   int SetValue(const std::string& key, const std::string& value) override;
   std::string GetValue(const std::string& key) override;
-  virtual std::vector<leveldb::SecondayKeyReturnVal> GetValueBySecIndex(
-      const std::string& secondary_attr_value);
   std::string GetAllValues(void) override;
   std::string GetRange(const std::string& min_key,
                        const std::string& max_key) override;
-
-  virtual std::vector<leveldb::SecondayKeyReturnVal> GetRangeBySecIndex(
-      const std::string& min_secondary_attr_value,
-      const std::string& max_secondary_attr_value);
 
   int SetValueWithVersion(const std::string& key, const std::string& value,
                           int version) override;
@@ -81,14 +74,34 @@ class ResDocstoreDB : public Storage {
   void CreateDB(const std::string& path);
 
  private:
-  std::unique_ptr<leveldb::DB> db_ = nullptr;
-  ::leveldb::WriteBatch batch_;
-  unsigned int write_buffer_size_ = 64 << 20;
-  unsigned int write_batch_size_ = 1;
+  std::unique_ptr<docstore::DocumentStore> store_;
 
  protected:
   Stats* global_stats_ = nullptr;
-  leveldb::Options options_;
+  // TODO: move to docstore storage engine
+  std::optional<nlohmann::json> parse_document_from_request(
+      const std::string& serialized_json) {
+    try {
+      // Attempt to parse the JSON and return the parsed document
+      nlohmann::json raw_value = nlohmann::json::parse(serialized_json);
+      if (!raw_value.contains("value")) {
+        return std::nullopt;
+      }
+      return raw_value["value"];
+    } catch (const nlohmann::json::parse_error& e) {
+      // If parsing fails, return an empty optional
+      return std::nullopt;
+    }
+  }
+
+  void handle_create_collection(const std::string&, leveldb::Status&);
+  void handle_insert(const std::string&, leveldb::Status&);
+  void handle_default_kv_store(const std::string& key, const std::string& value,
+                               leveldb::Status&);
+  void validate_collection_payload(const std::string& serialized_document,
+                                   leveldb::Status& s);
+  void validate_insert_payload(const std::string& serialized_document,
+                               leveldb::Status& s);
 };
 
 }  // namespace storage

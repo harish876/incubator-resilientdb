@@ -17,37 +17,34 @@
  * under the License.
  */
 
-#include "chain/storage/docstore.h"
+#include "docstore.h"
 
 #include <glog/logging.h>
 #include <unistd.h>
 
+#include <memory>
 #include <nlohmann/json.hpp>
-
-#include "chain/storage/proto/kv.pb.h"
-#include "leveldb/options.h"
 
 namespace resdb {
 namespace storage {
 
-std::unique_ptr<Storage> NewDocstoreDB(const std::string& path,
-                                       std::optional<LevelDBInfo> config) {
+std::unique_ptr<Storage> NewResDocstoreDB(const std::string& path,
+                                          std::optional<LevelDBInfo> config) {
   if (config == std::nullopt) {
     config = LevelDBInfo();
   }
   (*config).set_path(path);
+  leveldb::Status s;
   return std::make_unique<ResDocstoreDB>(config);
 }
 
-std::unique_ptr<Storage> NewDocstoreDB(std::optional<LevelDBInfo> config) {
+std::unique_ptr<Storage> NewResDocstoreDB(std::optional<LevelDBInfo> config) {
   return std::make_unique<ResDocstoreDB>(config);
 }
 
 ResDocstoreDB::ResDocstoreDB(std::optional<LevelDBInfo> config) {
   std::string path = "/tmp/nexres-leveldb";
   if (config.has_value()) {
-    write_buffer_size_ = (*config).write_buffer_size_mb() << 20;
-    write_batch_size_ = (*config).write_batch_size();
     if (!(*config).path().empty()) {
       LOG(ERROR) << "Custom path for ResLevelDB provided in config: "
                  << (*config).path();
@@ -59,271 +56,196 @@ ResDocstoreDB::ResDocstoreDB(std::optional<LevelDBInfo> config) {
 }
 
 void ResDocstoreDB::CreateDB(const std::string& path) {
-  LOG(ERROR) << "ResLevelDB Create DB: path:" << path
-             << " write buffer size:" << write_buffer_size_
-             << " batch size:" << write_batch_size_;
-  leveldb::Options options;
-  options.primary_key = "__id";          // TODO: make dynamic
-  options.secondary_key = "__sec_attr";  // TODO: make dynamic
-  options.create_if_missing = true;
-
-  leveldb::DB* db = nullptr;
-  leveldb::Status status = leveldb::DB::Open(options, path, &db);
-  if (status.ok()) {
-    db_ = std::unique_ptr<leveldb::DB>(db);
-  }
-  assert(status.ok());
-  options_ = options;
+  LOG(ERROR) << "ResLevelDB Create DB: path:" << path << "\n";
+  leveldb::Status s;
+  store_ = std::make_unique<docstore::DocumentStore>(path, s);
+  assert(s.ok());
   LOG(ERROR) << "Successfully opened LevelDB";
 }
 
-ResDocstoreDB::~ResDocstoreDB() {
-  if (db_) {
-    db_.reset();
+ResDocstoreDB::~ResDocstoreDB() {}
+
+/**
+ * SetValue is going to be a TopLevel Function to handle any POST queries to our
+ * collection store This could be CreateCollection This could be Insert
+ * We assume here that key is the action and value is a serialized JSON
+ * representing the object.
+ */
+int ResDocstoreDB::SetValue(const std::string& key,
+                            const std::string& serialized_document) {
+  leveldb::Status s;
+  if (key == "CREATE_COLLECTION") {
+    handle_create_collection(serialized_document, s);
+  } else if (key == "INSERT") {
+    handle_insert(serialized_document, s);
+  } else {
+    handle_default_kv_store(key, serialized_document, s);
+  }
+  if (s.ok()) {
+    return 0;
+  } else {
+    LOG(ERROR) << "Error at SetValue" << key << s.ToString() << " \n";
+    return -1;
   }
 }
 
-int ResDocstoreDB::SetValue(const std::string& key,
-                            const std::string& raw_value) {
-  try {
-    nlohmann::json json_value = nlohmann::json::parse(raw_value);
-    if (json_value.contains(options_.primary_key) &&
-        json_value.contains(options_.secondary_key)) {
-      db_->Put(leveldb::WriteOptions(), json_value.dump());
-    }
-  } catch (const std::exception& e) {
-    LOG(ERROR) << "JSON parsing error: " << e.what();
-    db_->Put(leveldb::WriteOptions(), key, raw_value);
+void ResDocstoreDB::handle_create_collection(
+    const std::string& serialized_document, leveldb::Status& s) {
+  validate_collection_payload(serialized_document, s);
+  if (!s.ok()) {
+    return;
   }
-  return 0;
+
+  auto document = parse_document_from_request(serialized_document);
+  leveldb::Options options;
+  options = options.FromJSON(document->at("options"), s);
+  if (!s.ok()) {
+    return;
+  }
+
+  s = store_->CreateCollection(document->at("collection_name"), options,
+                               document->at("schema"));
+  if (!s.ok()) {
+    return;
+  }
+  LOG(ERROR) << "Successfully created collection "
+             << document->at("collection_name") << "\n";
+}
+
+void ResDocstoreDB::handle_insert(const std::string& serialized_document,
+                                  leveldb::Status& s) {
+  validate_insert_payload(serialized_document, s);
+  if (!s.ok()) {
+    return;
+  }
+
+  auto document = parse_document_from_request(serialized_document);
+  s = store_->Insert(document->at("collection_name"), document->at("value"));
+
+  if (!s.ok()) {
+    LOG(ERROR) << "Invalid Document Schema " << s.ToString() << " "
+               << document->dump(1, ' ') << "\n";
+    return;
+  }
+  LOG(ERROR) << "Successfully inserted into collection "
+             << document->at("collection_name")
+             << document->at("value").dump(1, ' ') << "\n";
+  return;
+}
+
+void ResDocstoreDB::handle_default_kv_store(
+    const std::string& key, const std::string& serialized_document,
+    leveldb::Status& s) {
+  return;
 }
 
 std::string ResDocstoreDB::GetValue(const std::string& key) {
-  std::string value;
+  // std::string value;
 
-  leveldb::Status status = db_->Get(leveldb::ReadOptions(), key, &value);
-  if (!status.ok()) {
-    value.clear();
-  }
+  // leveldb::Status status = db_->Get(leveldb::ReadOptions(), key, &value);
+  // if (!status.ok()) {
+  //   value.clear();
+  // }
 
-  return value;
-}
-
-std::vector<leveldb::SecondayKeyReturnVal> ResDocstoreDB::GetValueBySecIndex(
-    const std::string& secondary_attr_value) {
-  std::vector<leveldb::SecondayKeyReturnVal> acc;
-  leveldb::Status status =
-      db_->Get(leveldb::ReadOptions(), secondary_attr_value, &acc, 100);
-  if (!status.ok()) {
-    return {};
-  }
-  return acc;
+  // return value;
+  return key;
 }
 
 std::string ResDocstoreDB::GetAllValues(void) {
-  std::string values = "[";
-  leveldb::Iterator* it = db_->NewIterator(leveldb::ReadOptions());
-  bool first_iteration = true;
-  for (it->SeekToFirst(); it->Valid(); it->Next()) {
-    if (!first_iteration) values.append(",");
-    first_iteration = false;
-    values.append(it->value().ToString());
-  }
-  values.append("]");
+  throw std::logic_error("Function not implemented");
+}
 
-  delete it;
-  return values;
+std::map<std::string, std::pair<std::string, int>>
+ResDocstoreDB::GetAllItems() {
+  throw std::logic_error("Function not implemented");
 }
 
 std::string ResDocstoreDB::GetRange(const std::string& min_key,
                                     const std::string& max_key) {
-  std::string values = "[";
-  leveldb::Iterator* it = db_->NewIterator(leveldb::ReadOptions());
-  bool first_iteration = true;
-  for (it->Seek(min_key); it->Valid() && it->key().ToString() <= max_key;
-       it->Next()) {
-    if (!first_iteration) values.append(",");
-    first_iteration = false;
-    values.append(it->value().ToString());
-  }
-  values.append("]");
-
-  delete it;
-  return values;
+  throw std::logic_error("Function not implemented");
 }
 
-std::vector<leveldb::SecondayKeyReturnVal> ResDocstoreDB::GetRangeBySecIndex(
-    const std::string& min_secondary_attr_value,
-    const std::string& max_secondary_attr_value) {
-  std::vector<leveldb::SecondayKeyReturnVal> acc;
-  leveldb::Status status =
-      db_->RangeGet(leveldb::ReadOptions(), min_secondary_attr_value,
-                    max_secondary_attr_value, &acc, 100);
-  if (!status.ok()) {
-    return {};
-  }
-  return acc;
-}
+bool ResDocstoreDB::UpdateMetrics() { return false; }
 
-bool ResDocstoreDB::UpdateMetrics() {
-  std::string stats;
-  std::string approximate_size;
-  db_->GetProperty("leveldb.stats", &stats);
-  db_->GetProperty("leveldb.approximate-memory-usage", &approximate_size);
-  return true;
-}
-
-bool ResDocstoreDB::Flush() {
-  leveldb::Status status = db_->Write(leveldb::WriteOptions(), &batch_);
-  if (status.ok()) {
-    batch_.Clear();
-    return true;
-  }
-  LOG(ERROR) << "flush buffer fail:" << status.ToString();
-  return false;
-}
+bool ResDocstoreDB::Flush() { return false; }
 
 int ResDocstoreDB::SetValueWithVersion(const std::string& key,
                                        const std::string& value, int version) {
-  std::string value_str = GetValue(key);
-  ValueHistory history;
-  if (!history.ParseFromString(value_str)) {
-    LOG(ERROR) << "old_value parse fail";
-    return -2;
-  }
-
-  int last_v = 0;
-  if (history.value_size() > 0) {
-    last_v = history.value(history.value_size() - 1).version();
-  }
-
-  if (last_v != version) {
-    LOG(ERROR) << "version does not match:" << version
-               << " old version:" << last_v;
-    return -2;
-  }
-
-  Value* new_value = history.add_value();
-  new_value->set_value(value);
-  new_value->set_version(version + 1);
-
-  history.SerializeToString(&value_str);
-  return SetValue(key, value_str);
+  throw std::logic_error("Function not implemented");
 }
 
 std::pair<std::string, int> ResDocstoreDB::GetValueWithVersion(
     const std::string& key, int version) {
-  std::string value_str = GetValue(key);
-  ValueHistory history;
-  if (!history.ParseFromString(value_str)) {
-    LOG(ERROR) << "old_value parse fail";
-    return std::make_pair("", 0);
-  }
-  if (history.value_size() == 0) {
-    return std::make_pair("", 0);
-  }
-  if (version > 0) {
-    for (int i = history.value_size() - 1; i >= 0; --i) {
-      if (history.value(i).version() == version) {
-        return std::make_pair(history.value(i).value(),
-                              history.value(i).version());
-      }
-      if (history.value(i).version() < version) {
-        break;
-      }
-    }
-  }
-  int last_idx = history.value_size() - 1;
-  return std::make_pair(history.value(last_idx).value(),
-                        history.value(last_idx).version());
-}
-
-// Return a map of <key, <value, version>>
-std::map<std::string, std::pair<std::string, int>>
-ResDocstoreDB::GetAllItems() {
-  std::map<std::string, std::pair<std::string, int>> resp;
-
-  leveldb::Iterator* it = db_->NewIterator(leveldb::ReadOptions());
-  for (it->SeekToFirst(); it->Valid(); it->Next()) {
-    ValueHistory history;
-    if (!history.ParseFromString(it->value().ToString()) ||
-        history.value_size() == 0) {
-      LOG(ERROR) << "old_value parse fail";
-      continue;
-    }
-    const Value& value = history.value(history.value_size() - 1);
-    resp.insert(std::make_pair(it->key().ToString(),
-                               std::make_pair(value.value(), value.version())));
-  }
-  delete it;
-
-  return resp;
+  throw std::logic_error("Function not implemented");
 }
 
 std::map<std::string, std::pair<std::string, int>> ResDocstoreDB::GetKeyRange(
     const std::string& min_key, const std::string& max_key) {
-  std::map<std::string, std::pair<std::string, int>> resp;
-
-  leveldb::Iterator* it = db_->NewIterator(leveldb::ReadOptions());
-  for (it->Seek(min_key); it->Valid() && it->key().ToString() <= max_key;
-       it->Next()) {
-    ValueHistory history;
-    if (!history.ParseFromString(it->value().ToString()) ||
-        history.value_size() == 0) {
-      LOG(ERROR) << "old_value parse fail";
-      continue;
-    }
-    const Value& value = history.value(history.value_size() - 1);
-    resp.insert(std::make_pair(it->key().ToString(),
-                               std::make_pair(value.value(), value.version())));
-  }
-  delete it;
-
-  return resp;
+  throw std::logic_error("Function not implemented");
 }
 
 // Return a list of <value, version>
 std::vector<std::pair<std::string, int>> ResDocstoreDB::GetHistory(
     const std::string& key, int min_version, int max_version) {
-  std::vector<std::pair<std::string, int>> resp;
-  std::string value_str = GetValue(key);
-  ValueHistory history;
-  if (!history.ParseFromString(value_str)) {
-    LOG(ERROR) << "old_value parse fail";
-    return resp;
-  }
-
-  for (int i = history.value_size() - 1; i >= 0; --i) {
-    if (history.value(i).version() < min_version) {
-      break;
-    }
-    if (history.value(i).version() <= max_version) {
-      resp.push_back(
-          std::make_pair(history.value(i).value(), history.value(i).version()));
-    }
-  }
-
-  return resp;
+  throw std::logic_error("Function not implemented");
 }
 
 // Return a list of <value, version>
 std::vector<std::pair<std::string, int>> ResDocstoreDB::GetTopHistory(
     const std::string& key, int top_number) {
-  std::vector<std::pair<std::string, int>> resp;
-  std::string value_str = GetValue(key);
-  ValueHistory history;
-  if (!history.ParseFromString(value_str)) {
-    LOG(ERROR) << "old_value parse fail";
-    return resp;
+  throw std::logic_error("Function not implemented");
+}
+
+void ResDocstoreDB::validate_collection_payload(
+    const std::string& serialized_document, leveldb::Status& s) {
+  auto document = parse_document_from_request(serialized_document);
+  if (!document) {
+    s = leveldb::Status::InvalidArgument("Failed to parse JSON document");
+    return;
   }
 
-  for (int i = history.value_size() - 1;
-       i >= 0 && resp.size() < static_cast<size_t>(top_number); --i) {
-    resp.push_back(
-        std::make_pair(history.value(i).value(), history.value(i).version()));
+  if (!document->contains("collection_name")) {
+    s = leveldb::Status::InvalidArgument(
+        "Invalid JSON object at handle_create_collection. CreateCollection"
+        "Does not contain collection_name string");
+    return;
   }
 
-  return resp;
+  if (!document->contains("schema")) {
+    s = leveldb::Status::InvalidArgument(
+        "Invalid JSON object at handle_create_collection. CreateCollection"
+        "Does not contain schema object");
+    return;
+  }
+
+  if (!document->contains("options")) {
+    s = leveldb::Status::InvalidArgument(
+        "Invalid JSON object at handle_create_collection. CreateCollection"
+        "Does not contain options object");
+    return;
+  }
+}
+
+void ResDocstoreDB::validate_insert_payload(
+    const std::string& serialized_document, leveldb::Status& s) {
+  auto document = parse_document_from_request(serialized_document);
+  if (!document) {
+    s = leveldb::Status::InvalidArgument(
+        "Invalid JSON object at handle_insert");
+    return;
+  }
+  if (!document->contains("collection_name")) {
+    s = leveldb::Status::InvalidArgument(
+        "Invalid JSON object at handle_insert. Insert"
+        "Does not contain collection_name string");
+    return;
+  }
+  if (!document->contains("value")) {
+    s = leveldb::Status::InvalidArgument(
+        "Invalid JSON object at handle_insert. Insert"
+        "Does not contain value object");
+    return;
+  }
 }
 
 }  // namespace storage

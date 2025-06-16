@@ -50,6 +50,7 @@ cc_library(
     ],
     deps = [
         "@com_crowcpp_crow//:crow",
+        "@nlohmann_json//:json",
     ],
     includes = [
         ".",

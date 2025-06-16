@@ -29,6 +29,13 @@ cc_library(
 )
 
 cc_library(
+    name = "json",
+    deps = [
+        "@nlohmann_json//:json",
+    ],
+)
+
+cc_library(
     name = "snappy",
     deps = [
         "@com_google_snappy//:snappy",

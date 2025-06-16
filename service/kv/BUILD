@@ -26,8 +26,8 @@ cc_binary(
     srcs = ["kv_service.cpp"],
     copts = select({
         "//chain/storage/setting:enable_leveldb_setting": ["-DENABLE_LEVELDB"],
+        "//chain/storage/setting:enable_docstore_setting": ["-DENABLE_DOCSTORE"],
         "//conditions:default": [],
-
     }),
     deps = [
         "//platform/config:resdb_config_utils",
@@ -38,6 +38,7 @@ cc_binary(
         "//chain/storage:memory_db",
 	] + select({
         "//chain/storage/setting:enable_leveldb_setting": ["//chain/storage:leveldb"],
+        "//chain/storage/setting:enable_docstore_setting": ["//chain/storage:docstore"],
         "//conditions:default": [],
     }),
 )
