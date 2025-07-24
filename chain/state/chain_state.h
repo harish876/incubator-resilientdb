@@ -32,6 +32,7 @@ class ChainState {
   Request* Get(uint64_t seq);
   void Put(std::unique_ptr<Request> request);
   uint64_t GetMaxSeq();
+  void DumpState();
 
  private:
   std::mutex mutex_;

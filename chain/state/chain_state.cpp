@@ -33,10 +33,19 @@ Request* ChainState::Get(uint64_t seq) {
   return data_[seq].get();
 }
 
+void ChainState::DumpState() {
+  LOG(ERROR) << "Dumping ChainState: size=" << data_.size();
+  for (const auto& kv : data_) {
+    LOG(ERROR) << "  seq: " << kv.first;
+    LOG(ERROR) << "  type: " << kv.second->SerializeAsString();
+  }
+}
+
 void ChainState::Put(std::unique_ptr<Request> request) {
   std::unique_lock<std::mutex> lk(mutex_);
   max_seq_ = request->seq();
   data_[max_seq_] = std::move(request);
+  DumpState();
 }
 
 uint64_t ChainState::GetMaxSeq() { return max_seq_; }

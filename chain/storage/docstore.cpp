@@ -94,18 +94,12 @@ int ResDocstoreDB::SetValue(const std::string& key,
 
 void ResDocstoreDB::handle_create_collection(
     const std::string& serialized_document, leveldb::Status& s) {
-  validate_collection_payload(serialized_document, s);
-  if (!s.ok()) {
-    return;
-  }
-
   auto document = parse_document_from_request(serialized_document);
   leveldb::Options options;
   options = options.FromJSON(document->at("options"), s);
   if (!s.ok()) {
     return;
   }
-
   s = store_->CreateCollection(document->at("collection_name"), options,
                                document->at("schema"));
   if (!s.ok()) {
@@ -117,13 +111,8 @@ void ResDocstoreDB::handle_create_collection(
 
 void ResDocstoreDB::handle_insert(const std::string& serialized_document,
                                   leveldb::Status& s) {
-  validate_insert_payload(serialized_document, s);
-  if (!s.ok()) {
-    return;
-  }
-
   auto document = parse_document_from_request(serialized_document);
-  s = store_->Insert(document->at("collection_name"), document->at("value"));
+  s = store_->InsertWithIndex(document->at("collection_name"), document->at("value"));
 
   if (!s.ok()) {
     LOG(ERROR) << "Invalid Document Schema " << s.ToString() << " "
@@ -147,7 +136,6 @@ std::string ResDocstoreDB::GetValue(const std::string& key) {
   nlohmann::json request;
   auto result = nlohmann::json::parse(key, nullptr, true);
   const std::string& collection_name = result.at("collection_name");
-  const std::string& filter_key = result.at("filter_key");
 
   nlohmann::json metadata;
   leveldb::Status s =
@@ -157,63 +145,26 @@ std::string ResDocstoreDB::GetValue(const std::string& key) {
     return "Collection not found";
   }
 
-  if (!metadata.contains("options")) {
-    LOG(ERROR) << "Metadata missing 'options' field";
+  const std::string& field_name = result.at("filter_key");
+  const nlohmann::json& field_value = result.at("filter_value");
+
+  std::vector<nlohmann::json> matched_records;
+  s = store_->Find(collection_name, field_name, field_value, matched_records);
+  if (!s.ok()) {
+    LOG(ERROR) << "Error at Find" << s.ToString() << " " << field_name << " "
+               << field_value << "\n";
     return "[]";
   }
 
-  if (!metadata["options"].contains("secondary_key") ||
-      !metadata["options"].contains("primary_key")) {
-    LOG(ERROR)
-        << "'secondary_key' or 'primary_key' field not found in metadata";
-    return "[]";
+  std::string values = "[";
+  bool first_iteration = true;
+  for (const auto& val : matched_records) {
+    if (!first_iteration) values.append(",");
+    first_iteration = false;
+    values.append(val.dump(1, ' '));
   }
-
-  const std::string& secondary_key = metadata.at("options").at("secondary_key");
-  const std::string& primary_key = metadata.at("options").at("primary_key");
-
-  std::string filter_value;
-  if (result.at("filter_value").is_string()) {
-    filter_value = result.at("filter_value").get<std::string>();
-  } else if (result.at("filter_value").is_number()) {
-    filter_value = std::to_string(result.at("filter_value").get<int64_t>());
-  } else {
-    LOG(ERROR) << "filter_value must be either string or number";
-    return "[]";
-  }
-
-  if (secondary_key == filter_key) {
-    std::vector<leveldb::SecondayKeyReturnVal> acc;
-    leveldb::Status s =
-        store_->GetSec(collection_name, filter_value, &acc, 1000);
-    if (!s.ok()) {
-      LOG(ERROR) << "Error at GetSec" << s.ToString() << " " << filter_value
-                 << "\n";
-      return "[]";
-    }
-    std::string values = "[";
-    bool first_iteration = true;
-    for (const auto& val : acc) {
-      if (!first_iteration) values.append(",");
-      first_iteration = false;
-      values.append(val.value);
-    }
-    values.append("]");
-    return values;
-
-    return "[]";
-  } else if (primary_key == filter_key) {
-    std::string value;
-    leveldb::Status s = store_->Get(collection_name, filter_value, value);
-    if (!s.ok()) {
-      LOG(ERROR) << "Error at GetSec" << s.ToString() << " " << filter_value
-                 << "\n";
-      return "[]";
-    }
-    return value;
-  } else {
-    return "Not implemented";
-  }
+  values.append("]");
+  return values;
 }
 
 std::string ResDocstoreDB::GetAllValues(void) {
@@ -321,7 +272,7 @@ std::string ResDocstoreDB::GetRange(const std::string& key,
     values.append("]");
     return values;
   } else {
-    return "Not implemented";
+    return "[]";
   }
 }
 
