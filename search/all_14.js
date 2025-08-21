@@ -92,8 +92,9 @@ var searchData=
   ['isstop_89',['IsStop',['../d9/d92/classresdb_1_1GeoTransactionExecutor.html#ae5981cbfbf6e4dba9b391a6f020fbfab',1,'resdb::GeoTransactionExecutor::IsStop()'],['../dc/da3/classresdb_1_1common_1_1ProtocolBase.html#ae14f2091b62e5b0fd198daf71be2146f',1,'resdb::common::ProtocolBase::IsStop()'],['../db/deb/classresdb_1_1common_1_1Consensus.html#a8e6f2937700d079ac64342dde8f41cbb',1,'resdb::common::Consensus::IsStop()']]],
   ['issues_90',['Issues',['..//github/workspace/README.md#autotoc_md1212',1,'']]],
   ['istestmode_91',['IsTestMode',['../db/ddb/classresdb_1_1ResDBConfig.html#a62b3cc96d167d858f489a7cd6cdbbfd9',1,'resdb::ResDBConfig::IsTestMode()'],['../d6/d06/classResDBConfig.html#a62b3cc96d167d858f489a7cd6cdbbfd9',1,'ResDBConfig::IsTestMode()']]],
-  ['isvalidcheckpointproof_92',['IsValidCheckpointProof',['../dc/db0/classresdb_1_1CheckPointManager.html#a227d132998f3ffdde9aef287a6956cdf',1,'resdb::CheckPointManager']]],
-  ['it_20under_20sajjad_20s_20ownership_93',['it under Sajjad s ownership',['../d4/d01/md__2github_2workspace_2ecosystem_2graphql_2docs_2nft__market.html#autotoc_md311',1,'PART 1: Creating the Asset and registering it under Sajjad&apos;s ownership'],['../d2/d18/md__2github_2workspace_2ecosystem_2graphql_2service_2sdk__validator_2docs_2nft__market.html#autotoc_md433',1,'PART 1: Creating the Asset and registering it under Sajjad&apos;s ownership']]],
-  ['it_20works_94',['How It Works',['..//github/workspace/ecosystem/monitoring/reslens-middleware/README.md#autotoc_md542',1,'']]],
-  ['itemstype_95',['ItemsType',['../de/d28/classresdb_1_1MockStorage.html#a946041702e93b792662581349737e073',1,'resdb::MockStorage']]]
+  ['isvalidaddress_92',['IsValidAddress',['../df/da0/contract__service__tools_8cpp.html#a3649c66636caa9737735d14d4737bbb7',1,'contract_service_tools.cpp']]],
+  ['isvalidcheckpointproof_93',['IsValidCheckpointProof',['../dc/db0/classresdb_1_1CheckPointManager.html#a227d132998f3ffdde9aef287a6956cdf',1,'resdb::CheckPointManager']]],
+  ['it_20under_20sajjad_20s_20ownership_94',['it under Sajjad s ownership',['../d4/d01/md__2github_2workspace_2ecosystem_2graphql_2docs_2nft__market.html#autotoc_md311',1,'PART 1: Creating the Asset and registering it under Sajjad&apos;s ownership'],['../d2/d18/md__2github_2workspace_2ecosystem_2graphql_2service_2sdk__validator_2docs_2nft__market.html#autotoc_md433',1,'PART 1: Creating the Asset and registering it under Sajjad&apos;s ownership']]],
+  ['it_20works_95',['How It Works',['..//github/workspace/ecosystem/monitoring/reslens-middleware/README.md#autotoc_md542',1,'']]],
+  ['itemstype_96',['ItemsType',['../de/d28/classresdb_1_1MockStorage.html#a946041702e93b792662581349737e073',1,'resdb::MockStorage']]]
 ];

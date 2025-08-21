@@ -38,5 +38,6 @@ var searchData=
   ['isrunning_35',['IsRunning',['../d3/d5e/classresdb_1_1ReplicaCommunicator.html#a8cb7f41342adcd8939a378532e055bfa',1,'resdb::ReplicaCommunicator::IsRunning()'],['../da/d3b/classresdb_1_1ServiceInterface.html#ac08da9c5cd432a5972c6cd8018143286',1,'resdb::ServiceInterface::IsRunning()']]],
   ['isstop_36',['IsStop',['../d9/d92/classresdb_1_1GeoTransactionExecutor.html#ae5981cbfbf6e4dba9b391a6f020fbfab',1,'resdb::GeoTransactionExecutor::IsStop()'],['../dc/da3/classresdb_1_1common_1_1ProtocolBase.html#ae14f2091b62e5b0fd198daf71be2146f',1,'resdb::common::ProtocolBase::IsStop()'],['../db/deb/classresdb_1_1common_1_1Consensus.html#a8e6f2937700d079ac64342dde8f41cbb',1,'resdb::common::Consensus::IsStop()']]],
   ['istestmode_37',['IsTestMode',['../db/ddb/classresdb_1_1ResDBConfig.html#a62b3cc96d167d858f489a7cd6cdbbfd9',1,'resdb::ResDBConfig::IsTestMode()'],['../d6/d06/classResDBConfig.html#a62b3cc96d167d858f489a7cd6cdbbfd9',1,'ResDBConfig::IsTestMode()']]],
-  ['isvalidcheckpointproof_38',['IsValidCheckpointProof',['../dc/db0/classresdb_1_1CheckPointManager.html#a227d132998f3ffdde9aef287a6956cdf',1,'resdb::CheckPointManager']]]
+  ['isvalidaddress_38',['IsValidAddress',['../df/da0/contract__service__tools_8cpp.html#a3649c66636caa9737735d14d4737bbb7',1,'contract_service_tools.cpp']]],
+  ['isvalidcheckpointproof_39',['IsValidCheckpointProof',['../dc/db0/classresdb_1_1CheckPointManager.html#a227d132998f3ffdde9aef287a6956cdf',1,'resdb::CheckPointManager']]]
 ];

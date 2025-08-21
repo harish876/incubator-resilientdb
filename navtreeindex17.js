@@ -1,5 +1,6 @@
 var NAVTREEINDEX17 =
 {
+"df/ddc/classresdb_1_1utxo_1_1Wallet.html":[0,0,11,8,5],
 "df/ddc/classresdb_1_1utxo_1_1Wallet.html":[1,0,1,4,5],
 "df/ddc/classresdb_1_1utxo_1_1Wallet.html#a0f581241631638a4ff3c31806ee04cc3":[0,0,11,8,5,3],
 "df/ddc/classresdb_1_1utxo_1_1Wallet.html#a0f581241631638a4ff3c31806ee04cc3":[1,0,1,4,5,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX17 =
 "namespacemembers_type.html":[0,1,3],
 "namespacemembers_u.html":[0,1,0,20],
 "namespacemembers_v.html":[0,1,0,21],
-"namespacemembers_vars.html":[0,1,2],
-"namespacemembers_w.html":[0,1,0,22]
+"namespacemembers_vars.html":[0,1,2]
 };

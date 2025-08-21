@@ -81,7 +81,7 @@ var NAVTREEINDEX =
 "de/d3b/namespacetest__driver.html#a1d693f578ee6aaf581b83243decf11c5",
 "de/df1/classresdb__driver_1_1exceptions_1_1KeypairMismatchException.html",
 "df/ddc/classresdb_1_1utxo_1_1Wallet.html",
-"namespaces.html"
+"namespacemembers_w.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
