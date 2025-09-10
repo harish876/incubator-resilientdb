@@ -8,6 +8,6 @@ var searchData=
   ['queryexecutor_5',['QueryExecutor',['../db/dc0/classQueryExecutor.html',1,'QueryExecutor'],['../d0/da0/classresdb_1_1utxo_1_1QueryExecutor.html',1,'resdb::utxo::QueryExecutor'],['../d0/da0/classresdb_1_1utxo_1_1QueryExecutor.html#aa945659cf8c7b943aeab9be8e7807a66',1,'resdb::utxo::QueryExecutor::QueryExecutor()'],['../db/dc0/classQueryExecutor.html#aa945659cf8c7b943aeab9be8e7807a66',1,'QueryExecutor::QueryExecutor()']]],
   ['queue_5f_6',['queue_',['../d9/d92/classresdb_1_1GeoTransactionExecutor.html#a016a171a0bc2f6f88532bc27b499592c',1,'resdb::GeoTransactionExecutor']]],
   ['queueitem_7',['QueueItem',['../dc/d89/structresdb_1_1ConsensusManager_1_1QueueItem.html',1,'resdb::ConsensusManager::QueueItem'],['../df/d64/structresdb_1_1QueueItem.html',1,'resdb::QueueItem']]],
-  ['quick_20facts_20on_20resilientdb_8',['Quick Facts on ResilientDB',['..//github/workspace/README.md#autotoc_md1205',1,'']]],
-  ['quick_20start_9',['Quick Start',['..//github/workspace/ecosystem/deployment/ansible/README.md#autotoc_md212',1,'']]]
+  ['quick_20facts_20on_20resilientdb_8',['Quick Facts on ResilientDB',['..//github/workspace/README.md#autotoc_md891',1,'']]],
+  ['quick_20start_9',['Quick Start',['..//github/workspace/ecosystem/deployment/ansible/README.md#autotoc_md150',1,'']]]
 ];

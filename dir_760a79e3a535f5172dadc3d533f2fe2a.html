@@ -129,43 +129,43 @@ Directories</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md148"></a>
+<h1><a class="anchor" id="autotoc_md107"></a>
 Licensed to the Apache Software Foundation (ASF) under one</h1>
-<h1><a class="anchor" id="autotoc_md149"></a>
+<h1><a class="anchor" id="autotoc_md108"></a>
 or more contributor license agreements. See the NOTICE file</h1>
-<h1><a class="anchor" id="autotoc_md150"></a>
+<h1><a class="anchor" id="autotoc_md109"></a>
 distributed with this work for additional information</h1>
-<h1><a class="anchor" id="autotoc_md151"></a>
+<h1><a class="anchor" id="autotoc_md110"></a>
 regarding copyright ownership. The ASF licenses this file</h1>
-<h1><a class="anchor" id="autotoc_md152"></a>
+<h1><a class="anchor" id="autotoc_md111"></a>
 to you under the Apache License, Version 2.0 (the</h1>
-<h1><a class="anchor" id="autotoc_md153"></a>
+<h1><a class="anchor" id="autotoc_md112"></a>
 "License"); you may not use this file except in compliance</h1>
-<h1><a class="anchor" id="autotoc_md154"></a>
+<h1><a class="anchor" id="autotoc_md113"></a>
 with the License. You may obtain a copy of the License at</h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md155"></a>
+<h1><a class="anchor" id="autotoc_md114"></a>
 <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md156"></a>
+<h1><a class="anchor" id="autotoc_md115"></a>
 Unless required by applicable law or agreed to in writing,</h1>
-<h1><a class="anchor" id="autotoc_md157"></a>
+<h1><a class="anchor" id="autotoc_md116"></a>
 software distributed under the License is distributed on an</h1>
-<h1><a class="anchor" id="autotoc_md158"></a>
+<h1><a class="anchor" id="autotoc_md117"></a>
 "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</h1>
-<h1><a class="anchor" id="autotoc_md159"></a>
+<h1><a class="anchor" id="autotoc_md118"></a>
 KIND, either express or implied. See the License for the</h1>
-<h1><a class="anchor" id="autotoc_md160"></a>
+<h1><a class="anchor" id="autotoc_md119"></a>
 specific language governing permissions and limitations</h1>
-<h1><a class="anchor" id="autotoc_md161"></a>
+<h1><a class="anchor" id="autotoc_md120"></a>
 under the License.</h1>
 <p>#</p>
-<h1><a class="anchor" id="autotoc_md162"></a>
+<h1><a class="anchor" id="autotoc_md121"></a>
 resilient-python-cache</h1>
 <p><b>Python library for syncing ResilientDB data via WebSocket and HTTP with seamless reconnection.</b></p>
 <p><a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%202-blue" alt="License" class="inline"/></a></p>
 <p><code>resilient-python-cache</code> is a library for establishing and managing real-time synchronization between ResilientDB and MongoDB using WebSocket and HTTP. It includes automatic reconnection, batching, and concurrency management for high-performance syncing.</p>
-<h2><a class="anchor" id="autotoc_md163"></a>
+<h2><a class="anchor" id="autotoc_md122"></a>
 Features</h2>
 <ul>
 <li>Real-time sync between ResilientDB and MongoDB</li>
@@ -173,13 +173,13 @@ Features</h2>
 <li>Configurable synchronization intervals and batch processing</li>
 <li>Provides MongoDB querying for ResilientDB transaction data</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md164"></a>
+<h2><a class="anchor" id="autotoc_md123"></a>
 Installation</h2>
 <p>To use the library, install it via pip:</p>
 <div class="fragment"><div class="line">pip install resilient-python-cache</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md165"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md124"></a>
 Configuration</h2>
-<h3><a class="anchor" id="autotoc_md166"></a>
+<h3><a class="anchor" id="autotoc_md125"></a>
 MongoDB Configuration</h3>
 <p>The library uses MongoDB to store ResilientDB data. Configure it by specifying:</p>
 <ul>
@@ -187,7 +187,7 @@ MongoDB Configuration</h3>
 <li><code>db_name</code>: Database name in MongoDB</li>
 <li><code>collection_name</code>: Collection name in MongoDB where ResilientDB data is stored</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md167"></a>
+<h3><a class="anchor" id="autotoc_md126"></a>
 ResilientDB Configuration</h3>
 <p>For ResilientDB configuration, specify:</p>
 <ul>
@@ -197,9 +197,9 @@ ResilientDB Configuration</h3>
 <li><code>reconnect_interval</code>: Reconnection interval in milliseconds (optional)</li>
 <li><code>fetch_interval</code>: Fetch interval in milliseconds for periodic syncs (optional)</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md168"></a>
+<h2><a class="anchor" id="autotoc_md127"></a>
 Usage</h2>
-<h3><a class="anchor" id="autotoc_md169"></a>
+<h3><a class="anchor" id="autotoc_md128"></a>
 1. Syncing Data from ResilientDB to MongoDB</h3>
 <p>Create a sync script to initialize and start the data synchronization from ResilientDB to MongoDB.</p>
 <div class="fragment"><div class="line"><span class="comment"># sync.py</span></div>
@@ -251,9 +251,9 @@ Usage</h2>
 <li>Initialize the connection to MongoDB and ResilientDB</li>
 <li>Continuously sync new blocks received from ResilientDB to MongoDB</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md170"></a>
+<h3><a class="anchor" id="autotoc_md129"></a>
 API Documentation</h3>
-<h4><a class="anchor" id="autotoc_md171"></a>
+<h4><a class="anchor" id="autotoc_md130"></a>
 Class <code>ResilientPythonCache</code></h4>
 <ul>
 <li><b>constructor(mongo_config: MongoConfig, resilient_db_config: ResilientDBConfig)</b>:<ul>
@@ -263,14 +263,14 @@ Class <code>ResilientPythonCache</code></h4>
 <li><b>initialize()</b>: Connects to MongoDB, fetches initial blocks, starts periodic fetching, and opens the WebSocket connection to ResilientDB.</li>
 <li><b>close()</b>: Closes the MongoDB and WebSocket connections, stopping the periodic fetching.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md172"></a>
+<h3><a class="anchor" id="autotoc_md131"></a>
 MongoDB Collection Structure</h3>
 <p>Each document in the MongoDB collection corresponds to a ResilientDB block, containing:</p><ul>
 <li><b>id</b>: Block identifier</li>
 <li><b>createdAt</b>: Timestamp for block creation</li>
 <li><b>transactions</b>: Array of transactions in the block, with details for each transaction’s inputs, outputs, and asset metadata</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md173"></a>
+<h3><a class="anchor" id="autotoc_md132"></a>
 License</h3>
 <p>This library is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.</p>
 <hr  />

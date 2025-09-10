@@ -144,72 +144,72 @@ Files</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md354"></a>
+<h1><a class="anchor" id="autotoc_md250"></a>
 Licensed to the Apache Software Foundation (ASF) under one</h1>
-<h1><a class="anchor" id="autotoc_md355"></a>
+<h1><a class="anchor" id="autotoc_md251"></a>
 or more contributor license agreements. See the NOTICE file</h1>
-<h1><a class="anchor" id="autotoc_md356"></a>
+<h1><a class="anchor" id="autotoc_md252"></a>
 distributed with this work for additional information</h1>
-<h1><a class="anchor" id="autotoc_md357"></a>
+<h1><a class="anchor" id="autotoc_md253"></a>
 regarding copyright ownership. The ASF licenses this file</h1>
-<h1><a class="anchor" id="autotoc_md358"></a>
+<h1><a class="anchor" id="autotoc_md254"></a>
 to you under the Apache License, Version 2.0 (the</h1>
-<h1><a class="anchor" id="autotoc_md359"></a>
+<h1><a class="anchor" id="autotoc_md255"></a>
 "License"); you may not use this file except in compliance</h1>
-<h1><a class="anchor" id="autotoc_md360"></a>
+<h1><a class="anchor" id="autotoc_md256"></a>
 with the License. You may obtain a copy of the License at</h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md361"></a>
+<h1><a class="anchor" id="autotoc_md257"></a>
 <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md362"></a>
+<h1><a class="anchor" id="autotoc_md258"></a>
 Unless required by applicable law or agreed to in writing,</h1>
-<h1><a class="anchor" id="autotoc_md363"></a>
+<h1><a class="anchor" id="autotoc_md259"></a>
 software distributed under the License is distributed on an</h1>
-<h1><a class="anchor" id="autotoc_md364"></a>
+<h1><a class="anchor" id="autotoc_md260"></a>
 "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</h1>
-<h1><a class="anchor" id="autotoc_md365"></a>
+<h1><a class="anchor" id="autotoc_md261"></a>
 KIND, either express or implied. See the License for the</h1>
-<h1><a class="anchor" id="autotoc_md366"></a>
+<h1><a class="anchor" id="autotoc_md262"></a>
 specific language governing permissions and limitations</h1>
-<h1><a class="anchor" id="autotoc_md367"></a>
+<h1><a class="anchor" id="autotoc_md263"></a>
 under the License.</h1>
 <p>#</p>
-<h1><a class="anchor" id="autotoc_md368"></a>
+<h1><a class="anchor" id="autotoc_md264"></a>
 HTTP Server Endpoints</h1>
-<h2><a class="anchor" id="autotoc_md369"></a>
+<h2><a class="anchor" id="autotoc_md265"></a>
 Transactions</h2>
 <p>Note that key-value pairs committed to ResilientDB through the API store the JSON object as the value. To get the intended value of the pair, simply access the value of the JSON object.</p>
-<h3><a class="anchor" id="autotoc_md370"></a>
+<h3><a class="anchor" id="autotoc_md266"></a>
 GET /v1/transactions</h3>
 <p>Get all values</p>
-<h3><a class="anchor" id="autotoc_md371"></a>
+<h3><a class="anchor" id="autotoc_md267"></a>
 GET /v1/transactions/&lt;string&gt;</h3>
 <p>Get value of specific id</p>
-<h3><a class="anchor" id="autotoc_md372"></a>
+<h3><a class="anchor" id="autotoc_md268"></a>
 GET /v1/transactions/&lt;string&gt;/&lt;string&gt;</h3>
 <p>Get values based on key range</p>
-<h3><a class="anchor" id="autotoc_md373"></a>
+<h3><a class="anchor" id="autotoc_md269"></a>
 POST /v1/transactions/commit</h3>
 <p>Sets a new value for a key. Note that key-value pairs committed to ResilientDB through the API store the JSON object as the value. To get the intended value of the pair, simply access the value of the JSON object.</p>
 <p>Ex: &lsquo;curl -X POST -d &rsquo;{"id":"samplekey","value":"samplevalue"}' localhost:18000/v1/transactions/commit`</p>
-<h2><a class="anchor" id="autotoc_md374"></a>
+<h2><a class="anchor" id="autotoc_md270"></a>
 Blocks</h2>
-<h3><a class="anchor" id="autotoc_md375"></a>
+<h3><a class="anchor" id="autotoc_md271"></a>
 GET /v1/blocks</h3>
 <p>Retrieve all blocks</p>
-<h3><a class="anchor" id="autotoc_md376"></a>
+<h3><a class="anchor" id="autotoc_md272"></a>
 GET /v1/blocks/&lt;int&gt;</h3>
 <p>Retrieve all blocks, grouped in batch sizes of the int parameter</p>
-<h3><a class="anchor" id="autotoc_md377"></a>
+<h3><a class="anchor" id="autotoc_md273"></a>
 GET /v1/blocks/&lt;int&gt;/&lt;int&gt;</h3>
 <p>Retrieve list of blocks within a range</p>
-<h2><a class="anchor" id="autotoc_md378"></a>
+<h2><a class="anchor" id="autotoc_md274"></a>
 Miscellaneous</h2>
-<h3><a class="anchor" id="autotoc_md379"></a>
+<h3><a class="anchor" id="autotoc_md275"></a>
 GET /populatetable</h3>
 <p>Used for the Explorer webpage</p>
-<h2><a class="anchor" id="autotoc_md380"></a>
+<h2><a class="anchor" id="autotoc_md276"></a>
 Todo</h2>
 <p>Update endpoints to use URL query parameters </p>
 </div><!-- contents -->

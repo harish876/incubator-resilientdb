@@ -123,42 +123,42 @@ $(function(){initNavTree('dir_9af3b40d421d2135fb7ccafed491739f.html',''); initRe
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md591"></a>
+<h1><a class="anchor" id="autotoc_md445"></a>
 Licensed to the Apache Software Foundation (ASF) under one</h1>
-<h1><a class="anchor" id="autotoc_md592"></a>
+<h1><a class="anchor" id="autotoc_md446"></a>
 or more contributor license agreements. See the NOTICE file</h1>
-<h1><a class="anchor" id="autotoc_md593"></a>
+<h1><a class="anchor" id="autotoc_md447"></a>
 distributed with this work for additional information</h1>
-<h1><a class="anchor" id="autotoc_md594"></a>
+<h1><a class="anchor" id="autotoc_md448"></a>
 regarding copyright ownership. The ASF licenses this file</h1>
-<h1><a class="anchor" id="autotoc_md595"></a>
+<h1><a class="anchor" id="autotoc_md449"></a>
 to you under the Apache License, Version 2.0 (the</h1>
-<h1><a class="anchor" id="autotoc_md596"></a>
+<h1><a class="anchor" id="autotoc_md450"></a>
 "License"); you may not use this file except in compliance</h1>
-<h1><a class="anchor" id="autotoc_md597"></a>
+<h1><a class="anchor" id="autotoc_md451"></a>
 with the License. You may obtain a copy of the License at</h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md598"></a>
+<h1><a class="anchor" id="autotoc_md452"></a>
 <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md599"></a>
+<h1><a class="anchor" id="autotoc_md453"></a>
 Unless required by applicable law or agreed to in writing,</h1>
-<h1><a class="anchor" id="autotoc_md600"></a>
+<h1><a class="anchor" id="autotoc_md454"></a>
 software distributed under the License is distributed on an</h1>
-<h1><a class="anchor" id="autotoc_md601"></a>
+<h1><a class="anchor" id="autotoc_md455"></a>
 "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</h1>
-<h1><a class="anchor" id="autotoc_md602"></a>
+<h1><a class="anchor" id="autotoc_md456"></a>
 KIND, either express or implied. See the License for the</h1>
-<h1><a class="anchor" id="autotoc_md603"></a>
+<h1><a class="anchor" id="autotoc_md457"></a>
 specific language governing permissions and limitations</h1>
-<h1><a class="anchor" id="autotoc_md604"></a>
+<h1><a class="anchor" id="autotoc_md458"></a>
 under the License.</h1>
 <p>#</p>
-<h1><a class="anchor" id="autotoc_md605"></a>
+<h1><a class="anchor" id="autotoc_md459"></a>
 <a href="https://blog.resilientdb.com/2024/12/07/MemLens.html">ResLens</a></h1>
 <p>ResLens is a comprehensive CPU and memory profiler for ResilientDB which aims to provide granular performance metrics by integrating profiling tools like eBPF, node exporter, process exporter, LevelDB internal statistics and custom prometheus hooks. We aim to provide a platform which provides database specific metrics that provides detailed information on what happens under the hood and help optimize system performance. This is an ambitious idea which we are improving on constantly but are proud to share a packaged version of ResLens currently.</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md607"></a>
+<h2><a class="anchor" id="autotoc_md461"></a>
 Table of Contents</h2>
 <ol type="1">
 <li>Overview</li>
@@ -170,10 +170,10 @@ Table of Contents</h2>
 <li>Acknowledgments</li>
 </ol>
 <hr  />
-<h2><a class="anchor" id="autotoc_md609"></a>
+<h2><a class="anchor" id="autotoc_md463"></a>
 Overview</h2>
 <p>ResLens provides CPU, memory and build statistics aiming to provide detailed information on what happens under the hood and help optimize system performance.</p>
-<h3><a class="anchor" id="autotoc_md610"></a>
+<h3><a class="anchor" id="autotoc_md464"></a>
 Key Highlights:</h3>
 <ul>
 <li>Integrated terminal like playground to Get and Set values to/from <code>ResilientDB</code>.</li>
@@ -184,7 +184,7 @@ Key Highlights:</h3>
 <li>Lightweight and optimized for Linux-based systems.</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md612"></a>
+<h2><a class="anchor" id="autotoc_md466"></a>
 Features</h2>
 <ul>
 <li><b>Granular Profiling</b>: Analyze memory and CPU usage down to individual function calls.</li>
@@ -195,14 +195,14 @@ Features</h2>
 <li><b>Output Options</b>: Export results in JSON, PNG, and other formats and analyze them using external tools.</li>
 </ul>
 <hr  />
- <h1><a class="anchor" id="autotoc_md614"></a>
+ <h1><a class="anchor" id="autotoc_md468"></a>
 Usage</h1>
 <p><img src="/docs/screenshots/flamegraph_get_method.png" alt="Description" class="inline"/> <b>Description</b>: Flamegraph showing the call stack when a Get method is called on ResilientDB's key value store. This graph shows the function caller which is invoked by the ResilientDB-GraphQL service and is serviced at the end by the storage engine which is LevelDB. The storage engine calls the in memory LRU cache to check for cache hits and when not found calls its internal functions to retrieve the key value pair.</p>
 <p>Todo: Add more examples</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md616"></a>
+<h2><a class="anchor" id="autotoc_md470"></a>
 Installation</h2>
-<h3><a class="anchor" id="autotoc_md617"></a>
+<h3><a class="anchor" id="autotoc_md471"></a>
 Prerequisites</h3>
 <ul>
 <li><b>Operating System</b>: Linux (e.g., Ubuntu 20.04+).</li>
@@ -224,7 +224,7 @@ Prerequisites</h3>
 </ul>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md618"></a>
+<h3><a class="anchor" id="autotoc_md472"></a>
 Steps to Run</h3>
 <ul>
 <li>Offline Mode - Learn, Explore and familiarize with the dashboard without setting up the profiling environment.<ol type="1">
@@ -242,7 +242,7 @@ Steps to Run</h3>
 </ul>
 <p>Follow this step by step installation manual to install, setup, resolve errors, and configure the profiling environment. TODO ADD LINK</p>
 <hr  />
- <h2><a class="anchor" id="autotoc_md620"></a>
+ <h2><a class="anchor" id="autotoc_md474"></a>
 Contribution</h2>
 <ol type="1">
 <li>Harish Gokul (<a href="http://github.com/harish876">http://github.com/harish876</a>): Lead Developer for ResLens responsible for<ul>
@@ -267,11 +267,11 @@ Contribution</h2>
 </li>
 </ol>
 <hr  />
-<h2><a class="anchor" id="autotoc_md622"></a>
+<h2><a class="anchor" id="autotoc_md476"></a>
 License</h2>
-<h2><a class="anchor" id="autotoc_md623"></a>
+<h2><a class="anchor" id="autotoc_md477"></a>
 TODO</h2>
-<h2><a class="anchor" id="autotoc_md624"></a>
+<h2><a class="anchor" id="autotoc_md478"></a>
 Acknowledgements</h2>
 <ul>
 <li>We would like to acknowledge the good folks of <a href="https://github.com/ResilientApp/ResView">ResView</a> for the inspiration and a reference point to start our project. </li>

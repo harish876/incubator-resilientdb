@@ -123,55 +123,55 @@ $(function(){initNavTree('dir_6c2f25585b3010bb21eec0bca46f1529.html',''); initRe
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md698"></a>
+<h1><a class="anchor" id="autotoc_md510"></a>
 Licensed to the Apache Software Foundation (ASF) under one</h1>
-<h1><a class="anchor" id="autotoc_md699"></a>
+<h1><a class="anchor" id="autotoc_md511"></a>
 or more contributor license agreements. See the NOTICE file</h1>
-<h1><a class="anchor" id="autotoc_md700"></a>
+<h1><a class="anchor" id="autotoc_md512"></a>
 distributed with this work for additional information</h1>
-<h1><a class="anchor" id="autotoc_md701"></a>
+<h1><a class="anchor" id="autotoc_md513"></a>
 regarding copyright ownership. The ASF licenses this file</h1>
-<h1><a class="anchor" id="autotoc_md702"></a>
+<h1><a class="anchor" id="autotoc_md514"></a>
 to you under the Apache License, Version 2.0 (the</h1>
-<h1><a class="anchor" id="autotoc_md703"></a>
+<h1><a class="anchor" id="autotoc_md515"></a>
 "License"); you may not use this file except in compliance</h1>
-<h1><a class="anchor" id="autotoc_md704"></a>
+<h1><a class="anchor" id="autotoc_md516"></a>
 with the License. You may obtain a copy of the License at</h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md705"></a>
+<h1><a class="anchor" id="autotoc_md517"></a>
 <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md706"></a>
+<h1><a class="anchor" id="autotoc_md518"></a>
 Unless required by applicable law or agreed to in writing,</h1>
-<h1><a class="anchor" id="autotoc_md707"></a>
+<h1><a class="anchor" id="autotoc_md519"></a>
 software distributed under the License is distributed on an</h1>
-<h1><a class="anchor" id="autotoc_md708"></a>
+<h1><a class="anchor" id="autotoc_md520"></a>
 "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</h1>
-<h1><a class="anchor" id="autotoc_md709"></a>
+<h1><a class="anchor" id="autotoc_md521"></a>
 KIND, either express or implied. See the License for the</h1>
-<h1><a class="anchor" id="autotoc_md710"></a>
+<h1><a class="anchor" id="autotoc_md522"></a>
 specific language governing permissions and limitations</h1>
-<h1><a class="anchor" id="autotoc_md711"></a>
+<h1><a class="anchor" id="autotoc_md523"></a>
 under the License.</h1>
 <p>#</p>
-<h1><a class="anchor" id="autotoc_md712"></a>
+<h1><a class="anchor" id="autotoc_md524"></a>
 ResVault SDK</h1>
 <p><b>License</b>: Apache-2.0</p>
 <p>A lightweight SDK for integrating ResVault into your web applications. This SDK simplifies the interaction with the ResVault system, allowing you to send messages and listen for events in a secure and controlled manner.</p>
-<h2><a class="anchor" id="autotoc_md713"></a>
+<h2><a class="anchor" id="autotoc_md525"></a>
 Features</h2>
 <ul>
 <li>Simple API to send and receive messages via <code>postMessage</code>.</li>
 <li>Ability to add and remove custom message listeners.</li>
 <li>Designed for integration with ResVault-based applications.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md714"></a>
+<h2><a class="anchor" id="autotoc_md526"></a>
 Installation</h2>
 <p>You can install the ResVault SDK via npm:</p>
 <div class="fragment"><div class="line">npm install resvault-sdk</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md715"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md527"></a>
 Usage</h2>
-<h3><a class="anchor" id="autotoc_md716"></a>
+<h3><a class="anchor" id="autotoc_md528"></a>
 Importing the SDK</h3>
 <p>After installing the SDK, you can import and use it in your JavaScript or TypeScript projects as follows:</p>
 <div class="fragment"><div class="line">import ResVaultSDK from &#39;resvault-sdk&#39;;</div>
@@ -189,41 +189,41 @@ Importing the SDK</h3>
 <div class="line"> </div>
 <div class="line">// Removing the message listener when it&#39;s no longer needed</div>
 <div class="line">sdk.removeMessageListener(handleMessage);</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md717"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md529"></a>
 API Reference</h3>
-<h4><a class="anchor" id="autotoc_md718"></a>
+<h4><a class="anchor" id="autotoc_md530"></a>
 <code>new ResVaultSDK(targetOrigin?: string)</code></h4>
 <ul>
 <li><b>targetOrigin</b>: <em>(optional)</em> The target origin for <code>postMessage</code>. Defaults to <code>"*"</code>. You can specify this for more security.</li>
 </ul>
 <p>Creates an instance of the <code>ResVaultSDK</code>.</p>
-<h4><a class="anchor" id="autotoc_md719"></a>
+<h4><a class="anchor" id="autotoc_md531"></a>
 <code>sendMessage(message: Message): void</code></h4>
 <ul>
 <li><b>message</b>: The message object to send, which must include at least a <code>type</code> key.</li>
 </ul>
 <p>Sends a message using <code>postMessage</code>.</p>
-<h4><a class="anchor" id="autotoc_md720"></a>
+<h4><a class="anchor" id="autotoc_md532"></a>
 <code>addMessageListener(handler: (event: MessageEvent) =&gt; void): void</code></h4>
 <ul>
 <li><b>handler</b>: A function that will be called when a message is received. This function should accept a <code>MessageEvent</code> object as its parameter.</li>
 </ul>
 <p>Adds a message listener for incoming messages.</p>
-<h4><a class="anchor" id="autotoc_md721"></a>
+<h4><a class="anchor" id="autotoc_md533"></a>
 <code>removeMessageListener(handler: (event: MessageEvent) =&gt; void): void</code></h4>
 <ul>
 <li><b>handler</b>: The function that was previously registered as a listener.</li>
 </ul>
 <p>Removes a message listener when it’s no longer needed.</p>
-<h2><a class="anchor" id="autotoc_md722"></a>
+<h2><a class="anchor" id="autotoc_md534"></a>
 Build</h2>
 <p>To build the SDK from source:</p>
 <div class="fragment"><div class="line">npm run build</div>
 </div><!-- fragment --><p>This will compile the TypeScript source code into JavaScript and generate the <code>dist</code> folder.</p>
-<h2><a class="anchor" id="autotoc_md723"></a>
+<h2><a class="anchor" id="autotoc_md535"></a>
 Examples</h2>
 <p>If you're looking for a quick way to integrate this SDK with React or Vue projects, you can use the <a href="https://www.npmjs.com/package/create-resilient-app">create-resilient-app</a> npm package. It helps you scaffold a new project that already includes the ResVault SDK integration.</p>
-<h3><a class="anchor" id="autotoc_md724"></a>
+<h3><a class="anchor" id="autotoc_md536"></a>
 Steps to scaffold a project using <code>create-resilient-app</code>:</h3>
 <ol type="1">
 <li><p class="startli">Run the following command with your chosen options (React/Vue, TypeScript/JavaScript):</p>
@@ -238,7 +238,7 @@ Steps to scaffold a project using <code>create-resilient-app</code>:</h3>
 </div><!-- fragment --></li>
 </ol>
 <p>This will set up a complete React or Vue project (with TypeScript or JavaScript, depending on your choice) with the necessary setup to integrate the <code>ResVaultSDK</code>. You can explore the <code>Login</code> and <code>TransactionForm</code> components in the generated project to see how the SDK is integrated.</p>
-<h2><a class="anchor" id="autotoc_md725"></a>
+<h2><a class="anchor" id="autotoc_md537"></a>
 License</h2>
 <p>This project is licensed under the terms of the Apache 2.0 License. See the [LICENSE](LICENSE) file for details. </p>
 </div><!-- contents -->

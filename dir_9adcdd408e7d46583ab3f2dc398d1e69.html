@@ -140,9 +140,11 @@ Directories</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<h1><a class="anchor" id="autotoc_md479"></a>
+ResilientDB Ecosystem</h1>
 <p>This directory contains the ResilientDB ecosystem components organized as git subtrees.</p>
-<h1><a class="anchor" id="autotoc_md626"></a>
-Structure</h1>
+<h2><a class="anchor" id="autotoc_md480"></a>
+Structure</h2>
 <div class="fragment"><div class="line">ecosystem/</div>
 <div class="line">├── graphql/                          # GraphQL service</div>
 <div class="line">├── smart-contract/                   # Smart contract ecosystem</div>
@@ -165,18 +167,17 @@ Structure</h1>
 <div class="line">└── tools/                           # Development and operational tools</div>
 <div class="line">    ├── resvault/                    # ResVault tool</div>
 <div class="line">    └── create-resilient-app/        # App scaffolding tool</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md627"></a>
-Clone Without Ecosystem</h1>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md481"></a>
+Clone Without Ecosystem</h2>
 <p>To clone ResilientDB without the ecosystem directory (faster, smaller):</p>
-<div class="fragment"><div class="line">git clone --filter=tree:0 --sparse https://github.com/harish876/incubator-resilientdb.git</div>
+<div class="fragment"><div class="line">git clone --filter=tree:0 --sparse https://github.com/apache/incubator-resilientdb.git</div>
 <div class="line">cd incubator-resilientdb</div>
-<div class="line">git checkout monorepo-setup</div>
 <div class="line">git sparse-checkout set --no-cone</div>
 <div class="line">echo &quot;/*&quot; &gt; .git/info/sparse-checkout</div>
 <div class="line">echo &quot;\!ecosystem/&quot; &gt;&gt; .git/info/sparse-checkout</div>
 <div class="line">git read-tree -m -u HEAD</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md628"></a>
-Clone Specific Ecosystem Components</h1>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md482"></a>
+Clone Specific Ecosystem Components</h2>
 <div class="fragment"><div class="line"># Only SDK components. Nothing else</div>
 <div class="line">git sparse-checkout set ecosystem/sdk</div>
 <div class="line"> </div>

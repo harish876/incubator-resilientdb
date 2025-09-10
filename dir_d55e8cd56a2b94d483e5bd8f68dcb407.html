@@ -129,42 +129,42 @@ Directories</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md515"></a>
+<h1><a class="anchor" id="autotoc_md390"></a>
 Licensed to the Apache Software Foundation (ASF) under one</h1>
-<h1><a class="anchor" id="autotoc_md516"></a>
+<h1><a class="anchor" id="autotoc_md391"></a>
 or more contributor license agreements. See the NOTICE file</h1>
-<h1><a class="anchor" id="autotoc_md517"></a>
+<h1><a class="anchor" id="autotoc_md392"></a>
 distributed with this work for additional information</h1>
-<h1><a class="anchor" id="autotoc_md518"></a>
+<h1><a class="anchor" id="autotoc_md393"></a>
 regarding copyright ownership. The ASF licenses this file</h1>
-<h1><a class="anchor" id="autotoc_md519"></a>
+<h1><a class="anchor" id="autotoc_md394"></a>
 to you under the Apache License, Version 2.0 (the</h1>
-<h1><a class="anchor" id="autotoc_md520"></a>
+<h1><a class="anchor" id="autotoc_md395"></a>
 "License"); you may not use this file except in compliance</h1>
-<h1><a class="anchor" id="autotoc_md521"></a>
+<h1><a class="anchor" id="autotoc_md396"></a>
 with the License. You may obtain a copy of the License at</h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md522"></a>
+<h1><a class="anchor" id="autotoc_md397"></a>
 <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md523"></a>
+<h1><a class="anchor" id="autotoc_md398"></a>
 Unless required by applicable law or agreed to in writing,</h1>
-<h1><a class="anchor" id="autotoc_md524"></a>
+<h1><a class="anchor" id="autotoc_md399"></a>
 software distributed under the License is distributed on an</h1>
-<h1><a class="anchor" id="autotoc_md525"></a>
+<h1><a class="anchor" id="autotoc_md400"></a>
 "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</h1>
-<h1><a class="anchor" id="autotoc_md526"></a>
+<h1><a class="anchor" id="autotoc_md401"></a>
 KIND, either express or implied. See the License for the</h1>
-<h1><a class="anchor" id="autotoc_md527"></a>
+<h1><a class="anchor" id="autotoc_md402"></a>
 specific language governing permissions and limitations</h1>
-<h1><a class="anchor" id="autotoc_md528"></a>
+<h1><a class="anchor" id="autotoc_md403"></a>
 under the License.</h1>
 <p>#</p>
-<h1><a class="anchor" id="autotoc_md529"></a>
+<h1><a class="anchor" id="autotoc_md404"></a>
 Monitoring Sidecar for ResLens</h1>
 <p>This repository contains the <b>Monitoring Sidecar</b> for the ResLens project. The sidecar is designed to monitor the parent process running on the host using tools like <b>Pyroscope</b> and <b>Process Exporter</b>. It runs as a Docker container and collects profiling and process-level metrics for real-time performance monitoring.</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md531"></a>
+<h2><a class="anchor" id="autotoc_md406"></a>
 Features</h2>
 <ul>
 <li><b>Profiling with Pyroscope</b>: Captures CPU and memory profiling data for the parent process on the host.</li>
@@ -173,7 +173,7 @@ Features</h2>
 <li><b>Host Monitoring</b>: Monitors the parent process running on the host by sharing the process namespace and filesystem.</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md533"></a>
+<h2><a class="anchor" id="autotoc_md408"></a>
 Folder Structure</h2>
 <p>The repository is organized as follows:</p>
 <p><code>/pyroscope</code> Dockerfile # Builds the Pyroscope server and client image connect_pyroscope.js # Script to connect Pyroscope to the parent process pyroscope-data # Directory for storing Pyroscope server data</p>
@@ -181,7 +181,7 @@ Folder Structure</h2>
 <p><code>/middleware</code> Dockerfile # Builds the middleware API service server.js # Main entry point for the middleware service package.json # Node.js dependencies for the middleware service</p>
 <p><code>docker-compose.yml</code> # Orchestrates the Pyroscope and Process Exporter containers README.md # Documentation for the repository</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md535"></a>
+<h2><a class="anchor" id="autotoc_md410"></a>
 Prerequisites</h2>
 <p>Before you begin, ensure you have the following installed:</p>
 <ul>
@@ -190,38 +190,38 @@ Prerequisites</h2>
 <li><b>Pyroscope</b>: For profiling data visualization.</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md537"></a>
+<h2><a class="anchor" id="autotoc_md412"></a>
 Usage</h2>
-<h3><a class="anchor" id="autotoc_md538"></a>
+<h3><a class="anchor" id="autotoc_md413"></a>
 1. Build and Run the Sidecar</h3>
 <p>Use Docker Compose to build and run the monitoring sidecar: </p><div class="fragment"><div class="line">docker-compose down</div>
 </div><!-- fragment --> <div class="fragment"><div class="line">docker-compose build</div>
 </div><!-- fragment --> <div class="fragment"><div class="line">docker-compose up -d</div>
-</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md539"></a>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md414"></a>
 2. Access Pyroscope</h3>
 <div class="fragment"><div class="line">http://localhost:4040</div>
-</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md540"></a>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md415"></a>
 3. Access Process Exporter Metrics</h3>
 <div class="fragment"><div class="line">http://localhost:9256/metrics</div>
 </div><!-- fragment --><hr  />
-<h2><a class="anchor" id="autotoc_md542"></a>
+<h2><a class="anchor" id="autotoc_md417"></a>
 How It Works</h2>
-<h3><a class="anchor" id="autotoc_md543"></a>
+<h3><a class="anchor" id="autotoc_md418"></a>
 Pyroscope Client:</h3>
 <p>The Pyroscope client connects to the parent process running on the host using the connect_pyroscope.js script. It uses eBPF or other profiling methods to capture CPU and memory usage.</p>
-<h3><a class="anchor" id="autotoc_md544"></a>
+<h3><a class="anchor" id="autotoc_md419"></a>
 Process Exporter:</h3>
 <p>The Process Exporter monitors the parent process and exposes metrics in a Prometheus-compatible format. It uses a configuration file (config.yml) to specify which processes to monitor. Host Integration:</p>
 <p>The containers share the host's process namespace (pid: "host") and mount the host's proc filesystem to access process information.</p>
-<h3><a class="anchor" id="autotoc_md545"></a>
+<h3><a class="anchor" id="autotoc_md420"></a>
 Security Considerations</h3>
 <p>The containers run with elevated privileges (privileged: true) to access host resources. Use this setup cautiously in production environments. Ensure that only trusted users can access the exposed metrics and profiling data.</p>
-<h3><a class="anchor" id="autotoc_md546"></a>
+<h3><a class="anchor" id="autotoc_md421"></a>
 Host Changes needed</h3>
 <ol type="1">
 <li>Add process-exporter to prometheus.conf file</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md547"></a>
+<h2><a class="anchor" id="autotoc_md422"></a>
 TODO</h2>
 <ol type="1">
 <li>Add ResView as a sidecar service.</li>

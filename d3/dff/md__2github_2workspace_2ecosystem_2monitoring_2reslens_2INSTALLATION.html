@@ -122,63 +122,63 @@ $(function(){initNavTree('d3/dff/md__2github_2workspace_2ecosystem_2monitoring_2
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p># </p>
-<h1><a class="anchor" id="autotoc_md569"></a>
+<h1><a class="anchor" id="autotoc_md423"></a>
 Licensed to the Apache Software Foundation (ASF) under one</h1>
-<h1><a class="anchor" id="autotoc_md570"></a>
+<h1><a class="anchor" id="autotoc_md424"></a>
 or more contributor license agreements. See the NOTICE file</h1>
-<h1><a class="anchor" id="autotoc_md571"></a>
+<h1><a class="anchor" id="autotoc_md425"></a>
 distributed with this work for additional information</h1>
-<h1><a class="anchor" id="autotoc_md572"></a>
+<h1><a class="anchor" id="autotoc_md426"></a>
 regarding copyright ownership. The ASF licenses this file</h1>
-<h1><a class="anchor" id="autotoc_md573"></a>
+<h1><a class="anchor" id="autotoc_md427"></a>
 to you under the Apache License, Version 2.0 (the</h1>
-<h1><a class="anchor" id="autotoc_md574"></a>
+<h1><a class="anchor" id="autotoc_md428"></a>
 "License"); you may not use this file except in compliance</h1>
-<h1><a class="anchor" id="autotoc_md575"></a>
+<h1><a class="anchor" id="autotoc_md429"></a>
 with the License. You may obtain a copy of the License at</h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md576"></a>
+<h1><a class="anchor" id="autotoc_md430"></a>
 <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md577"></a>
+<h1><a class="anchor" id="autotoc_md431"></a>
 Unless required by applicable law or agreed to in writing,</h1>
-<h1><a class="anchor" id="autotoc_md578"></a>
+<h1><a class="anchor" id="autotoc_md432"></a>
 software distributed under the License is distributed on an</h1>
-<h1><a class="anchor" id="autotoc_md579"></a>
+<h1><a class="anchor" id="autotoc_md433"></a>
 "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</h1>
-<h1><a class="anchor" id="autotoc_md580"></a>
+<h1><a class="anchor" id="autotoc_md434"></a>
 KIND, either express or implied. See the License for the</h1>
-<h1><a class="anchor" id="autotoc_md581"></a>
+<h1><a class="anchor" id="autotoc_md435"></a>
 specific language governing permissions and limitations</h1>
-<h1><a class="anchor" id="autotoc_md582"></a>
+<h1><a class="anchor" id="autotoc_md436"></a>
 under the License.</h1>
 <p>#</p>
-<h1><a class="anchor" id="autotoc_md583"></a>
+<h1><a class="anchor" id="autotoc_md437"></a>
 ResilientDB Profiling and Monitoring Setup</h1>
 <p>This repository provides a comprehensive guide to set up profiling and monitoring for ResilientDB using Prometheus, Grafana, and related tools. The setup includes CPU and memory metrics visualization, GraphQL integration, and ResLens configuration.</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md585"></a>
+<h2><a class="anchor" id="autotoc_md439"></a>
 Prerequisites</h2>
 <p>Before running the ResLens application, you need to start kv service on the ResDB backend and the sdk.</p>
-<h3><a class="anchor" id="autotoc_md586"></a>
+<h3><a class="anchor" id="autotoc_md440"></a>
 ResilientDB</h3>
 <p>Git clone the ResLens backend repository, a fork of ResilientDB and follow the instructions to set it up: </p><div class="fragment"><div class="line">git clone https://github.com/harish876/incubator-resilientdb</div>
 </div><!-- fragment --><p> Setup KV Service: </p><div class="fragment"><div class="line">./service/tools/kv/server_tools/start_kv_service_monitoring.sh</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md587"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md441"></a>
 SDK</h3>
 <p>Git clone the GraphQL Repository and follow the instructions on the README to set it up:</p>
 <p>Install GraphQL: </p><div class="fragment"><div class="line">git clone https://github.com/ResilientApp/ResilientDB-GraphQL</div>
 </div><!-- fragment --><p> Setup SDK: </p><div class="fragment"><div class="line">bazel build service/http_server:crow_service_main</div>
 <div class="line"> </div>
 <div class="line">bazel-bin/service/http_server/crow_service_main service/tools/config/interface/client.config service/http_server/server_config.config</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md588"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md442"></a>
 Middleware</h3>
 <p>Git clone the ResLens Middleware Repository:</p>
 <p>Install ResLens Middleware: </p><div class="fragment"><div class="line">git clone https://github.com/harish876/MemLens-middleware</div>
 </div><!-- fragment --><p>Setup ResLens Middleware: </p><div class="fragment"><div class="line">npm instal</div>
 <div class="line"> </div>
 <div class="line">npm run start</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md589"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md443"></a>
 Monitoring tools</h3>
 <p>Follow this to setup prometheus, grafana and a few other monitoring tools used in this application.</p><ol type="1">
 <li><a href="https://medium.com/@abdullah.eid.2604/prometheus-installation-on-linux-ubuntu-c4497e5154f6">Prometheus Installation</a></li>
@@ -186,7 +186,7 @@ Monitoring tools</h3>
 <li><a href="https://developer.couchbase.com/tutorial-process-exporter-setup">Process Exporter Installation</a></li>
 <li><a href="https://dl.pyroscope.io/release/pyroscope-0.37.0-source.tar.gz">Pyroscope</a></li>
 </ol>
-<h3><a class="anchor" id="autotoc_md590"></a>
+<h3><a class="anchor" id="autotoc_md444"></a>
 Detailed Guide for Configurations</h3>
 <p>TODO </p>
 </div></div><!-- contents -->
