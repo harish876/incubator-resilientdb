@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['none_0',['NONE',['../d1/db2/classresdb_1_1ViewChangeManager.html#acd229d978d381feb3b0301faf83b0c81a457ab33cb8e4a477304072393fc9f1ef',1,'resdb::ViewChangeManager']]],
-  ['none_1',['None',['../d5/d10/namespaceresdb.html#a9365b7af8267b084d545559cc0f87cb0a8f60578a1667fd6eb91ee90a6e368fab',1,'resdb']]],
-  ['num_5fexecute_5ftx_2',['NUM_EXECUTE_TX',['../d5/d10/namespaceresdb.html#a903a063ebd51c5fd151a96b7324b62f6a0c1472ae78252d10895510a09238f43e',1,'resdb']]]
+  ['invalid_0',['INVALID',['../d6/dfb/namespaceresdb_1_1comm.html#a3fa16a6ab86b7d4bb7df6274807b9cf0a656c7750c6d88232e2000ee50133f6e8',1,'resdb::comm::INVALID'],['../d5/d10/namespaceresdb.html#affdec049917742284c2ba9216d5ae83fa318d6f266638fe77c0aabf8482053523',1,'resdb::INVALID']]],
+  ['io_5fthread_1',['IO_THREAD',['../d5/d10/namespaceresdb.html#a7889f61314683fc5e6fb5eaa2f2a9beea9f2e64993b550d88276f503dfd7255d2',1,'resdb']]]
 ];

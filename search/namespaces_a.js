@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wsgi_0',['wsgi',['../d8/dc8/namespacewsgi.html',1,'']]]
+  ['print_5fsample_0',['print_sample',['../d9/df2/namespaceprint__sample.html',1,'']]]
 ];

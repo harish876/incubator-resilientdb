@@ -1,5 +1,6 @@
 var classresdb_1_1ResDBPoCConfig =
 [
+    [ "ResDBPoCConfig", "da/d86/classresdb_1_1ResDBPoCConfig.html#a1846bec8ddf90cb490dd6632d6f7fed8", null ],
     [ "ResDBPoCConfig", "da/d86/classresdb_1_1ResDBPoCConfig.html#a7f33e69e66784c5ee9620aaf425934a5", null ],
     [ "BatchTransactionNum", "da/d86/classresdb_1_1ResDBPoCConfig.html#a77e6e6c8046ecf11a2a3da5966cba84d", null ],
     [ "GetBFTConfig", "da/d86/classresdb_1_1ResDBPoCConfig.html#aaf4dfbdfa521e74251379332934e5db2", null ],

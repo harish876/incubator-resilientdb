@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['sdk_0',['sdk',['../d1/de2/namespacesdk.html',1,'']]],
-  ['setup_1',['setup',['../dd/dc4/namespacesetup.html',1,'']]]
+  ['list_5fgemini_5fmodels_0',['list_gemini_models',['../d4/dbe/namespacelist__gemini__models.html',1,'']]]
 ];

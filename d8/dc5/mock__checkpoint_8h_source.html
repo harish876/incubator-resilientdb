@@ -152,10 +152,11 @@ $(function(){initNavTree('d8/dc5/mock__checkpoint_8h_source.html','../../'); ini
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="../../d8/dcb/classresdb_1_1MockCheckPoint.html">   28</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d8/dcb/classresdb_1_1MockCheckPoint.html">MockCheckPoint</a> : <span class="keyword">public</span> <a class="code hl_function" href="../../d2/dce/classresdb_1_1CheckPoint.html#a72bd62894a8e372603df515d3afcda57">CheckPoint</a> {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="../../d8/dcb/classresdb_1_1MockCheckPoint.html#ab9e25b63621a988412f2f20d97eac146">   30</a></span>  <a class="code hl_function" href="../../d8/dcb/classresdb_1_1MockCheckPoint.html#ab9e25b63621a988412f2f20d97eac146">MOCK_METHOD</a>(uint64_t, <a class="code hl_function" href="../../d2/dce/classresdb_1_1CheckPoint.html#a91ad192c11e67ba7344ec6f890b308bf">GetStableCheckpoint</a>, (), (<span class="keyword">override</span>));</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>};</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="comment">// MOCK_METHOD(uint64_t, GetLastExecutedSeq, (), (override));</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>};</div>
 </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}  <span class="comment">// namespace resdb</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}  <span class="comment">// namespace resdb</span></div>
 <div class="ttc" id="acheckpoint_8h_html"><div class="ttname"><a href="../../de/d28/checkpoint_8h.html">checkpoint.h</a></div></div>
 <div class="ttc" id="aclassresdb_1_1CheckPoint_html_a72bd62894a8e372603df515d3afcda57"><div class="ttname"><a href="../../d2/dce/classresdb_1_1CheckPoint.html#a72bd62894a8e372603df515d3afcda57">resdb::CheckPoint::CheckPoint</a></div><div class="ttdeci">CheckPoint()=default</div></div>
 <div class="ttc" id="aclassresdb_1_1CheckPoint_html_a91ad192c11e67ba7344ec6f890b308bf"><div class="ttname"><a href="../../d2/dce/classresdb_1_1CheckPoint.html#a91ad192c11e67ba7344ec6f890b308bf">resdb::CheckPoint::GetStableCheckpoint</a></div><div class="ttdeci">virtual uint64_t GetStableCheckpoint()=0</div></div>

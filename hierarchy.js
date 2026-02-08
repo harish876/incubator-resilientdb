@@ -15,8 +15,12 @@ var hierarchy =
       [ "resdb::MockAsyncReplicaClient", "d8/d4f/classresdb_1_1MockAsyncReplicaClient.html", null ]
     ] ],
     [ "resdb::AtomicUniquePtr< T >", "db/d71/classresdb_1_1AtomicUniquePtr.html", null ],
+    [ "BatchNode", null, [
+      [ "nodes.WriteChapters", "d0/d01/classnodes_1_1WriteChapters.html", null ]
+    ] ],
     [ "resdb::BatchQueue< T >", "d5/db6/classresdb_1_1BatchQueue.html", null ],
     [ "resdb::BlockingQueue< T >", "dd/d88/classresdb_1_1BlockingQueue.html", null ],
+    [ "resdb::BlockManager", "de/d46/classresdb_1_1BlockManager.html", null ],
     [ "resdb::ChainState", "d8/d22/classresdb_1_1ChainState.html", null ],
     [ "sdk::ChainState", "da/d9c/classsdk_1_1ChainState.html", null ],
     [ "resdb::CheckPoint", "d2/dce/classresdb_1_1CheckPoint.html", [
@@ -28,6 +32,7 @@ var hierarchy =
     [ "resdb::Commitment", "dd/d4b/classresdb_1_1Commitment.html", null ],
     [ "app.CommitTransaction", "d2/d78/classapp_1_1CommitTransaction.html", null ],
     [ "resdb::ComplaningClients", "d3/da3/classresdb_1_1ComplaningClients.html", null ],
+    [ "config.Config", "d2/d5e/classconfig_1_1Config.html", null ],
     [ "resdb_driver.connection.Connection", "dc/d03/classresdb__driver_1_1connection_1_1Connection.html", null ],
     [ "ConsensusServicePBFT", null, [
       [ "resdb::PreVerifyConsensusServicePBFT< RequestType >", "da/d52/classresdb_1_1PreVerifyConsensusServicePBFT.html", null ]
@@ -122,18 +127,21 @@ var hierarchy =
         [ "resdb::contract::GlobalState", "d6/d05/classresdb_1_1contract_1_1GlobalState.html", null ]
       ] ]
     ] ],
+    [ "graphql_client.GraphQLClient", "df/dbe/classgraphql__client_1_1GraphQLClient.html", null ],
     [ "Http::Handler", null, [
       [ "HelloHandler", "df/d35/classHelloHandler.html", null ]
     ] ],
-    [ "app.JSONScalar", "d7/d03/classapp_1_1JSONScalar.html", null ],
     [ "resdb::KeyGenerator", "d5/d5c/classresdb_1_1KeyGenerator.html", null ],
     [ "resdb::LockFreeCollectorPool", "d7/d31/classresdb_1_1LockFreeCollectorPool.html", null ],
     [ "resdb::LockFreeQueue< T >", "da/dd3/classresdb_1_1LockFreeQueue.html", null ],
     [ "resdb::LRUCache< KeyType, ValueType >", "d5/d3e/classresdb_1_1LRUCache.html", null ],
+    [ "resdb::Merkle", "df/d02/classresdb_1_1Merkle.html", null ],
     [ "resdb::MessageManager", "d7/d18/classresdb_1_1MessageManager.html", null ],
     [ "metaclass", null, [
       [ "resdb_driver.pool.AbstractPicker", "dd/d7b/classresdb__driver_1_1pool_1_1AbstractPicker.html", null ]
     ] ],
+    [ "resdb::Miner", "da/dea/classresdb_1_1Miner.html", null ],
+    [ "resdb::MinerManager", "dd/d85/classresdb_1_1MinerManager.html", null ],
     [ "resilient_python_cache.config.MongoConfig", "d2/da2/classresilient__python__cache_1_1config_1_1MongoConfig.html", null ],
     [ "app.Mutation", "d5/d13/classapp_1_1Mutation.html", null ],
     [ "resdb_driver.driver.NamespacedDriver", "df/dc6/classresdb__driver_1_1driver_1_1NamespacedDriver.html", [
@@ -154,6 +162,13 @@ var hierarchy =
         [ "sdk::ResDBKVClient", "dc/d12/classsdk_1_1ResDBKVClient.html", null ]
       ] ]
     ] ],
+    [ "Node", null, [
+      [ "nodes.AnalyzeRelationships", "d3/df5/classnodes_1_1AnalyzeRelationships.html", null ],
+      [ "nodes.CombineTutorial", "d3/dcb/classnodes_1_1CombineTutorial.html", null ],
+      [ "nodes.FetchRepo", "df/dcd/classnodes_1_1FetchRepo.html", null ],
+      [ "nodes.IdentifyAbstractions", "d5/de9/classnodes_1_1IdentifyAbstractions.html", null ],
+      [ "nodes.OrderChapters", "d9/db0/classnodes_1_1OrderChapters.html", null ]
+    ] ],
     [ "object", null, [
       [ "resdb_driver.transaction.Input", "dc/d01/classresdb__driver_1_1transaction_1_1Input.html", null ],
       [ "resdb_driver.transaction.Output", "d0/de3/classresdb__driver_1_1transaction_1_1Output.html", null ],
@@ -166,9 +181,12 @@ var hierarchy =
       [ "resdb_validator.transaction.TransactionLink", "d1/d5b/classresdb__validator_1_1transaction_1_1TransactionLink.html", null ]
     ] ],
     [ "resdb::PerformanceClientTimeout", "d7/dbd/classresdb_1_1PerformanceClientTimeout.html", null ],
-    [ "resdb::common::PerformanceManager", "d6/d29/classresdb_1_1common_1_1PerformanceManager.html", null ],
+    [ "resdb::common::PerformanceManager", "d6/d29/classresdb_1_1common_1_1PerformanceManager.html", [
+      [ "resdb::poe::PoEPerformanceManager", "d3/d72/classresdb_1_1poe_1_1PoEPerformanceManager.html", null ]
+    ] ],
     [ "resdb::PerformanceManager", "d1/d89/classresdb_1_1PerformanceManager.html", null ],
     [ "resdb_driver.pool.Pool", "dd/d18/classresdb__driver_1_1pool_1_1Pool.html", null ],
+    [ "resdb::PoWManager", "d8/dbf/classresdb_1_1PoWManager.html", null ],
     [ "app.PrepareAsset", "d1/dbc/classapp_1_1PrepareAsset.html", null ],
     [ "resdb::PrometheusHandler", "df/dcf/classresdb_1_1PrometheusHandler.html", null ],
     [ "resdb::common::ProtocolBase", "dc/da3/classresdb_1_1common_1_1ProtocolBase.html", [
@@ -185,6 +203,7 @@ var hierarchy =
       [ "resdb::MockReplicaCommunicator", "d4/de4/classresdb_1_1MockReplicaCommunicator.html", null ]
     ] ],
     [ "resdb::RequestInfo", "d8/d15/structresdb_1_1RequestInfo.html", null ],
+    [ "rescontract_client.ResContractClient", "d7/df2/classrescontract__client_1_1ResContractClient.html", null ],
     [ "resdb_driver.driver.Resdb", "d1/d46/classresdb__driver_1_1driver_1_1Resdb.html", null ],
     [ "resdb::ResDBConfig", "db/ddb/classresdb_1_1ResDBConfig.html", [
       [ "resdb::ResDBPoCConfig", "da/d86/classresdb_1_1ResDBPoCConfig.html", null ]
@@ -204,6 +223,7 @@ var hierarchy =
       [ "resdb::MockResDBTxnAccessor", "d0/d8d/classresdb_1_1MockResDBTxnAccessor.html", null ],
       [ "resdb::MockResDBTxnAccessor", "d0/d8d/classresdb_1_1MockResDBTxnAccessor.html", null ]
     ] ],
+    [ "resdb_sdk.ResilientDB", "d2/d42/classresdb__sdk_1_1ResilientDB.html", null ],
     [ "resilient_python_cache.config.ResilientDBConfig", "d7/d06/classresilient__python__cache_1_1config_1_1ResilientDBConfig.html", null ],
     [ "resdb::ResponseClientTimeout", "da/d3e/classresdb_1_1ResponseClientTimeout.html", null ],
     [ "resdb::common::ResponseManager", "dc/d93/classresdb_1_1common_1_1ResponseManager.html", null ],
@@ -217,12 +237,15 @@ var hierarchy =
           [ "resdb::ConsensusManagerGeoPBFT", "dd/dea/classresdb_1_1ConsensusManagerGeoPBFT.html", null ]
         ] ],
         [ "resdb::common::Consensus", "db/deb/classresdb_1_1common_1_1Consensus.html", [
+          [ "resdb::ConsensusServicePoW", "da/d36/classresdb_1_1ConsensusServicePoW.html", null ],
           [ "resdb::poe::Consensus", "df/d2d/classresdb_1_1poe_1_1Consensus.html", null ]
         ] ]
       ] ],
       [ "resdb::MockServiceInterface", "d8/da4/classresdb_1_1MockServiceInterface.html", null ]
     ] ],
     [ "resdb::ServiceNetwork", "d4/d2d/classresdb_1_1ServiceNetwork.html", null ],
+    [ "ServiceNetwork", "d7/d96/classServiceNetwork.html", null ],
+    [ "resdb::ShiftManager", "d9/d33/classresdb_1_1ShiftManager.html", null ],
     [ "resdb::SignatureVerifierInterface", "de/d77/classresdb_1_1SignatureVerifierInterface.html", [
       [ "resdb::SignatureVerifier", "d4/d30/classresdb_1_1SignatureVerifier.html", [
         [ "resdb::MockSignatureVerifier", "de/d05/classresdb_1_1MockSignatureVerifier.html", null ]
@@ -250,8 +273,14 @@ var hierarchy =
     [ "resdb_validator.memoize.ToDictWrapper", "d1/df5/classresdb__validator_1_1memoize_1_1ToDictWrapper.html", null ],
     [ "resdb::utxo::Transaction", "d8/d15/classresdb_1_1utxo_1_1Transaction.html", null ],
     [ "resdb_driver.validate.Transaction", "d7/d61/classresdb__driver_1_1validate_1_1Transaction.html", null ],
+    [ "resdb_sdk.Transaction", "da/d9a/classresdb__sdk_1_1Transaction.html", null ],
     [ "resdb_validator.models.Transaction", "d9/d68/classresdb__validator_1_1models_1_1Transaction.html", null ],
     [ "Transaction", "df/d28/classTransaction.html", null ],
+    [ "resdb::TransactionAccessor", "de/d0b/classresdb_1_1TransactionAccessor.html", [
+      [ "resdb::MockTransactionAccessor", "d2/d1c/classresdb_1_1MockTransactionAccessor.html", null ],
+      [ "resdb::MockTransactionAccessor", "d2/d1c/classresdb_1_1MockTransactionAccessor.html", null ]
+    ] ],
+    [ "resdb_sdk.TransactionAPI", "d1/d77/classresdb__sdk_1_1TransactionAPI.html", null ],
     [ "resdb::TransactionCollector", "d7/d95/classresdb_1_1TransactionCollector.html", null ],
     [ "resdb::TransactionExecutor", "da/dfa/classresdb_1_1TransactionExecutor.html", null ],
     [ "resdb::TransactionManager", "df/d01/classresdb_1_1TransactionManager.html", [
@@ -265,6 +294,7 @@ var hierarchy =
       [ "resdb::utxo::UTXOExecutor", "de/de8/classresdb_1_1utxo_1_1UTXOExecutor.html", null ],
       [ "sdk::KVServiceTransactionManager", "dc/da8/classsdk_1_1KVServiceTransactionManager.html", null ]
     ] ],
+    [ "resdb_sdk.TransactionMetadata", "dc/d64/classresdb__sdk_1_1TransactionMetadata.html", null ],
     [ "resdb_driver.utils.TransferOperation", "d1/d46/classresdb__driver_1_1utils_1_1TransferOperation.html", null ],
     [ "resdb_driver.transport.Transport", "d6/d1c/classresdb__driver_1_1transport_1_1Transport.html", null ],
     [ "resdb::utxo::TxMempool", "d7/d32/classresdb_1_1utxo_1_1TxMempool.html", null ],

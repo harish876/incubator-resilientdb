@@ -15,15 +15,13 @@ var classresdb_1_1MessageManager =
     [ "GetPreparedProof", "d7/d18/classresdb_1_1MessageManager.html#a66cd059b7c3d7b893a9b79ea54fdf880", null ],
     [ "GetReplicas", "d7/d18/classresdb_1_1MessageManager.html#a3267a851faf382e9f56f90c95cc2ee51", null ],
     [ "GetReplicaState", "d7/d18/classresdb_1_1MessageManager.html#a5a2a6faa74e63fb70be62ffe70f85613", null ],
-    [ "GetRequest", "d7/d18/classresdb_1_1MessageManager.html#a15dc90d103bd0488558186a4454f7677", null ],
-    [ "GetRequestSet", "d7/d18/classresdb_1_1MessageManager.html#acaff0e406720fc1f7adf6cee1b260987", null ],
     [ "GetResponseMsg", "d7/d18/classresdb_1_1MessageManager.html#aaa9a8d568d32aff83f13ee87325c493d", null ],
     [ "GetStorage", "d7/d18/classresdb_1_1MessageManager.html#a5f80acfd2861da00ce8ec8d4c0dedd6e", null ],
-    [ "GetTransactionState", "d7/d18/classresdb_1_1MessageManager.html#a210330fdb27ab9259f8e65f0e2af7d44", null ],
     [ "IsPreapared", "d7/d18/classresdb_1_1MessageManager.html#a84ab69569fb75a020efd07269a33e625", null ],
     [ "SendResponse", "d7/d18/classresdb_1_1MessageManager.html#a3f341b293f7cebba8632546d8fd9fbbd", null ],
     [ "SetDuplicateManager", "d7/d18/classresdb_1_1MessageManager.html#a086f2369e6e992e3f186cd8c4c60a168", null ],
     [ "SetHighestPreparedSeq", "d7/d18/classresdb_1_1MessageManager.html#a4cf2194e60da0708bcc87d09c2a4a133", null ],
     [ "SetLastCommittedTime", "d7/d18/classresdb_1_1MessageManager.html#a0265ab61f90ec9af5043de1bc977a718", null ],
+    [ "SetNextCommitSeq", "d7/d18/classresdb_1_1MessageManager.html#ab46b368f51d8a2638cc0aa6483e77c8d", null ],
     [ "SetNextSeq", "d7/d18/classresdb_1_1MessageManager.html#ac1f9731985836ead3438abaa99509c62", null ]
 ];

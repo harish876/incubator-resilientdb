@@ -1,6 +1,29 @@
 var searchData=
 [
-  ['query_0',['Query',['../d7/dbc/classapp_1_1Query.html',1,'app.Query'],['../de/d6d/classresdb_1_1Query.html',1,'resdb::Query']]],
-  ['queryexecutor_1',['QueryExecutor',['../db/dc0/classQueryExecutor.html',1,'QueryExecutor'],['../d0/da0/classresdb_1_1utxo_1_1QueryExecutor.html',1,'resdb::utxo::QueryExecutor']]],
-  ['queueitem_2',['QueueItem',['../dc/d89/structresdb_1_1ConsensusManager_1_1QueueItem.html',1,'resdb::ConsensusManager::QueueItem'],['../df/d64/structresdb_1_1QueueItem.html',1,'resdb::QueueItem']]]
+  ['recovery_0',['Recovery',['../d1/d44/classresdb_1_1Recovery.html',1,'resdb']]],
+  ['replicacommunicator_1',['ReplicaCommunicator',['../d3/d5e/classresdb_1_1ReplicaCommunicator.html',1,'resdb']]],
+  ['requestinfo_2',['RequestInfo',['../d8/d15/structresdb_1_1RequestInfo.html',1,'resdb']]],
+  ['rescontractclient_3',['ResContractClient',['../d7/df2/classrescontract__client_1_1ResContractClient.html',1,'rescontract_client']]],
+  ['resdb_4',['ResDB',['../de/d4d/classresdb__validator_1_1lib_1_1ResDB.html',1,'resdb_validator::lib']]],
+  ['resdb_5',['Resdb',['../d1/d46/classresdb__driver_1_1driver_1_1Resdb.html',1,'resdb_driver::driver']]],
+  ['resdbconfig_6',['ResDBConfig',['../db/ddb/classresdb_1_1ResDBConfig.html',1,'resdb::ResDBConfig'],['../d6/d06/classResDBConfig.html',1,'ResDBConfig']]],
+  ['resdberror_7',['ResDBError',['../de/d43/classresdb__driver_1_1exceptions_1_1ResDBError.html',1,'resdb_driver.exceptions.ResDBError'],['../df/d1b/classresdb__validator_1_1exceptions_1_1ResDBError.html',1,'resdb_validator.exceptions.ResDBError']]],
+  ['resdbexception_8',['ResdbException',['../d4/df2/classresdb__driver_1_1exceptions_1_1ResdbException.html',1,'resdb_driver::exceptions']]],
+  ['resdbkvclient_9',['ResDBKVClient',['../d7/de4/classResDBKVClient.html',1,'ResDBKVClient'],['../dc/d12/classsdk_1_1ResDBKVClient.html',1,'sdk::ResDBKVClient']]],
+  ['resdborm_10',['ResDBORM',['../d5/d65/classresdb__orm_1_1orm_1_1ResDBORM.html',1,'resdb_orm::orm']]],
+  ['resdbpocconfig_11',['ResDBPoCConfig',['../da/d86/classresdb_1_1ResDBPoCConfig.html',1,'resdb::ResDBPoCConfig'],['../dc/d0a/classResDBPoCConfig.html',1,'ResDBPoCConfig']]],
+  ['resdbstateaccessor_12',['ResDBStateAccessor',['../d7/d30/classresdb_1_1ResDBStateAccessor.html',1,'resdb']]],
+  ['resdbtest_13',['ResDBTest',['../dd/d33/classresdb_1_1ResDBTest.html',1,'resdb']]],
+  ['resdbtestclient_14',['ResDBTestClient',['../d8/d65/classresdb_1_1ResDBTestClient.html',1,'resdb']]],
+  ['resdbtestmanager_15',['ResDBTestManager',['../d0/d2a/classresdb_1_1ResDBTestManager.html',1,'resdb']]],
+  ['resdbtxnaccessor_16',['ResDBTxnAccessor',['../da/d12/classresdb_1_1ResDBTxnAccessor.html',1,'resdb::ResDBTxnAccessor'],['../d3/d16/classResDBTxnAccessor.html',1,'ResDBTxnAccessor']]],
+  ['resilientdb_17',['ResilientDB',['../d2/d42/classresdb__sdk_1_1ResilientDB.html',1,'resdb_sdk']]],
+  ['resilientdbconfig_18',['ResilientDBConfig',['../d7/d06/classresilient__python__cache_1_1config_1_1ResilientDBConfig.html',1,'resilient_python_cache::config']]],
+  ['resilientpythoncache_19',['ResilientPythonCache',['../d3/d97/classresilient__python__cache_1_1cache_1_1ResilientPythonCache.html',1,'resilient_python_cache::cache']]],
+  ['resilientpythoncacheerror_20',['ResilientPythonCacheError',['../dc/d2c/classresilient__python__cache_1_1exceptions_1_1ResilientPythonCacheError.html',1,'resilient_python_cache::exceptions']]],
+  ['resleveldb_21',['ResLevelDB',['../d3/d39/classresdb_1_1storage_1_1ResLevelDB.html',1,'resdb::storage']]],
+  ['responseclienttimeout_22',['ResponseClientTimeout',['../da/d3e/classresdb_1_1ResponseClientTimeout.html',1,'resdb']]],
+  ['responsemanager_23',['ResponseManager',['../dc/d93/classresdb_1_1common_1_1ResponseManager.html',1,'resdb::common::ResponseManager'],['../da/d2f/classresdb_1_1ResponseManager.html',1,'resdb::ResponseManager']]],
+  ['retrievetransaction_24',['RetrieveTransaction',['../d0/d05/classapp_1_1RetrieveTransaction.html',1,'app']]],
+  ['roundrobinpicker_25',['RoundRobinPicker',['../d4/d53/classresdb__driver_1_1pool_1_1RoundRobinPicker.html',1,'resdb_driver::pool']]]
 ];

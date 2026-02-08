@@ -124,6 +124,8 @@ $(function(){initNavTree('dir_9adcdd408e7d46583ab3f2dc398d1e69.html',''); initRe
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="subdirs" name="subdirs"></a>
 Directories</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_9161d0b38cbb204466a01e93deb98c86.html">ai-tools</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_3aa887925a4cfd9a7102204320b5bf67.html">cache</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_cd3166a27691264672ab7b2248e0f127.html">deployment</a></td></tr>
@@ -136,14 +138,16 @@ Directories</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_34622379ec93d171c9161f99cea7ee2c.html">smart-contract</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_145e649b3769192b3619f6de56dddb84.html">third_party</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_e7c03277d167d94cb0c52f961c576989.html">tools</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<h1><a class="anchor" id="autotoc_md479"></a>
+<h1><a class="anchor" id="autotoc_md2749"></a>
 ResilientDB Ecosystem</h1>
 <p>This directory contains the ResilientDB ecosystem components organized as git subtrees.</p>
-<h2><a class="anchor" id="autotoc_md480"></a>
+<h2><a class="anchor" id="autotoc_md2750"></a>
 Structure</h2>
 <div class="fragment"><div class="line">ecosystem/</div>
 <div class="line">├── graphql/                          # GraphQL service</div>
@@ -166,8 +170,9 @@ Structure</h2>
 <div class="line">│   └── orbit/                       # Orbit deployment tool</div>
 <div class="line">└── tools/                           # Development and operational tools</div>
 <div class="line">    ├── resvault/                    # ResVault tool</div>
-<div class="line">    └── create-resilient-app/        # App scaffolding tool</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md481"></a>
+<div class="line">    ├── create-resilient-app/        # App scaffolding tool</div>
+<div class="line">    └── drawing-lib/                 # Drawing library tool</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md2751"></a>
 Clone Without Ecosystem</h2>
 <p>To clone ResilientDB without the ecosystem directory (faster, smaller):</p>
 <div class="fragment"><div class="line">git clone --filter=tree:0 --sparse https://github.com/apache/incubator-resilientdb.git</div>
@@ -176,7 +181,7 @@ Clone Without Ecosystem</h2>
 <div class="line">echo &quot;/*&quot; &gt; .git/info/sparse-checkout</div>
 <div class="line">echo &quot;\!ecosystem/&quot; &gt;&gt; .git/info/sparse-checkout</div>
 <div class="line">git read-tree -m -u HEAD</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md482"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md2752"></a>
 Clone Specific Ecosystem Components</h2>
 <div class="fragment"><div class="line"># Only SDK components. Nothing else</div>
 <div class="line">git sparse-checkout set ecosystem/sdk</div>

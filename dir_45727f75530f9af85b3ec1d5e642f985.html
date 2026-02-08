@@ -135,45 +135,45 @@ Files</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md291"></a>
+<h1><a class="anchor" id="autotoc_md2129"></a>
 Licensed to the Apache Software Foundation (ASF) under one</h1>
-<h1><a class="anchor" id="autotoc_md292"></a>
+<h1><a class="anchor" id="autotoc_md2130"></a>
 or more contributor license agreements. See the NOTICE file</h1>
-<h1><a class="anchor" id="autotoc_md293"></a>
+<h1><a class="anchor" id="autotoc_md2131"></a>
 distributed with this work for additional information</h1>
-<h1><a class="anchor" id="autotoc_md294"></a>
+<h1><a class="anchor" id="autotoc_md2132"></a>
 regarding copyright ownership. The ASF licenses this file</h1>
-<h1><a class="anchor" id="autotoc_md295"></a>
+<h1><a class="anchor" id="autotoc_md2133"></a>
 to you under the Apache License, Version 2.0 (the</h1>
-<h1><a class="anchor" id="autotoc_md296"></a>
+<h1><a class="anchor" id="autotoc_md2134"></a>
 "License"); you may not use this file except in compliance</h1>
-<h1><a class="anchor" id="autotoc_md297"></a>
+<h1><a class="anchor" id="autotoc_md2135"></a>
 with the License. You may obtain a copy of the License at</h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md298"></a>
+<h1><a class="anchor" id="autotoc_md2136"></a>
 <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md299"></a>
+<h1><a class="anchor" id="autotoc_md2137"></a>
 Unless required by applicable law or agreed to in writing,</h1>
-<h1><a class="anchor" id="autotoc_md300"></a>
+<h1><a class="anchor" id="autotoc_md2138"></a>
 software distributed under the License is distributed on an</h1>
-<h1><a class="anchor" id="autotoc_md301"></a>
+<h1><a class="anchor" id="autotoc_md2139"></a>
 "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</h1>
-<h1><a class="anchor" id="autotoc_md302"></a>
+<h1><a class="anchor" id="autotoc_md2140"></a>
 KIND, either express or implied. See the License for the</h1>
-<h1><a class="anchor" id="autotoc_md303"></a>
+<h1><a class="anchor" id="autotoc_md2141"></a>
 specific language governing permissions and limitations</h1>
-<h1><a class="anchor" id="autotoc_md304"></a>
+<h1><a class="anchor" id="autotoc_md2142"></a>
 under the License.</h1>
 <p>#</p>
-<h1><a class="anchor" id="autotoc_md305"></a>
+<h1><a class="anchor" id="autotoc_md2143"></a>
 Pybind11 information</h1>
 <p>Pybind11 allows for Python embedding within C++ code (and creating C++ bindings for Python). NexRes relies on Pybind11 to call Python code from C++.</p>
-<h2><a class="anchor" id="autotoc_md306"></a>
+<h2><a class="anchor" id="autotoc_md2144"></a>
 Requirements</h2>
 <p>This code was tested on Ubuntu 20.04.4 LTS. Python 3.10.8 was installed using brew in the location /home/ubuntu/.linuxbrew/bin/python3. Using brew helps simplify the linking process during compilation. This location is referenced in <a href="https://github.com/msadoghi/nexres/tree/master/.bazelrc">nexres/.bazelrc</a> </p><pre class="fragment">build --action_env=PYTHON_BIN_PATH="/home/ubuntu/.linuxbrew/bin/python3"
 </pre><p>Make sure you have the python libraries installed. These are used when the binary is run. </p><pre class="fragment">sudo apt-get install python3.10-dev
-</pre><h2><a class="anchor" id="autotoc_md307"></a>
+</pre><h2><a class="anchor" id="autotoc_md2145"></a>
 client.cpp</h2>
 <p>Calls example Python code. Provides an example of reading in the file <a class="el" href="d8/df0/print__sample_8py.html">print_sample.py</a> into a string and executing the string as Python code. Also provides an example of importing a Python module into C++ and calling one of its functions.</p>
 <p>Make sure to execute the code from within this directory as when importing the "validator_example" module the code searches the same directory. </p>

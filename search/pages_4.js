@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['research_0',['research',['../d3/dbe/md__2github_2workspace_2ecosystem_2graphql_2docs_2research.html',1,'research'],['../de/d22/md__2github_2workspace_2ecosystem_2graphql_2service_2sdk__validator_2docs_2research.html',1,'research']]]
+  ['5_20ndash_20validation_0',['Section 5 &amp;ndash; Validation',['../dd/d5b/md__2github_2workspace_2ecosystem_2ai-tools_2mcp_2graphq-llm_2docs_2graphql-spec_2Section_015_01--_01Validation.html',1,'']]]
 ];

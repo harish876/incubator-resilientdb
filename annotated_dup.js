@@ -2,11 +2,27 @@ var annotated_dup =
 [
     [ "app", "d8/d01/namespaceapp.html", [
       [ "CommitTransaction", "d2/d78/classapp_1_1CommitTransaction.html", null ],
-      [ "JSONScalar", "d7/d03/classapp_1_1JSONScalar.html", null ],
       [ "Mutation", "d5/d13/classapp_1_1Mutation.html", "d5/d13/classapp_1_1Mutation" ],
       [ "PrepareAsset", "d1/dbc/classapp_1_1PrepareAsset.html", null ],
       [ "Query", "d7/dbc/classapp_1_1Query.html", "d7/dbc/classapp_1_1Query" ],
       [ "RetrieveTransaction", "d0/d05/classapp_1_1RetrieveTransaction.html", null ]
+    ] ],
+    [ "config", "d6/d7f/namespaceconfig.html", [
+      [ "Config", "d2/d5e/classconfig_1_1Config.html", null ]
+    ] ],
+    [ "graphql_client", "d4/de7/namespacegraphql__client.html", [
+      [ "GraphQLClient", "df/dbe/classgraphql__client_1_1GraphQLClient.html", "df/dbe/classgraphql__client_1_1GraphQLClient" ]
+    ] ],
+    [ "nodes", "d1/d51/namespacenodes.html", [
+      [ "AnalyzeRelationships", "d3/df5/classnodes_1_1AnalyzeRelationships.html", "d3/df5/classnodes_1_1AnalyzeRelationships" ],
+      [ "CombineTutorial", "d3/dcb/classnodes_1_1CombineTutorial.html", "d3/dcb/classnodes_1_1CombineTutorial" ],
+      [ "FetchRepo", "df/dcd/classnodes_1_1FetchRepo.html", "df/dcd/classnodes_1_1FetchRepo" ],
+      [ "IdentifyAbstractions", "d5/de9/classnodes_1_1IdentifyAbstractions.html", "d5/de9/classnodes_1_1IdentifyAbstractions" ],
+      [ "OrderChapters", "d9/db0/classnodes_1_1OrderChapters.html", "d9/db0/classnodes_1_1OrderChapters" ],
+      [ "WriteChapters", "d0/d01/classnodes_1_1WriteChapters.html", "d0/d01/classnodes_1_1WriteChapters" ]
+    ] ],
+    [ "rescontract_client", "d7/d81/namespacerescontract__client.html", [
+      [ "ResContractClient", "d7/df2/classrescontract__client_1_1ResContractClient.html", "d7/df2/classrescontract__client_1_1ResContractClient" ]
     ] ],
     [ "resdb", "d5/d10/namespaceresdb.html", [
       [ "common", "d3/d56/namespaceresdb_1_1common.html", [
@@ -27,7 +43,8 @@ var annotated_dup =
       ] ],
       [ "poe", "d3/d0d/namespaceresdb_1_1poe.html", [
         [ "Consensus", "df/d2d/classresdb_1_1poe_1_1Consensus.html", "df/d2d/classresdb_1_1poe_1_1Consensus" ],
-        [ "PoE", "df/dda/classresdb_1_1poe_1_1PoE.html", "df/dda/classresdb_1_1poe_1_1PoE" ]
+        [ "PoE", "df/dda/classresdb_1_1poe_1_1PoE.html", "df/dda/classresdb_1_1poe_1_1PoE" ],
+        [ "PoEPerformanceManager", "d3/d72/classresdb_1_1poe_1_1PoEPerformanceManager.html", "d3/d72/classresdb_1_1poe_1_1PoEPerformanceManager" ]
       ] ],
       [ "storage", "dd/dae/namespaceresdb_1_1storage.html", [
         [ "MemoryDB", "da/d75/classresdb_1_1storage_1_1MemoryDB.html", "da/d75/classresdb_1_1storage_1_1MemoryDB" ],
@@ -47,6 +64,7 @@ var annotated_dup =
       [ "AtomicUniquePtr", "db/d71/classresdb_1_1AtomicUniquePtr.html", "db/d71/classresdb_1_1AtomicUniquePtr" ],
       [ "BatchQueue", "d5/db6/classresdb_1_1BatchQueue.html", "d5/db6/classresdb_1_1BatchQueue" ],
       [ "BlockingQueue", "dd/d88/classresdb_1_1BlockingQueue.html", "dd/d88/classresdb_1_1BlockingQueue" ],
+      [ "BlockManager", "de/d46/classresdb_1_1BlockManager.html", "de/d46/classresdb_1_1BlockManager" ],
       [ "ChainState", "d8/d22/classresdb_1_1ChainState.html", "d8/d22/classresdb_1_1ChainState" ],
       [ "CheckPoint", "d2/dce/classresdb_1_1CheckPoint.html", "d2/dce/classresdb_1_1CheckPoint" ],
       [ "CheckPointManager", "dc/db0/classresdb_1_1CheckPointManager.html", "dc/db0/classresdb_1_1CheckPointManager" ],
@@ -55,6 +73,7 @@ var annotated_dup =
       [ "ConsensusManager", "da/d19/classresdb_1_1ConsensusManager.html", "da/d19/classresdb_1_1ConsensusManager" ],
       [ "ConsensusManagerGeoPBFT", "dd/dea/classresdb_1_1ConsensusManagerGeoPBFT.html", "dd/dea/classresdb_1_1ConsensusManagerGeoPBFT" ],
       [ "ConsensusManagerPBFT", "d0/ded/classresdb_1_1ConsensusManagerPBFT.html", "d0/ded/classresdb_1_1ConsensusManagerPBFT" ],
+      [ "ConsensusServicePoW", "da/d36/classresdb_1_1ConsensusServicePoW.html", "da/d36/classresdb_1_1ConsensusServicePoW" ],
       [ "Context", "d8/d18/structresdb_1_1Context.html", "d8/d18/structresdb_1_1Context" ],
       [ "CustomQuery", "d6/dd9/classresdb_1_1CustomQuery.html", "d6/dd9/classresdb_1_1CustomQuery" ],
       [ "DataInfo", "dd/dd6/structresdb_1_1DataInfo.html", "dd/dd6/structresdb_1_1DataInfo" ],
@@ -69,7 +88,10 @@ var annotated_dup =
       [ "LockFreeQueue", "da/dd3/classresdb_1_1LockFreeQueue.html", "da/dd3/classresdb_1_1LockFreeQueue" ],
       [ "LRUCache", "d5/d3e/classresdb_1_1LRUCache.html", "d5/d3e/classresdb_1_1LRUCache" ],
       [ "MemoryDB", "da/d83/classresdb_1_1MemoryDB.html", "da/d83/classresdb_1_1MemoryDB" ],
+      [ "Merkle", "df/d02/classresdb_1_1Merkle.html", null ],
       [ "MessageManager", "d7/d18/classresdb_1_1MessageManager.html", "d7/d18/classresdb_1_1MessageManager" ],
+      [ "Miner", "da/dea/classresdb_1_1Miner.html", "da/dea/classresdb_1_1Miner" ],
+      [ "MinerManager", "dd/d85/classresdb_1_1MinerManager.html", "dd/d85/classresdb_1_1MinerManager" ],
       [ "MockAsyncReplicaClient", "d8/d4f/classresdb_1_1MockAsyncReplicaClient.html", "d8/d4f/classresdb_1_1MockAsyncReplicaClient" ],
       [ "MockCheckPoint", "d8/dcb/classresdb_1_1MockCheckPoint.html", "d8/dcb/classresdb_1_1MockCheckPoint" ],
       [ "MockCheckPointManager", "de/da4/classresdb_1_1MockCheckPointManager.html", "de/da4/classresdb_1_1MockCheckPointManager" ],
@@ -81,11 +103,13 @@ var annotated_dup =
       [ "MockSignatureVerifier", "de/d05/classresdb_1_1MockSignatureVerifier.html", "de/d05/classresdb_1_1MockSignatureVerifier" ],
       [ "MockSocket", "dd/dd7/classresdb_1_1MockSocket.html", "dd/dd7/classresdb_1_1MockSocket" ],
       [ "MockStorage", "de/d28/classresdb_1_1MockStorage.html", "de/d28/classresdb_1_1MockStorage" ],
+      [ "MockTransactionAccessor", "d2/d1c/classresdb_1_1MockTransactionAccessor.html", "d2/d1c/classresdb_1_1MockTransactionAccessor" ],
       [ "MockTransactionExecutorDataImpl", "dc/db6/classresdb_1_1MockTransactionExecutorDataImpl.html", "dc/db6/classresdb_1_1MockTransactionExecutorDataImpl" ],
       [ "MockTransactionManager", "dc/d6d/classresdb_1_1MockTransactionManager.html", "dc/d6d/classresdb_1_1MockTransactionManager" ],
       [ "NetChannel", "de/dc3/classresdb_1_1NetChannel.html", "de/dc3/classresdb_1_1NetChannel" ],
       [ "PerformanceClientTimeout", "d7/dbd/classresdb_1_1PerformanceClientTimeout.html", "d7/dbd/classresdb_1_1PerformanceClientTimeout" ],
       [ "PerformanceManager", "d1/d89/classresdb_1_1PerformanceManager.html", "d1/d89/classresdb_1_1PerformanceManager" ],
+      [ "PoWManager", "d8/dbf/classresdb_1_1PoWManager.html", "d8/dbf/classresdb_1_1PoWManager" ],
       [ "PreVerifyConsensusServicePBFT", "da/d52/classresdb_1_1PreVerifyConsensusServicePBFT.html", "da/d52/classresdb_1_1PreVerifyConsensusServicePBFT" ],
       [ "PrometheusHandler", "df/dcf/classresdb_1_1PrometheusHandler.html", "df/dcf/classresdb_1_1PrometheusHandler" ],
       [ "Query", "de/d6d/classresdb_1_1Query.html", "de/d6d/classresdb_1_1Query" ],
@@ -106,6 +130,7 @@ var annotated_dup =
       [ "ServerFactory", "da/d3b/classresdb_1_1ServerFactory.html", "da/d3b/classresdb_1_1ServerFactory" ],
       [ "ServiceInterface", "da/d3b/classresdb_1_1ServiceInterface.html", "da/d3b/classresdb_1_1ServiceInterface" ],
       [ "ServiceNetwork", "d4/d2d/classresdb_1_1ServiceNetwork.html", "d4/d2d/classresdb_1_1ServiceNetwork" ],
+      [ "ShiftManager", "d9/d33/classresdb_1_1ShiftManager.html", "d9/d33/classresdb_1_1ShiftManager" ],
       [ "SignatureVerifier", "d4/d30/classresdb_1_1SignatureVerifier.html", "d4/d30/classresdb_1_1SignatureVerifier" ],
       [ "SignatureVerifierInterface", "de/d77/classresdb_1_1SignatureVerifierInterface.html", "de/d77/classresdb_1_1SignatureVerifierInterface" ],
       [ "Socket", "d0/d29/classresdb_1_1Socket.html", "d0/d29/classresdb_1_1Socket" ],
@@ -114,6 +139,7 @@ var annotated_dup =
       [ "Storage", "d2/d14/classresdb_1_1Storage.html", "d2/d14/classresdb_1_1Storage" ],
       [ "SystemInfo", "d9/d27/classresdb_1_1SystemInfo.html", "d9/d27/classresdb_1_1SystemInfo" ],
       [ "TcpSocket", "d4/de5/classresdb_1_1TcpSocket.html", "d4/de5/classresdb_1_1TcpSocket" ],
+      [ "TransactionAccessor", "de/d0b/classresdb_1_1TransactionAccessor.html", "de/d0b/classresdb_1_1TransactionAccessor" ],
       [ "TransactionCollector", "d7/d95/classresdb_1_1TransactionCollector.html", "d7/d95/classresdb_1_1TransactionCollector" ],
       [ "TransactionConstructor", "d0/da5/classresdb_1_1TransactionConstructor.html", "d0/da5/classresdb_1_1TransactionConstructor" ],
       [ "TransactionExecutor", "da/dfa/classresdb_1_1TransactionExecutor.html", "da/dfa/classresdb_1_1TransactionExecutor" ],
@@ -195,6 +221,12 @@ var annotated_dup =
         [ "ResDBORM", "d5/d65/classresdb__orm_1_1orm_1_1ResDBORM.html", "d5/d65/classresdb__orm_1_1orm_1_1ResDBORM" ]
       ] ]
     ] ],
+    [ "resdb_sdk", "d6/d79/namespaceresdb__sdk.html", [
+      [ "ResilientDB", "d2/d42/classresdb__sdk_1_1ResilientDB.html", "d2/d42/classresdb__sdk_1_1ResilientDB" ],
+      [ "Transaction", "da/d9a/classresdb__sdk_1_1Transaction.html", "da/d9a/classresdb__sdk_1_1Transaction" ],
+      [ "TransactionAPI", "d1/d77/classresdb__sdk_1_1TransactionAPI.html", "d1/d77/classresdb__sdk_1_1TransactionAPI" ],
+      [ "TransactionMetadata", "dc/d64/classresdb__sdk_1_1TransactionMetadata.html", "dc/d64/classresdb__sdk_1_1TransactionMetadata" ]
+    ] ],
     [ "resdb_validator", "df/dff/namespaceresdb__validator.html", [
       [ "exceptions", "de/ddf/namespaceresdb__validator_1_1exceptions.html", [
         [ "AmountError", "d3/dd4/classresdb__validator_1_1exceptions_1_1AmountError.html", null ],
@@ -260,6 +292,7 @@ var annotated_dup =
       [ "ResDBKVClient", "dc/d12/classsdk_1_1ResDBKVClient.html", "dc/d12/classsdk_1_1ResDBKVClient" ]
     ] ],
     [ "ConsensusManagerPBFT", "d3/d20/classConsensusManagerPBFT.html", "d3/d20/classConsensusManagerPBFT" ],
+    [ "ConsensusServicePoW", "df/dbc/classConsensusServicePoW.html", "df/dbc/classConsensusServicePoW" ],
     [ "ContractClient", "d5/df9/classContractClient.html", "d5/df9/classContractClient" ],
     [ "ContractTransactionManager", "d8/d32/classContractTransactionManager.html", "d8/d32/classContractTransactionManager" ],
     [ "CrowService", "d2/d32/classCrowService.html", "d2/d32/classCrowService" ],
@@ -269,7 +302,9 @@ var annotated_dup =
     [ "QueryExecutor", "db/dc0/classQueryExecutor.html", "db/dc0/classQueryExecutor" ],
     [ "ResDBConfig", "d6/d06/classResDBConfig.html", "d6/d06/classResDBConfig" ],
     [ "ResDBKVClient", "d7/de4/classResDBKVClient.html", "d7/de4/classResDBKVClient" ],
+    [ "ResDBPoCConfig", "dc/d0a/classResDBPoCConfig.html", "dc/d0a/classResDBPoCConfig" ],
     [ "ResDBTxnAccessor", "d3/d16/classResDBTxnAccessor.html", "d3/d16/classResDBTxnAccessor" ],
+    [ "ServiceNetwork", "d7/d96/classServiceNetwork.html", "d7/d96/classServiceNetwork" ],
     [ "Stats", "db/df7/classStats.html", "db/df7/classStats" ],
     [ "Transaction", "df/d28/classTransaction.html", "df/d28/classTransaction" ],
     [ "UTXOClient", "dc/d2f/classUTXOClient.html", "dc/d2f/classUTXOClient" ],

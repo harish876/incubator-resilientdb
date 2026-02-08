@@ -140,18 +140,22 @@ Inheritance diagram for resdb::MemoryDB:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0dc9b3a6a890cd54a9c493103013ec09" id="r_a0dc9b3a6a890cd54a9c493103013ec09"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0dc9b3a6a890cd54a9c493103013ec09">MemoryDB</a> ()</td></tr>
 <tr class="separator:a0dc9b3a6a890cd54a9c493103013ec09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee61c5a005d19be384ebd0ad0391e1ff" id="r_aee61c5a005d19be384ebd0ad0391e1ff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee61c5a005d19be384ebd0ad0391e1ff">SetValue</a> (const std::string &amp;key, const std::string &amp;value)</td></tr>
-<tr class="separator:aee61c5a005d19be384ebd0ad0391e1ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c237c6bf8da34bf30efa38a08a04f59" id="r_a6c237c6bf8da34bf30efa38a08a04f59"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c237c6bf8da34bf30efa38a08a04f59">GetValue</a> (const std::string &amp;key)</td></tr>
-<tr class="separator:a6c237c6bf8da34bf30efa38a08a04f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36b6a0970e848012ae3bc40c8bede518" id="r_a36b6a0970e848012ae3bc40c8bede518"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36b6a0970e848012ae3bc40c8bede518">GetAllValues</a> () override</td></tr>
-<tr class="separator:a36b6a0970e848012ae3bc40c8bede518"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a584371a67527f17d56305d90354d37eb" id="r_a584371a67527f17d56305d90354d37eb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a584371a67527f17d56305d90354d37eb">SetValueWithSeq</a> (const std::string &amp;key, const std::string &amp;value, uint64_t seq) override</td></tr>
+<tr class="separator:a584371a67527f17d56305d90354d37eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abef9cd0ffd55a2ef9edf54b4e543cf73" id="r_abef9cd0ffd55a2ef9edf54b4e543cf73"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abef9cd0ffd55a2ef9edf54b4e543cf73">SetValue</a> (const std::string &amp;key, const std::string &amp;value) override</td></tr>
+<tr class="separator:abef9cd0ffd55a2ef9edf54b4e543cf73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b491fc064a42b63a48c2792286f8b3e" id="r_a1b491fc064a42b63a48c2792286f8b3e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b491fc064a42b63a48c2792286f8b3e">GetValue</a> (const std::string &amp;key) override</td></tr>
+<tr class="separator:a1b491fc064a42b63a48c2792286f8b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe32dd32a35027fc80a91e4c7728952a" id="r_afe32dd32a35027fc80a91e4c7728952a"><td class="memItemLeft" align="right" valign="top">std::pair&lt; std::string, uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe32dd32a35027fc80a91e4c7728952a">GetValueWithSeq</a> (const std::string &amp;key, uint64_t seq) override</td></tr>
+<tr class="separator:afe32dd32a35027fc80a91e4c7728952a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68ff0bb9ae084d1b8be024def1b7a398" id="r_a68ff0bb9ae084d1b8be024def1b7a398"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68ff0bb9ae084d1b8be024def1b7a398">GetRange</a> (const std::string &amp;min_key, const std::string &amp;max_key) override</td></tr>
 <tr class="separator:a68ff0bb9ae084d1b8be024def1b7a398"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcc808471821089bd071f53764abbcde" id="r_abcc808471821089bd071f53764abbcde"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcc808471821089bd071f53764abbcde">SetValueWithVersion</a> (const std::string &amp;key, const std::string &amp;value, int version) override</td></tr>
 <tr class="separator:abcc808471821089bd071f53764abbcde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0eb0bfb5573018d511fe66994244bfa" id="r_af0eb0bfb5573018d511fe66994244bfa"><td class="memItemLeft" align="right" valign="top">std::pair&lt; std::string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0eb0bfb5573018d511fe66994244bfa">GetValueWithVersion</a> (const std::string &amp;key, int version) override</td></tr>
 <tr class="separator:af0eb0bfb5573018d511fe66994244bfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a951b4341adc7da44ef3dd228626fc53d" id="r_a951b4341adc7da44ef3dd228626fc53d"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::vector&lt; std::pair&lt; std::string, uint64_t &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a951b4341adc7da44ef3dd228626fc53d">GetAllItemsWithSeq</a> () override</td></tr>
+<tr class="separator:a951b4341adc7da44ef3dd228626fc53d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a857c8a316b485f42bc22e96566c00cc4" id="r_a857c8a316b485f42bc22e96566c00cc4"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::pair&lt; std::string, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a857c8a316b485f42bc22e96566c00cc4">GetAllItems</a> () override</td></tr>
 <tr class="separator:a857c8a316b485f42bc22e96566c00cc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1fb8cea5ed91abf154ce4fdb40f2a74" id="r_af1fb8cea5ed91abf154ce4fdb40f2a74"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::pair&lt; std::string, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1fb8cea5ed91abf154ce4fdb40f2a74">GetKeyRange</a> (const std::string &amp;min_key, const std::string &amp;max_key) override</td></tr>
@@ -167,6 +171,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6890672501d28f0ede54be1236f10a28 inherit pub_methods_classresdb_1_1Storage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b7bfb9558caf0cd20bc4bdc35b1afe6 inherit pub_methods_classresdb_1_1Storage" id="r_a2b7bfb9558caf0cd20bc4bdc35b1afe6"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d14/classresdb_1_1Storage.html#a2b7bfb9558caf0cd20bc4bdc35b1afe6">Flush</a> ()</td></tr>
 <tr class="separator:a2b7bfb9558caf0cd20bc4bdc35b1afe6 inherit pub_methods_classresdb_1_1Storage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79d8893e0ad7d3160e4807428981bdaa inherit pub_methods_classresdb_1_1Storage" id="r_a79d8893e0ad7d3160e4807428981bdaa"><td class="memItemLeft" align="right" valign="top">virtual uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d14/classresdb_1_1Storage.html#a79d8893e0ad7d3160e4807428981bdaa">GetLastCheckpoint</a> ()</td></tr>
+<tr class="separator:a79d8893e0ad7d3160e4807428981bdaa inherit pub_methods_classresdb_1_1Storage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13d2ba17caecac1d258835cdaa4f633a inherit pub_methods_classresdb_1_1Storage" id="r_a13d2ba17caecac1d258835cdaa4f633a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d14/classresdb_1_1Storage.html#a13d2ba17caecac1d258835cdaa4f633a">SetMaxHistoryNum</a> (int num)</td></tr>
+<tr class="separator:a13d2ba17caecac1d258835cdaa4f633a inherit pub_methods_classresdb_1_1Storage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_attribs_classresdb_1_1Storage"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classresdb_1_1Storage')"><img src="../../closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="../../d2/d14/classresdb_1_1Storage.html">resdb::Storage</a></td></tr>
+<tr class="memitem:a7c05a17bf7f3bd5a0af88d1cce8f4ff9 inherit pro_attribs_classresdb_1_1Storage" id="r_a7c05a17bf7f3bd5a0af88d1cce8f4ff9"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d14/classresdb_1_1Storage.html#a7c05a17bf7f3bd5a0af88d1cce8f4ff9">max_history_</a> = 10</td></tr>
+<tr class="separator:a7c05a17bf7f3bd5a0af88d1cce8f4ff9 inherit pro_attribs_classresdb_1_1Storage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -217,12 +231,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d2/d14/classresdb_1_1Storage.html#aa34343e63f038d4c7f08d993453d1b5f">resdb::Storage</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00108">108</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00143">143</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a36b6a0970e848012ae3bc40c8bede518" name="a36b6a0970e848012ae3bc40c8bede518"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36b6a0970e848012ae3bc40c8bede518">&#9670;&#160;</a></span>GetAllValues()</h2>
+<a id="a951b4341adc7da44ef3dd228626fc53d" name="a951b4341adc7da44ef3dd228626fc53d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a951b4341adc7da44ef3dd228626fc53d">&#9670;&#160;</a></span>GetAllItemsWithSeq()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,9 +245,9 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string resdb::storage::MemoryDB::GetAllValues </td>
+          <td class="memname">std::map&lt; std::string, std::vector&lt; std::pair&lt; std::string, uint64_t &gt; &gt; &gt; resdb::storage::MemoryDB::GetAllItemsWithSeq </td>
           <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -244,9 +258,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="../../d2/d14/classresdb_1_1Storage.html#a74b80a711f53c3c0bd98d5006a17c541">resdb::Storage</a>.</p>
+<p>Implements <a class="el" href="../../d2/d14/classresdb_1_1Storage.html#ae458e8556b3d11a9423096b98fa48a88">resdb::Storage</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00036">36</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00132">132</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
 
 </div>
 </div>
@@ -284,7 +298,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d2/d14/classresdb_1_1Storage.html#a0fae8ec0b5a9b8fb95f5c8b7492e7fad">resdb::Storage</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00129">129</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00164">164</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
 
 </div>
 </div>
@@ -317,7 +331,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d2/d14/classresdb_1_1Storage.html#ac12cbf01977b673a990b54951e36d685">resdb::Storage</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00117">117</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00152">152</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
 
 </div>
 </div>
@@ -350,7 +364,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d2/d14/classresdb_1_1Storage.html#a4f2a7fe32638e6b4a5a1e2597913a378">resdb::Storage</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00048">48</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00036">36</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
 
 </div>
 </div>
@@ -383,12 +397,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d2/d14/classresdb_1_1Storage.html#a0a71db9aedf6e52e752e46d29f219d45">resdb::Storage</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00150">150</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00185">185</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a6c237c6bf8da34bf30efa38a08a04f59" name="a6c237c6bf8da34bf30efa38a08a04f59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c237c6bf8da34bf30efa38a08a04f59">&#9670;&#160;</a></span>GetValue()</h2>
+<a id="a1b491fc064a42b63a48c2792286f8b3e" name="a1b491fc064a42b63a48c2792286f8b3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b491fc064a42b63a48c2792286f8b3e">&#9670;&#160;</a></span>GetValue()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -405,14 +419,47 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="../../d2/d14/classresdb_1_1Storage.html#a8d2a1873cd805da6a6adde8ad11a9b25">resdb::Storage</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00063">63</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00051">51</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
+
+</div>
+</div>
+<a id="afe32dd32a35027fc80a91e4c7728952a" name="afe32dd32a35027fc80a91e4c7728952a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe32dd32a35027fc80a91e4c7728952a">&#9670;&#160;</a></span>GetValueWithSeq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; std::string, uint64_t &gt; resdb::storage::MemoryDB::GetValueWithSeq </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>seq</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="../../d2/d14/classresdb_1_1Storage.html#a9a219bbb5e648b65c6815755596ba532">resdb::Storage</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00060">60</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
 
 </div>
 </div>
@@ -445,12 +492,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d2/d14/classresdb_1_1Storage.html#afbaeab5c3ea6f88ae482fbb406a34f14">resdb::Storage</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00086">86</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00109">109</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
 
 </div>
 </div>
-<a id="aee61c5a005d19be384ebd0ad0391e1ff" name="aee61c5a005d19be384ebd0ad0391e1ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee61c5a005d19be384ebd0ad0391e1ff">&#9670;&#160;</a></span>SetValue()</h2>
+<a id="abef9cd0ffd55a2ef9edf54b4e543cf73" name="abef9cd0ffd55a2ef9edf54b4e543cf73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abef9cd0ffd55a2ef9edf54b4e543cf73">&#9670;&#160;</a></span>SetValue()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -471,7 +518,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -479,6 +526,44 @@ Public Member Functions</h2></td></tr>
 <p>Implements <a class="el" href="../../d2/d14/classresdb_1_1Storage.html#a25813c70209abf748b0e2532132999b9">resdb::Storage</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00031">31</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a584371a67527f17d56305d90354d37eb" name="a584371a67527f17d56305d90354d37eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a584371a67527f17d56305d90354d37eb">&#9670;&#160;</a></span>SetValueWithSeq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int resdb::storage::MemoryDB::SetValueWithSeq </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>seq</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="../../d2/d14/classresdb_1_1Storage.html#a1aa0042ca37ef16ef12a2a153327e377">resdb::Storage</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00079">79</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
 
 </div>
 </div>
@@ -516,7 +601,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d2/d14/classresdb_1_1Storage.html#a11e69abb13d31483642a2b03679394c7">resdb::Storage</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00072">72</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dee/memory__db_8cpp_source.html#l00095">95</a> of file <a class="el" href="../../dc/dee/memory__db_8cpp_source.html">memory_db.cpp</a>.</p>
 
 </div>
 </div>

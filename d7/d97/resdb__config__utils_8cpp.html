@@ -120,6 +120,7 @@ $(function(){initNavTree('d7/d97/resdb__config__utils_8cpp.html','../../'); init
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">resdb_config_utils.cpp File Reference</div></div>
 </div><!--header-->
@@ -132,6 +133,8 @@ $(function(){initNavTree('d7/d97/resdb__config__utils_8cpp.html','../../'); init
 <code>#include &lt;sys/types.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;nlohmann/json.hpp&gt;</code><br />
+<code>#include &lt;regex&gt;</code><br />
 </div>
 <p><a href="../../d7/d97/resdb__config__utils_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -140,10 +143,17 @@ Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d10/namespaceresdb.html">resdb</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ae5b114573c1fa715d250bee5d623b0b5" id="r_ae5b114573c1fa715d250bee5d623b0b5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d10/namespaceresdb.html#ae5b114573c1fa715d250bee5d623b0b5">resdb::json</a> = nlohmann::json</td></tr>
+<tr class="separator:ae5b114573c1fa715d250bee5d623b0b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a83cacaf099010766767e14ff7bf476ca" id="r_a83cacaf099010766767e14ff7bf476ca"><td class="memItemLeft" align="right" valign="top">ReplicaInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d10/namespaceresdb.html#a83cacaf099010766767e14ff7bf476ca">resdb::GenerateReplicaInfo</a> (int id, const std::string &amp;ip, int port)</td></tr>
 <tr class="separator:a83cacaf099010766767e14ff7bf476ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40e4d60794706f33ddd0ed7893330c14" id="r_a40e4d60794706f33ddd0ed7893330c14"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d10/namespaceresdb.html#a40e4d60794706f33ddd0ed7893330c14">resdb::RemoveJsonComments</a> (const std::string &amp;jsonWithComments)</td></tr>
+<tr class="separator:a40e4d60794706f33ddd0ed7893330c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa55fc1c659f788583d9b656c93a8455b" id="r_aa55fc1c659f788583d9b656c93a8455b"><td class="memItemLeft" align="right" valign="top">ResConfigData&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d10/namespaceresdb.html#aa55fc1c659f788583d9b656c93a8455b">resdb::ReadConfigFromFile</a> (const std::string &amp;file_name)</td></tr>
 <tr class="separator:aa55fc1c659f788583d9b656c93a8455b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67842a19269800fb4efcff8d4082118b" id="r_a67842a19269800fb4efcff8d4082118b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; ReplicaInfo &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d10/namespaceresdb.html#a67842a19269800fb4efcff8d4082118b">resdb::ReadConfig</a> (const std::string &amp;file_name)</td></tr>

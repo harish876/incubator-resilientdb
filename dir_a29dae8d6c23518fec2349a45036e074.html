@@ -123,43 +123,43 @@ $(function(){initNavTree('dir_a29dae8d6c23518fec2349a45036e074.html',''); initRe
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md79"></a>
+<h1><a class="anchor" id="autotoc_md1931"></a>
 Licensed to the Apache Software Foundation (ASF) under one</h1>
-<h1><a class="anchor" id="autotoc_md80"></a>
+<h1><a class="anchor" id="autotoc_md1932"></a>
 or more contributor license agreements. See the NOTICE file</h1>
-<h1><a class="anchor" id="autotoc_md81"></a>
+<h1><a class="anchor" id="autotoc_md1933"></a>
 distributed with this work for additional information</h1>
-<h1><a class="anchor" id="autotoc_md82"></a>
+<h1><a class="anchor" id="autotoc_md1934"></a>
 regarding copyright ownership. The ASF licenses this file</h1>
-<h1><a class="anchor" id="autotoc_md83"></a>
+<h1><a class="anchor" id="autotoc_md1935"></a>
 to you under the Apache License, Version 2.0 (the</h1>
-<h1><a class="anchor" id="autotoc_md84"></a>
+<h1><a class="anchor" id="autotoc_md1936"></a>
 "License"); you may not use this file except in compliance</h1>
-<h1><a class="anchor" id="autotoc_md85"></a>
+<h1><a class="anchor" id="autotoc_md1937"></a>
 with the License. You may obtain a copy of the License at</h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md86"></a>
+<h1><a class="anchor" id="autotoc_md1938"></a>
 <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></h1>
 <p># </p>
-<h1><a class="anchor" id="autotoc_md87"></a>
+<h1><a class="anchor" id="autotoc_md1939"></a>
 Unless required by applicable law or agreed to in writing,</h1>
-<h1><a class="anchor" id="autotoc_md88"></a>
+<h1><a class="anchor" id="autotoc_md1940"></a>
 software distributed under the License is distributed on an</h1>
-<h1><a class="anchor" id="autotoc_md89"></a>
+<h1><a class="anchor" id="autotoc_md1941"></a>
 "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</h1>
-<h1><a class="anchor" id="autotoc_md90"></a>
+<h1><a class="anchor" id="autotoc_md1942"></a>
 KIND, either express or implied. See the License for the</h1>
-<h1><a class="anchor" id="autotoc_md91"></a>
+<h1><a class="anchor" id="autotoc_md1943"></a>
 specific language governing permissions and limitations</h1>
-<h1><a class="anchor" id="autotoc_md92"></a>
+<h1><a class="anchor" id="autotoc_md1944"></a>
 under the License.</h1>
 <p>#</p>
-<h1><a class="anchor" id="autotoc_md93"></a>
+<h1><a class="anchor" id="autotoc_md1945"></a>
 resilient-node-cache</h1>
 <p><b>TypeScript library for syncing ResilientDB data via WebSocket and HTTP with seamless reconnection.</b></p>
 <p><a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%202-blue" alt="License" class="inline"/></a></p>
 <p><code>resilient-node-cache</code> is a library for establishing and managing real-time synchronization between ResilientDB and MongoDB using WebSocket and HTTP. It includes automatic reconnection, batching, and concurrency management for high-performance syncing.</p>
-<h2><a class="anchor" id="autotoc_md94"></a>
+<h2><a class="anchor" id="autotoc_md1946"></a>
 Features</h2>
 <ul>
 <li>Real-time sync between ResilientDB and MongoDB</li>
@@ -167,13 +167,13 @@ Features</h2>
 <li>Configurable synchronization intervals and batch processing</li>
 <li>Provides MongoDB querying for ResilientDB transaction data</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md95"></a>
+<h2><a class="anchor" id="autotoc_md1947"></a>
 Installation</h2>
 <p>To use the library, install it via npm:</p>
 <div class="fragment"><div class="line">npm install resilient-node-cache</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md96"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md1948"></a>
 Configuration</h2>
-<h3><a class="anchor" id="autotoc_md97"></a>
+<h3><a class="anchor" id="autotoc_md1949"></a>
 MongoDB Configuration</h3>
 <p>The library uses MongoDB to store ResilientDB data. Configure it by specifying:</p>
 <ul>
@@ -181,7 +181,7 @@ MongoDB Configuration</h3>
 <li><code>dbName</code>: Database name in MongoDB</li>
 <li><code>collectionName</code>: Collection name in MongoDB where ResilientDB data is stored</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md98"></a>
+<h3><a class="anchor" id="autotoc_md1950"></a>
 ResilientDB Configuration</h3>
 <p>For ResilientDB configuration, specify:</p>
 <ul>
@@ -191,9 +191,9 @@ ResilientDB Configuration</h3>
 <li><code>reconnectInterval</code>: Reconnection interval in milliseconds (optional)</li>
 <li><code>fetchInterval</code>: Fetch interval in milliseconds for periodic syncs (optional)</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md99"></a>
+<h2><a class="anchor" id="autotoc_md1951"></a>
 Usage</h2>
-<h3><a class="anchor" id="autotoc_md100"></a>
+<h3><a class="anchor" id="autotoc_md1952"></a>
 1. Syncing Data from ResilientDB to MongoDB</h3>
 <p>Create a sync script to initialize and start the data synchronization from ResilientDB to MongoDB.</p>
 <div class="fragment"><div class="line">// sync.js</div>
@@ -242,7 +242,7 @@ Usage</h2>
 <li>Initialize the connection to MongoDB and ResilientDB</li>
 <li>Continuously sync new blocks received from ResilientDB to MongoDB</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md101"></a>
+<h3><a class="anchor" id="autotoc_md1953"></a>
 2. Fetching Transactions by Public Key</h3>
 <p>After syncing, you can retrieve that data from MongoDB depending on your use case. Here’s a sample script to retrieve all transactions associated with a specified public key:</p>
 <div class="fragment"><div class="line">// fetchTransactionsWithPublicKey.js</div>
@@ -300,9 +300,9 @@ Usage</h2>
 <div class="line">    await client.close();</div>
 <div class="line">  }</div>
 <div class="line">})();</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md102"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md1954"></a>
 API Documentation</h3>
-<h4><a class="anchor" id="autotoc_md103"></a>
+<h4><a class="anchor" id="autotoc_md1955"></a>
 Class <code>WebSocketMongoSync</code></h4>
 <ul>
 <li><b>constructor(mongoConfig: MongoConfig, resilientDBConfig: ResilientDBConfig)</b>:<ul>
@@ -312,14 +312,14 @@ Class <code>WebSocketMongoSync</code></h4>
 <li><b>initialize()</b>: Connects to MongoDB, fetches initial blocks, starts periodic fetching, and opens the WebSocket connection to ResilientDB.</li>
 <li><b>close()</b>: Closes the MongoDB and WebSocket connections, stopping the periodic fetching.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md104"></a>
+<h3><a class="anchor" id="autotoc_md1956"></a>
 MongoDB Collection Structure</h3>
 <p>Each document in the MongoDB collection corresponds to a ResilientDB block, containing:</p><ul>
 <li><b>id</b>: Block identifier</li>
 <li><b>createdAt</b>: Timestamp for block creation</li>
 <li><b>transactions</b>: Array of transactions in the block, with details for each transaction’s inputs, outputs, and asset metadata</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md105"></a>
+<h3><a class="anchor" id="autotoc_md1957"></a>
 License</h3>
 <p>This library is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.</p>
 <hr  />

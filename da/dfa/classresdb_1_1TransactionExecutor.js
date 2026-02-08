@@ -14,6 +14,7 @@ var classresdb_1_1TransactionExecutor =
     [ "Prepare", "da/dfa/classresdb_1_1TransactionExecutor.html#a8155c91bef3ac709e1d7258ab64d9a92", null ],
     [ "RegisterExecute", "da/dfa/classresdb_1_1TransactionExecutor.html#a41d08a9fa59c87bff8d6855d63e9626c", null ],
     [ "SetDuplicateManager", "da/dfa/classresdb_1_1TransactionExecutor.html#a283b962690108a1385ae038c2d81141d", null ],
+    [ "SetPendingExecutedSeq", "da/dfa/classresdb_1_1TransactionExecutor.html#ad8858d1ffada2e4d8148e8dfffe611a7", null ],
     [ "SetPreExecuteFunc", "da/dfa/classresdb_1_1TransactionExecutor.html#a8362ad75caf7b727aa2ea0e763d70b01", null ],
     [ "SetSeqUpdateNotifyFunc", "da/dfa/classresdb_1_1TransactionExecutor.html#abdcf4b2d634e3ce26f383fd07b35b907", null ],
     [ "Stop", "da/dfa/classresdb_1_1TransactionExecutor.html#a3b6aab58f6f0647c393b20a719bff7d4", null ],

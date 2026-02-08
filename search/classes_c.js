@@ -1,24 +1,6 @@
 var searchData=
 [
-  ['memorydb_0',['MemoryDB',['../d5/d57/classresdb_1_1contract_1_1MemoryDB.html',1,'resdb::contract::MemoryDB'],['../da/d83/classresdb_1_1MemoryDB.html',1,'resdb::MemoryDB'],['../da/d75/classresdb_1_1storage_1_1MemoryDB.html',1,'resdb::storage::MemoryDB']]],
-  ['messagemanager_1',['MessageManager',['../d7/d18/classresdb_1_1MessageManager.html',1,'resdb']]],
-  ['metadataendpoint_2',['MetadataEndpoint',['../d2/da4/classresdb__driver_1_1driver_1_1MetadataEndpoint.html',1,'resdb_driver::driver']]],
-  ['missingprivatekeyerror_3',['MissingPrivateKeyError',['../d4/da0/classresdb__driver_1_1exceptions_1_1MissingPrivateKeyError.html',1,'resdb_driver::exceptions']]],
-  ['mockasyncreplicaclient_4',['MockAsyncReplicaClient',['../d8/d4f/classresdb_1_1MockAsyncReplicaClient.html',1,'resdb']]],
-  ['mockcheckpoint_5',['MockCheckPoint',['../d8/dcb/classresdb_1_1MockCheckPoint.html',1,'resdb']]],
-  ['mockcheckpointmanager_6',['MockCheckPointManager',['../de/da4/classresdb_1_1MockCheckPointManager.html',1,'resdb']]],
-  ['mockgeoglobalexecutor_7',['MockGeoGlobalExecutor',['../d7/ddc/classresdb_1_1MockGeoGlobalExecutor.html',1,'resdb']]],
-  ['mocknetchannel_8',['MockNetChannel',['../d4/dac/classresdb_1_1MockNetChannel.html',1,'resdb']]],
-  ['mockreplicacommunicator_9',['MockReplicaCommunicator',['../d4/de4/classresdb_1_1MockReplicaCommunicator.html',1,'resdb']]],
-  ['mockresdbtxnaccessor_10',['MockResDBTxnAccessor',['../d0/d8d/classresdb_1_1MockResDBTxnAccessor.html',1,'resdb']]],
-  ['mockserviceinterface_11',['MockServiceInterface',['../d8/da4/classresdb_1_1MockServiceInterface.html',1,'resdb']]],
-  ['mocksignatureverifier_12',['MockSignatureVerifier',['../de/d05/classresdb_1_1MockSignatureVerifier.html',1,'resdb']]],
-  ['mocksocket_13',['MockSocket',['../dd/dd7/classresdb_1_1MockSocket.html',1,'resdb']]],
-  ['mockstorage_14',['MockStorage',['../de/d28/classresdb_1_1MockStorage.html',1,'resdb']]],
-  ['mocktransactionexecutordataimpl_15',['MockTransactionExecutorDataImpl',['../dc/db6/classresdb_1_1MockTransactionExecutorDataImpl.html',1,'resdb']]],
-  ['mocktransactionmanager_16',['MockTransactionManager',['../dc/d6d/classresdb_1_1MockTransactionManager.html',1,'resdb']]],
-  ['mongoconfig_17',['MongoConfig',['../d2/da2/classresilient__python__cache_1_1config_1_1MongoConfig.html',1,'resilient_python_cache::config']]],
-  ['multipleinputserror_18',['MultipleInputsError',['../d4/deb/classresdb__validator_1_1exceptions_1_1MultipleInputsError.html',1,'resdb_validator::exceptions']]],
-  ['multiplevalidatoroperationerror_19',['MultipleValidatorOperationError',['../d9/d62/classresdb__driver_1_1exceptions_1_1MultipleValidatorOperationError.html',1,'resdb_driver.exceptions.MultipleValidatorOperationError'],['../da/dce/classresdb__validator_1_1exceptions_1_1MultipleValidatorOperationError.html',1,'resdb_validator.exceptions.MultipleValidatorOperationError']]],
-  ['mutation_20',['Mutation',['../d5/d13/classapp_1_1Mutation.html',1,'app']]]
+  ['namespaceddriver_0',['NamespacedDriver',['../df/dc6/classresdb__driver_1_1driver_1_1NamespacedDriver.html',1,'resdb_driver::driver']]],
+  ['netchannel_1',['NetChannel',['../de/dc3/classresdb_1_1NetChannel.html',1,'resdb']]],
+  ['notfounderror_2',['NotFoundError',['../dc/d37/classresdb__driver_1_1exceptions_1_1NotFoundError.html',1,'resdb_driver::exceptions']]]
 ];

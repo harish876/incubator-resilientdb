@@ -222,8 +222,8 @@ $(function(){initNavTree('d4/d5b/transaction__collector_8cpp_source.html','../..
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  }</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  <span class="keywordflow">if</span> (seq_ != <span class="keyword">static_cast&lt;</span>uint64_t<span class="keyword">&gt;</span>(request-&gt;seq())) {</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="comment">// LOG(ERROR) &lt;&lt; &quot;data invalid, seq not the same:&quot; &lt;&lt; seq</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="comment">//           &lt;&lt; &quot; collect seq:&quot; &lt;&lt; seq_;</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    LOG(ERROR) &lt;&lt; <span class="stringliteral">&quot;data invalid, seq not the same:&quot;</span> &lt;&lt; seq</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>               &lt;&lt; <span class="stringliteral">&quot; collect seq:&quot;</span> &lt;&lt; seq_;</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">return</span> -2;</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  }</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
@@ -338,7 +338,7 @@ $(function(){initNavTree('d4/d5b/transaction__collector_8cpp_source.html','../..
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>  <span class="keyword">auto</span> main_request = atomic_mian_request_.Reference();</div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>  <span class="keywordflow">if</span> (main_request == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    LOG(ERROR) &lt;&lt; <span class="stringliteral">&quot;no main&quot;</span>;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    LOG(ERROR) &lt;&lt; <span class="stringliteral">&quot;no main:&quot;</span> &lt;&lt; seq_;</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keywordflow">return</span> -2;</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>  }</div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>

@@ -138,12 +138,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac922b8ba07f71955df51b91084587ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9487fb3d0eb4075dc8498b8d4994fda1" id="r_a9487fb3d0eb4075dc8498b8d4994fda1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9487fb3d0eb4075dc8498b8d4994fda1">AddRequest</a> (const <a class="el" href="../../d8/d18/structresdb_1_1Context.html">Context</a> *context, const Request *request)</td></tr>
 <tr class="separator:a9487fb3d0eb4075dc8498b8d4994fda1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61a5e9bb6293c982f9b158f76b0d9542" id="r_a61a5e9bb6293c982f9b158f76b0d9542"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61a5e9bb6293c982f9b158f76b0d9542">ReadLogs</a> (std::function&lt; void(const SystemInfoData &amp;data)&gt; system_callback, std::function&lt; void(std::unique_ptr&lt; <a class="el" href="../../d8/d18/structresdb_1_1Context.html">Context</a> &gt; context, std::unique_ptr&lt; Request &gt; request)&gt; call_back)</td></tr>
-<tr class="separator:a61a5e9bb6293c982f9b158f76b0d9542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2dc5bbcf5fd9c935c2569dd9d57d4fd" id="r_aa2dc5bbcf5fd9c935c2569dd9d57d4fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2dc5bbcf5fd9c935c2569dd9d57d4fd">ReadLogs</a> (std::function&lt; void(const SystemInfoData &amp;data)&gt; system_callback, std::function&lt; void(std::unique_ptr&lt; <a class="el" href="../../d8/d18/structresdb_1_1Context.html">Context</a> &gt; context, std::unique_ptr&lt; Request &gt; request)&gt; call_back, std::function&lt; void(int)&gt; start_point)</td></tr>
+<tr class="separator:aa2dc5bbcf5fd9c935c2569dd9d57d4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf1e0b15359a0db222327b53ab42b1a8" id="r_acf1e0b15359a0db222327b53ab42b1a8"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf1e0b15359a0db222327b53ab42b1a8">GetMaxSeq</a> ()</td></tr>
 <tr class="separator:acf1e0b15359a0db222327b53ab42b1a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c94d7c50cd3e24d66f5e3beb13ec15e" id="r_a3c94d7c50cd3e24d66f5e3beb13ec15e"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c94d7c50cd3e24d66f5e3beb13ec15e">GetMinSeq</a> ()</td></tr>
 <tr class="separator:a3c94d7c50cd3e24d66f5e3beb13ec15e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a952f0ad1c5fc2aaf0aafbe4043fdc577" id="r_a952f0ad1c5fc2aaf0aafbe4043fdc577"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a952f0ad1c5fc2aaf0aafbe4043fdc577">GetData</a> (const RecoveryRequest &amp;request, RecoveryResponse &amp;response)</td></tr>
+<tr class="separator:a952f0ad1c5fc2aaf0aafbe4043fdc577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accbf52a1cff4b7e632213ce9ad628f1a" id="r_accbf52a1cff4b7e632213ce9ad628f1a"><td class="memItemLeft" align="right" valign="top">std::map&lt; uint64_t, std::vector&lt; std::pair&lt; std::unique_ptr&lt; <a class="el" href="../../d8/d18/structresdb_1_1Context.html">Context</a> &gt;, std::unique_ptr&lt; Request &gt; &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#accbf52a1cff4b7e632213ce9ad628f1a">GetDataFromRecoveryFiles</a> (uint64_t need_min_seq, uint64_t need_max_seq)</td></tr>
+<tr class="separator:accbf52a1cff4b7e632213ce9ad628f1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -167,6 +171,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a1941ccdb3424af198a3df0469b5921e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76e2ed3ad074164e8ed673883a8cb901" id="r_a76e2ed3ad074164e8ed673883a8cb901"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76e2ed3ad074164e8ed673883a8cb901">mutex_</a></td></tr>
 <tr class="separator:a76e2ed3ad074164e8ed673883a8cb901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6db3294c476fc411c3983a0b22fbecf" id="r_aa6db3294c476fc411c3983a0b22fbecf"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6db3294c476fc411c3983a0b22fbecf">data_mutex_</a></td></tr>
+<tr class="separator:aa6db3294c476fc411c3983a0b22fbecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3646cd514fd59c0aee9d43891619cbdb" id="r_a3646cd514fd59c0aee9d43891619cbdb"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3646cd514fd59c0aee9d43891619cbdb">last_ckpt_</a></td></tr>
 <tr class="separator:a3646cd514fd59c0aee9d43891619cbdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf120ae01a74b8e308650e07434f031f" id="r_acf120ae01a74b8e308650e07434f031f"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf120ae01a74b8e308650e07434f031f">min_seq_</a></td></tr>
@@ -217,7 +223,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00034">34</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00037">37</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
 
 </div>
 </div>
@@ -244,7 +250,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00089">89</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00095">95</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
 
 </div>
 </div>
@@ -276,7 +282,53 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00248">248</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00258">258</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a952f0ad1c5fc2aaf0aafbe4043fdc577" name="a952f0ad1c5fc2aaf0aafbe4043fdc577"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a952f0ad1c5fc2aaf0aafbe4043fdc577">&#9670;&#160;</a></span>GetData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int resdb::Recovery::GetData </td>
+          <td>(</td>
+          <td class="paramtype">const RecoveryRequest &amp;</td>          <td class="paramname"><span class="paramname"><em>request</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RecoveryResponse &amp;</td>          <td class="paramname"><span class="paramname"><em>response</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00550">550</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
+
+</div>
+</div>
+<a id="accbf52a1cff4b7e632213ce9ad628f1a" name="accbf52a1cff4b7e632213ce9ad628f1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accbf52a1cff4b7e632213ce9ad628f1a">&#9670;&#160;</a></span>GetDataFromRecoveryFiles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt; uint64_t, std::vector&lt; std::pair&lt; std::unique_ptr&lt; <a class="el" href="../../d8/d18/structresdb_1_1Context.html">Context</a> &gt;, std::unique_ptr&lt; Request &gt; &gt; &gt; &gt; resdb::Recovery::GetDataFromRecoveryFiles </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>need_min_seq</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>need_max_seq</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00566">566</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
 
 </div>
 </div>
@@ -295,7 +347,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00101">101</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00107">107</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
 
 </div>
 </div>
@@ -314,7 +366,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00103">103</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00109">109</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
 
 </div>
 </div>
@@ -333,12 +385,12 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00082">82</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00086">86</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a61a5e9bb6293c982f9b158f76b0d9542" name="a61a5e9bb6293c982f9b158f76b0d9542"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61a5e9bb6293c982f9b158f76b0d9542">&#9670;&#160;</a></span>ReadLogs()</h2>
+<a id="aa2dc5bbcf5fd9c935c2569dd9d57d4fd" name="aa2dc5bbcf5fd9c935c2569dd9d57d4fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2dc5bbcf5fd9c935c2569dd9d57d4fd">&#9670;&#160;</a></span>ReadLogs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -351,12 +403,17 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::function&lt; void(std::unique_ptr&lt; <a class="el" href="../../d8/d18/structresdb_1_1Context.html">Context</a> &gt; context, std::unique_ptr&lt; Request &gt; request)&gt;</td>          <td class="paramname"><span class="paramname"><em>call_back</em></span>&#160;)</td>
+          <td class="paramtype">std::function&lt; void(std::unique_ptr&lt; <a class="el" href="../../d8/d18/structresdb_1_1Context.html">Context</a> &gt; context, std::unique_ptr&lt; Request &gt; request)&gt;</td>          <td class="paramname"><span class="paramname"><em>call_back</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void(int)&gt;</td>          <td class="paramname"><span class="paramname"><em>start_point</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00436">436</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/dfc/recovery_8cpp_source.html#l00446">446</a> of file <a class="el" href="../../d3/dfc/recovery_8cpp_source.html">recovery.cpp</a>.</p>
 
 </div>
 </div>
@@ -381,7 +438,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00092">92</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00100">100</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -405,7 +462,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00091">91</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00099">99</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -429,7 +486,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00093">93</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00101">101</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -453,7 +510,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00088">88</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00096">96</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -477,7 +534,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00099">99</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00107">107</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -501,7 +558,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00089">89</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00097">97</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -525,7 +582,31 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00087">87</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00095">95</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+
+</div>
+</div>
+<a id="aa6db3294c476fc411c3983a0b22fbecf" name="aa6db3294c476fc411c3983a0b22fbecf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6db3294c476fc411c3983a0b22fbecf">&#9670;&#160;</a></span>data_mutex_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex resdb::Recovery::data_mutex_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00103">103</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -549,7 +630,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00094">94</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00102">102</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -573,7 +654,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00092">92</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00100">100</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -597,7 +678,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00097">97</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00105">105</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -621,7 +702,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00098">98</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00106">106</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -645,7 +726,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00098">98</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00106">106</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -669,7 +750,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00095">95</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00103">103</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -693,7 +774,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00101">101</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00109">109</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -717,7 +798,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00090">90</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00098">98</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -741,7 +822,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00100">100</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00108">108</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -765,7 +846,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00103">103</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00111">111</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>
@@ -789,7 +870,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00102">102</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/db3/recovery_8h_source.html#l00110">110</a> of file <a class="el" href="../../dc/db3/recovery_8h_source.html">recovery.h</a>.</p>
 
 </div>
 </div>

@@ -16,6 +16,7 @@ var classresdb_1_1ViewChangeManager =
     [ "MayStart", "d1/db2/classresdb_1_1ViewChangeManager.html#a3baf9b3fb63aa554436e58c315147d93", null ],
     [ "ProcessNewView", "d1/db2/classresdb_1_1ViewChangeManager.html#a1e58bcf75f7bb31996053edeade32676", null ],
     [ "ProcessViewChange", "d1/db2/classresdb_1_1ViewChangeManager.html#a0a574664334ba479929435ac9554cd6c", null ],
+    [ "SetCurrentViewAndNewPrimary", "d1/db2/classresdb_1_1ViewChangeManager.html#a3e395bcf9ab86c085753d995a3d437ee", null ],
     [ "SetDuplicateManager", "d1/db2/classresdb_1_1ViewChangeManager.html#ad15a1b126adb35551fad79de0bb8afe8", null ],
     [ "checkpoint_manager_", "d1/db2/classresdb_1_1ViewChangeManager.html#ad58798a8fb8e0b44ade807849b5ed327", null ],
     [ "checkpoint_state_thread_", "d1/db2/classresdb_1_1ViewChangeManager.html#ac859a94d354046ebeef5ce6627565857", null ],

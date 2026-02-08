@@ -1,20 +1,6 @@
 var searchData=
 [
-  ['tcpsocket_0',['TcpSocket',['../d4/de5/classresdb_1_1TcpSocket.html',1,'resdb']]],
-  ['thresholdtoodeep_1',['ThresholdTooDeep',['../df/d72/classresdb__driver_1_1exceptions_1_1ThresholdTooDeep.html',1,'resdb_driver.exceptions.ThresholdTooDeep'],['../db/de1/classresdb__validator_1_1exceptions_1_1ThresholdTooDeep.html',1,'resdb_validator.exceptions.ThresholdTooDeep']]],
-  ['timeouterror_2',['TimeoutError',['../d7/d59/classresdb__driver_1_1exceptions_1_1TimeoutError.html',1,'resdb_driver::exceptions']]],
-  ['todictwrapper_3',['ToDictWrapper',['../d1/df5/classresdb__validator_1_1memoize_1_1ToDictWrapper.html',1,'resdb_validator::memoize']]],
-  ['transaction_4',['Transaction',['../d8/d15/classresdb_1_1utxo_1_1Transaction.html',1,'resdb::utxo::Transaction'],['../d5/d37/classresdb__driver_1_1transaction_1_1Transaction.html',1,'resdb_driver.transaction.Transaction'],['../d7/d61/classresdb__driver_1_1validate_1_1Transaction.html',1,'resdb_driver.validate.Transaction'],['../d9/d68/classresdb__validator_1_1models_1_1Transaction.html',1,'resdb_validator.models.Transaction'],['../d5/d13/classresdb__validator_1_1transaction_1_1Transaction.html',1,'resdb_validator.transaction.Transaction'],['../df/d28/classTransaction.html',1,'Transaction']]],
-  ['transactioncollector_5',['TransactionCollector',['../d7/d95/classresdb_1_1TransactionCollector.html',1,'resdb']]],
-  ['transactionconstructor_6',['TransactionConstructor',['../d0/da5/classresdb_1_1TransactionConstructor.html',1,'resdb']]],
-  ['transactionexecutor_7',['TransactionExecutor',['../da/dfa/classresdb_1_1TransactionExecutor.html',1,'resdb']]],
-  ['transactionlink_8',['TransactionLink',['../d4/d84/classresdb__driver_1_1transaction_1_1TransactionLink.html',1,'resdb_driver.transaction.TransactionLink'],['../d1/d5b/classresdb__validator_1_1transaction_1_1TransactionLink.html',1,'resdb_validator.transaction.TransactionLink']]],
-  ['transactionmanager_9',['TransactionManager',['../df/d01/classresdb_1_1TransactionManager.html',1,'resdb']]],
-  ['transactionnotinvalidblock_10',['TransactionNotInValidBlock',['../db/d23/classresdb__driver_1_1exceptions_1_1TransactionNotInValidBlock.html',1,'resdb_driver::exceptions']]],
-  ['transactionownererror_11',['TransactionOwnerError',['../d0/d5b/classresdb__driver_1_1exceptions_1_1TransactionOwnerError.html',1,'resdb_driver.exceptions.TransactionOwnerError'],['../d8/dc2/classresdb__validator_1_1exceptions_1_1TransactionOwnerError.html',1,'resdb_validator.exceptions.TransactionOwnerError']]],
-  ['transactionsendpoint_12',['TransactionsEndpoint',['../d5/d02/classresdb__driver_1_1driver_1_1TransactionsEndpoint.html',1,'resdb_driver::driver']]],
-  ['transferoperation_13',['TransferOperation',['../d1/d46/classresdb__driver_1_1utils_1_1TransferOperation.html',1,'resdb_driver::utils']]],
-  ['transport_14',['Transport',['../d6/d1c/classresdb__driver_1_1transport_1_1Transport.html',1,'resdb_driver::transport']]],
-  ['transporterror_15',['TransportError',['../d4/db4/classresdb__driver_1_1exceptions_1_1TransportError.html',1,'resdb_driver::exceptions']]],
-  ['txmempool_16',['TxMempool',['../d7/d32/classresdb_1_1utxo_1_1TxMempool.html',1,'resdb::utxo']]]
+  ['unequalvalidatorset_0',['UnequalValidatorSet',['../d5/d89/classresdb__validator_1_1exceptions_1_1UnequalValidatorSet.html',1,'resdb_validator::exceptions']]],
+  ['utxoclient_1',['UTXOClient',['../d0/dfe/classresdb_1_1utxo_1_1UTXOClient.html',1,'resdb::utxo::UTXOClient'],['../dc/d2f/classUTXOClient.html',1,'UTXOClient']]],
+  ['utxoexecutor_2',['UTXOExecutor',['../de/de8/classresdb_1_1utxo_1_1UTXOExecutor.html',1,'resdb::utxo::UTXOExecutor'],['../d2/d1d/classUTXOExecutor.html',1,'UTXOExecutor']]]
 ];

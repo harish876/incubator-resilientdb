@@ -149,7 +149,7 @@ $(function(){initNavTree('d4/dba/contract__executor_8cpp_source.html','../../');
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="../../d8/d28/namespaceresdb_1_1contract.html">   25</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d8/d28/namespaceresdb_1_1contract.html">contract</a> {</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../d7/d96/classresdb_1_1contract_1_1ContractTransactionManager.html#aae0e1f0ef954144b0f4d0baeb9a9f232">   27</a></span><a class="code hl_function" href="../../d7/d96/classresdb_1_1contract_1_1ContractTransactionManager.html#aae0e1f0ef954144b0f4d0baeb9a9f232">ContractTransactionManager::ContractTransactionManager</a>(<a class="code hl_class" href="../../d2/d14/classresdb_1_1Storage.html">Storage</a> * <a class="code hl_namespace" href="../../dd/dae/namespaceresdb_1_1storage.html">storage</a>)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../d7/d96/classresdb_1_1contract_1_1ContractTransactionManager.html#aae0e1f0ef954144b0f4d0baeb9a9f232">   27</a></span><a class="code hl_function" href="../../d7/d96/classresdb_1_1contract_1_1ContractTransactionManager.html#aae0e1f0ef954144b0f4d0baeb9a9f232">ContractTransactionManager::ContractTransactionManager</a>(<a class="code hl_class" href="../../d2/d14/classresdb_1_1Storage.html">Storage</a>* <a class="code hl_namespace" href="../../dd/dae/namespaceresdb_1_1storage.html">storage</a>)</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    : contract_manager_(std::make_unique&lt;<a class="code hl_class" href="../../d6/d7d/classresdb_1_1contract_1_1ContractManager.html">ContractManager</a>&gt;(<a class="code hl_namespace" href="../../dd/dae/namespaceresdb_1_1storage.html">storage</a>)),</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>      address_manager_(std::make_unique&lt;<a class="code hl_class" href="../../d4/d26/classresdb_1_1contract_1_1AddressManager.html">AddressManager</a>&gt;()) {}</div>
 </div>
@@ -169,7 +169,7 @@ $(function(){initNavTree('d4/dba/contract__executor_8cpp_source.html','../../');
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    absl::StatusOr&lt;Account&gt; account_or = CreateAccount();</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">if</span> (account_or.ok()) {</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>      response.mutable_account()-&gt;Swap(&amp;(*account_or));</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    LOG(ERROR)&lt;&lt;<span class="stringliteral">&quot; create count:&quot;</span>&lt;&lt;response.account().DebugString();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>      LOG(ERROR) &lt;&lt; <span class="stringliteral">&quot; create count:&quot;</span> &lt;&lt; response.account().DebugString();</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>      ret = -1;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
@@ -262,28 +262,21 @@ $(function(){initNavTree('d4/dba/contract__executor_8cpp_source.html','../../');
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>absl::StatusOr&lt;std::string&gt; ContractTransactionManager::GetBalance(</div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keyword">const</span> Request&amp; request) {</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  <a class="code hl_typedef" href="../../d8/d28/namespaceresdb_1_1contract.html#a8ae8bd097d859e6abc241cbff587739e">Address</a> account =</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>      <a class="code hl_function" href="../../d4/d26/classresdb_1_1contract_1_1AddressManager.html#a1f1c1f4dac435aaee5a67e9b9673f222">AddressManager::HexToAddress</a>(request.account());</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  <span class="keywordflow">return</span> contract_manager_-&gt;GetBalance(account);</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>}</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>absl::StatusOr&lt;std::string&gt; ContractTransactionManager::SetBalance(</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keyword">const</span> Request&amp; request) {</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  <a class="code hl_typedef" href="../../d8/d28/namespaceresdb_1_1contract.html#a8ae8bd097d859e6abc241cbff587739e">Address</a> account =</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>      <a class="code hl_function" href="../../d4/d26/classresdb_1_1contract_1_1AddressManager.html#a1f1c1f4dac435aaee5a67e9b9673f222">AddressManager::HexToAddress</a>(request.account());</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  <a class="code hl_typedef" href="../../d8/d28/namespaceresdb_1_1contract.html#a8ae8bd097d859e6abc241cbff587739e">Address</a> balance =</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>      <a class="code hl_function" href="../../d4/d26/classresdb_1_1contract_1_1AddressManager.html#a1f1c1f4dac435aaee5a67e9b9673f222">AddressManager::HexToAddress</a>(request.balance());</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>  <span class="keywordtype">int</span> <a class="code hl_variable" href="../../d6/d3b/namespacevalidator.html#a63bf06ac2486e4eb73b79ae5b41c02c8">ret</a> = contract_manager_-&gt;SetBalance(account, balance);</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  <span class="keywordflow">return</span> std::to_string(ret);</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>}</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>}  <span class="comment">// namespace contract</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>  <a class="code hl_typedef" href="../../d8/d28/namespaceresdb_1_1contract.html#a8ae8bd097d859e6abc241cbff587739e">Address</a> account = <a class="code hl_function" href="../../d4/d26/classresdb_1_1contract_1_1AddressManager.html#a1f1c1f4dac435aaee5a67e9b9673f222">AddressManager::HexToAddress</a>(request.account());</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  <span class="keywordflow">return</span> contract_manager_-&gt;GetBalance(account);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>}</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>absl::StatusOr&lt;std::string&gt; ContractTransactionManager::SetBalance(</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keyword">const</span> Request&amp; request) {</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>  <a class="code hl_typedef" href="../../d8/d28/namespaceresdb_1_1contract.html#a8ae8bd097d859e6abc241cbff587739e">Address</a> account = <a class="code hl_function" href="../../d4/d26/classresdb_1_1contract_1_1AddressManager.html#a1f1c1f4dac435aaee5a67e9b9673f222">AddressManager::HexToAddress</a>(request.account());</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>  <a class="code hl_typedef" href="../../d8/d28/namespaceresdb_1_1contract.html#a8ae8bd097d859e6abc241cbff587739e">Address</a> balance = <a class="code hl_function" href="../../d4/d26/classresdb_1_1contract_1_1AddressManager.html#a1f1c1f4dac435aaee5a67e9b9673f222">AddressManager::HexToAddress</a>(request.balance());</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  <span class="keywordtype">int</span> <a class="code hl_variable" href="../../d6/d3b/namespacevalidator.html#a63bf06ac2486e4eb73b79ae5b41c02c8">ret</a> = contract_manager_-&gt;SetBalance(account, balance);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>  <span class="keywordflow">return</span> std::to_string(ret);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>}</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>}  <span class="comment">// namespace contract</span></div>
 </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>}  <span class="comment">// namespace resdb</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>}  <span class="comment">// namespace resdb</span></div>
 <div class="ttc" id="aclassresdb_1_1Storage_html"><div class="ttname"><a href="../../d2/d14/classresdb_1_1Storage.html">resdb::Storage</a></div><div class="ttdef"><b>Definition</b> <a href="../../d8/d6b/storage_8h_source.html#l00028">storage.h:28</a></div></div>
 <div class="ttc" id="aclassresdb_1_1contract_1_1AddressManager_html"><div class="ttname"><a href="../../d4/d26/classresdb_1_1contract_1_1AddressManager.html">resdb::contract::AddressManager</a></div><div class="ttdef"><b>Definition</b> <a href="../../d8/dae/address__manager_8h_source.html#l00029">address_manager.h:29</a></div></div>
 <div class="ttc" id="aclassresdb_1_1contract_1_1AddressManager_html_a0d01711b9de8cc5a03d2bb14603b3f73"><div class="ttname"><a href="../../d4/d26/classresdb_1_1contract_1_1AddressManager.html#a0d01711b9de8cc5a03d2bb14603b3f73">resdb::contract::AddressManager::AddressToHex</a></div><div class="ttdeci">static std::string AddressToHex(const Address &amp;address)</div><div class="ttdef"><b>Definition</b> <a href="../../df/d17/address__manager_8cpp_source.html#l00049">address_manager.cpp:49</a></div></div>

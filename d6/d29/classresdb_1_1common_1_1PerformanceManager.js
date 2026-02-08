@@ -2,6 +2,7 @@ var classresdb_1_1common_1_1PerformanceManager =
 [
     [ "PerformanceManager", "d6/d29/classresdb_1_1common_1_1PerformanceManager.html#aec8e08a1723a9e04b8dd3c96612cfe9c", null ],
     [ "~PerformanceManager", "d6/d29/classresdb_1_1common_1_1PerformanceManager.html#af628b06d1ca79541d0471ac88bd122ff", null ],
+    [ "NeedResponse", "d6/d29/classresdb_1_1common_1_1PerformanceManager.html#a003b164a22f99de5645cabfa4370b95a", null ],
     [ "ProcessResponseMsg", "d6/d29/classresdb_1_1common_1_1PerformanceManager.html#ab5ab8b649fc714d87db9a63bd164760f", null ],
     [ "SendMessage", "d6/d29/classresdb_1_1common_1_1PerformanceManager.html#a2845eeffd6bda4f9f17fda5179f26856", null ],
     [ "SetDataFunc", "d6/d29/classresdb_1_1common_1_1PerformanceManager.html#acf034ccebe89638b2b14658c64063234", null ],

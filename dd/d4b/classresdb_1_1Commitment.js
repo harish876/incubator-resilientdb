@@ -17,6 +17,7 @@ var classresdb_1_1Commitment =
     [ "message_manager_", "dd/d4b/classresdb_1_1Commitment.html#a0c73ca7a679972b689bedb74d9f9a65f", null ],
     [ "mutex_", "dd/d4b/classresdb_1_1Commitment.html#acc75c9d835e037d859988b76ae033e9d", null ],
     [ "need_qc_", "dd/d4b/classresdb_1_1Commitment.html#adaabf48eec85e0741a24e3b01feb9b51", null ],
+    [ "pending_recovery_", "dd/d4b/classresdb_1_1Commitment.html#a23a1e526a8b0f50b61d515ebc12a8833", null ],
     [ "pre_verify_func_", "dd/d4b/classresdb_1_1Commitment.html#accd36fb3a8e5aff5854cddeed6883e7d", null ],
     [ "rc_mutex_", "dd/d4b/classresdb_1_1Commitment.html#a89061c90981240874ae37590deaa1aa7", null ],
     [ "replica_communicator_", "dd/d4b/classresdb_1_1Commitment.html#a23ba988ae5ed7ac94f83fac247f9c228", null ],

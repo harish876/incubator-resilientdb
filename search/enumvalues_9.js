@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['server_0',['SERVER',['../d5/d10/namespaceresdb.html#a7889f61314683fc5e6fb5eaa2f2a9beea9e8d0477d50b966687fedf79c2a14b95',1,'resdb']]],
-  ['server_5fcall_5fname_1',['SERVER_CALL_NAME',['../d5/d10/namespaceresdb.html#a903a063ebd51c5fd151a96b7324b62f6ab56aeb8ddc6ae648e6b05e6b8cd97628',1,'resdb']]],
-  ['server_5fprocess_2',['SERVER_PROCESS',['../d5/d10/namespaceresdb.html#a903a063ebd51c5fd151a96b7324b62f6afc68b5a2d424d9165e2f3612848a151b',1,'resdb']]],
-  ['socket_5frecv_3',['SOCKET_RECV',['../d5/d10/namespaceresdb.html#a903a063ebd51c5fd151a96b7324b62f6ae3e45003b3ae9328b27f17eaf871d27c',1,'resdb']]],
-  ['state_5fchanged_4',['STATE_CHANGED',['../d6/dfb/namespaceresdb_1_1comm.html#a3fa16a6ab86b7d4bb7df6274807b9cf0a0fb835cf20450addcca83a41138a6d99',1,'resdb::comm::STATE_CHANGED'],['../d5/d10/namespaceresdb.html#affdec049917742284c2ba9216d5ae83fa402194b08ad034c3bcf5badc8d396ee8',1,'resdb::STATE_CHANGED']]]
+  ['ready_5fcommit_0',['READY_COMMIT',['../d5/d10/namespaceresdb.html#a9365b7af8267b084d545559cc0f87cb0af630efee5e3abf6506559b871738ad3d',1,'resdb']]],
+  ['ready_5fexecute_1',['READY_EXECUTE',['../d5/d10/namespaceresdb.html#a9365b7af8267b084d545559cc0f87cb0a32e1445895e83fb95fa7fb3876d8ff91',1,'resdb']]],
+  ['ready_5fnew_5fview_2',['READY_NEW_VIEW',['../d1/db2/classresdb_1_1ViewChangeManager.html#acd229d978d381feb3b0301faf83b0c81a3b77325139ff3604a1d5cbe172e357b7',1,'resdb::ViewChangeManager']]],
+  ['ready_5fprepare_3',['READY_PREPARE',['../d5/d10/namespaceresdb.html#a9365b7af8267b084d545559cc0f87cb0a61578c8a1b468d7935d2bdf02dea3d1c',1,'resdb']]],
+  ['ready_5fview_5fchange_4',['READY_VIEW_CHANGE',['../d1/db2/classresdb_1_1ViewChangeManager.html#acd229d978d381feb3b0301faf83b0c81af74af63a3c7a453a0b886b386c1fb7e9',1,'resdb::ViewChangeManager']]]
 ];

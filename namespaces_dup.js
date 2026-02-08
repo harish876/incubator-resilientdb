@@ -19,9 +19,32 @@ var namespaces_dup =
       [ "t", "d8/d54/namespacecalculate__result.html#a659010e7ae3ab15439cde90a2a68cf4a", null ],
       [ "tps", "d8/d54/namespacecalculate__result.html#a750a9fc1c40961b650cd859b971bbfb5", null ]
     ] ],
+    [ "config", "d6/d7f/namespaceconfig.html", "d6/d7f/namespaceconfig" ],
+    [ "detect_changed_tools", "d1/d39/namespacedetect__changed__tools.html", [
+      [ "detect_changed_tools", "d1/d39/namespacedetect__changed__tools.html#a3cb86eeb82f9302643ae0668427a0ad2", null ],
+      [ "get_changed_files", "d1/d39/namespacedetect__changed__tools.html#ac06e022e92d738469636e03e812a3742", null ],
+      [ "load_tool_map", "d1/d39/namespacedetect__changed__tools.html#a6999e9e771c36d7d36179f5f33351219", null ],
+      [ "main", "d1/d39/namespacedetect__changed__tools.html#a63f1d2f8f525de24b6fe6981d455e51b", null ],
+      [ "should_exclude_path", "d1/d39/namespacedetect__changed__tools.html#ac39654e48b7f80503ccd6dba615e5051", null ],
+      [ "EXCLUDE_PATTERNS", "d1/d39/namespacedetect__changed__tools.html#a0c93354af1d411952c632c5623fe9172", null ],
+      [ "POCKETFLOW_DIR", "d1/d39/namespacedetect__changed__tools.html#ac6705a08c6493c0db92837031aa5306f", null ],
+      [ "REPO_ROOT", "d1/d39/namespacedetect__changed__tools.html#a24af1241eadbf1d07e59bf2498435f89", null ],
+      [ "TOOL_MAP_PATH", "d1/d39/namespacedetect__changed__tools.html#a24924046ee3586d295b0b4bd50d6d514", null ]
+    ] ],
     [ "endpoint_test", "d9/d80/namespaceendpoint__test.html", [
       [ "response", "d9/d80/namespaceendpoint__test.html#aedc86563f4e38b871b121f81851b6b7d", null ],
       [ "url", "d9/d80/namespaceendpoint__test.html#abc2edf883bd360436360f7a9d5f480ef", null ]
+    ] ],
+    [ "flow", "d9/de2/namespaceflow.html", [
+      [ "create_tutorial_flow", "d9/de2/namespaceflow.html#ab7059c6fbc8a2c59d6990ee02f4676f5", null ]
+    ] ],
+    [ "generate_keys_utility", "d3/d49/namespacegenerate__keys__utility.html", [
+      [ "abs_path", "d3/d49/namespacegenerate__keys__utility.html#a0fdf64fc8a78a13499a699948fc1219c", null ],
+      [ "possible_paths", "d3/d49/namespacegenerate__keys__utility.html#a1d7bd4f69ea63dd89ac0a957b2edb313", null ],
+      [ "recipient", "d3/d49/namespacegenerate__keys__utility.html#a3d07c6bf35cd15940d71155981def1e2", null ],
+      [ "resilientdb_path", "d3/d49/namespacegenerate__keys__utility.html#a7adf5467608a6a8c35ef7c38ee82e4ce", null ],
+      [ "script_dir", "d3/d49/namespacegenerate__keys__utility.html#a8c25650cdaaf6ce31d7298c7f33ce281", null ],
+      [ "signer", "d3/d49/namespacegenerate__keys__utility.html#a0ccb017e91f8ef4182de9d21e8a83855", null ]
     ] ],
     [ "generate_mulregion_config", "df/d44/namespacegenerate__mulregion__config.html", [
       [ "GenerateJsonConfig", "df/d44/namespacegenerate__mulregion__config.html#aecd97f51038d5f4f2d9763bad807efcb", null ],
@@ -32,6 +55,7 @@ var namespaces_dup =
       [ "template_config", "d8/dab/namespacegenerate__region__config.html#a56aa3d70cc1ca27d68352f5508297e6a", null ]
     ] ],
     [ "get-pip", "d7/dea/namespaceget-pip.html", null ],
+    [ "graphql_client", "d4/de7/namespacegraphql__client.html", "d4/de7/namespacegraphql__client" ],
     [ "key_tester", "df/d50/namespacekey__tester.html", [
       [ "pri_key", "df/d50/namespacekey__tester.html#a7839bbd6d1e002da20cf3d9cb2130328", null ],
       [ "pub_key", "df/d50/namespacekey__tester.html#aa948e6285c664cc86b8219d487dbc463", null ],
@@ -50,13 +74,50 @@ var namespaces_dup =
       [ "new_path_dir", "d4/da4/namespacekv__operation.html#af100d75d3a11b3a5350dd9d129e89cb9", null ],
       [ "parent_dir", "d4/da4/namespacekv__operation.html#a47392bfe595983d56f6ed2ff1ed2e0dd", null ]
     ] ],
+    [ "list_gemini_models", "d4/dbe/namespacelist__gemini__models.html", [
+      [ "api_key", "d4/dbe/namespacelist__gemini__models.html#ae07ff789b5dd8f1b3a571b7db8d681e3", null ],
+      [ "client", "d4/dbe/namespacelist__gemini__models.html#ac76c3ffe3d6bdc490d5e32ee6e669515", null ],
+      [ "models", "d4/dbe/namespacelist__gemini__models.html#abd2905a2f2fab855e9d549b91e4f4b0e", null ]
+    ] ],
+    [ "main", "d2/dc1/namespacemain.html", [
+      [ "main", "d2/dc1/namespacemain.html#a3140e9a5b6a71ffbf498198cfc471b88", null ],
+      [ "DEFAULT_EXCLUDE_PATTERNS", "d2/dc1/namespacemain.html#a4ea0c222c53ec261831889923308ea9b", null ],
+      [ "DEFAULT_INCLUDE_PATTERNS", "d2/dc1/namespacemain.html#a18db29138a04198e7417a918ce92a486", null ]
+    ] ],
+    [ "nodes", "d1/d51/namespacenodes.html", "d1/d51/namespacenodes" ],
     [ "print_sample", "d9/df2/namespaceprint__sample.html", null ],
+    [ "rescontract_client", "d7/d81/namespacerescontract__client.html", "d7/d81/namespacerescontract__client" ],
     [ "resdb", "d5/d10/namespaceresdb.html", "d5/d10/namespaceresdb" ],
     [ "resdb_driver", "d5/d12/namespaceresdb__driver.html", "d5/d12/namespaceresdb__driver" ],
     [ "resdb_orm", "d2/d41/namespaceresdb__orm.html", "d2/d41/namespaceresdb__orm" ],
+    [ "resdb_sdk", "d6/d79/namespaceresdb__sdk.html", "d6/d79/namespaceresdb__sdk" ],
     [ "resdb_validator", "df/dff/namespaceresdb__validator.html", "df/dff/namespaceresdb__validator" ],
     [ "resilient_python_cache", "db/d8f/namespaceresilient__python__cache.html", "db/d8f/namespaceresilient__python__cache" ],
+    [ "run_pocketflow_for_tool", "df/d61/namespacerun__pocketflow__for__tool.html", [
+      [ "find_tool_entry", "df/d61/namespacerun__pocketflow__for__tool.html#a56fd6a21fe4bebe402a77ee8d1c57ec3", null ],
+      [ "load_tool_map", "df/d61/namespacerun__pocketflow__for__tool.html#a502fdf234e22e19c3272d3c4a77cdfd7", null ],
+      [ "main", "df/d61/namespacerun__pocketflow__for__tool.html#a36fd0497c8df98705b3d0c6e9f931ca3", null ],
+      [ "run_pocketflow_for_dir", "df/d61/namespacerun__pocketflow__for__tool.html#a71d7ccfcf00f160afc170139bd76d06a", null ],
+      [ "OUTPUT_BASE", "df/d61/namespacerun__pocketflow__for__tool.html#a6b7f2035b5e1916527af3ea52ddf52bb", null ],
+      [ "POCKETFLOW_DIR", "df/d61/namespacerun__pocketflow__for__tool.html#a811a105f112dde7d0ac50cacb4506d56", null ],
+      [ "REPO_ROOT", "df/d61/namespacerun__pocketflow__for__tool.html#a166d84594ed41917dfc94a5051f4f7e0", null ]
+    ] ],
     [ "sdk", "d1/de2/namespacesdk.html", "d1/de2/namespacesdk" ],
+    [ "server", "d9/db1/namespaceserver.html", [
+      [ "_setup_resilientdb_path", "d9/db1/namespaceserver.html#a5d25d98142800f2fd8dd996d5954cf99", null ],
+      [ "_setup_sha3_shim", "d9/db1/namespaceserver.html#a5089a2bf6e39b1623a57f88d616ca694", null ],
+      [ "analyze_transactions", "d9/db1/namespaceserver.html#abf7e52143fa58aef2fb1452d14dd6c61", null ],
+      [ "generate_keypairs", "d9/db1/namespaceserver.html#a66e85f3e1fd7170e3f6bd9fc251f9b53", null ],
+      [ "handle_call_tool", "d9/db1/namespaceserver.html#a4376a3380290fd3c4a97c446ad7476b4", null ],
+      [ "handle_list_tools", "d9/db1/namespaceserver.html#a52e555f7fa8aa8ec9922e04e23dfccc8", null ],
+      [ "main", "d9/db1/namespaceserver.html#aa29596aedd8d3d43ac3689e0905aaa29", null ],
+      [ "send_monitoring_data", "d9/db1/namespaceserver.html#a83f8f49e8c242f00f75c5ba5865fdf17", null ],
+      [ "_hash", "d9/db1/namespaceserver.html#abd227a98c9b413e2e677c97803c4aeac", null ],
+      [ "app", "d9/db1/namespaceserver.html#ad81539608721e4b8ffad6e7bb45dd34b", null ],
+      [ "file", "d9/db1/namespaceserver.html#aca7ad85daae37b77f5ba6e71b1377dd5", null ],
+      [ "graphql_client", "d9/db1/namespaceserver.html#a74e24f0780570fc6ac2e035a95c65215", null ],
+      [ "rescontract_client", "d9/db1/namespaceserver.html#a7517e4a1eecdc55bbf60787fc1c8d73b", null ]
+    ] ],
     [ "setup", "dd/dc4/namespacesetup.html", [
       [ "author", "dd/dc4/namespacesetup.html#a3a57a4772d418a06835249cbade0d86a", null ],
       [ "author_email", "dd/dc4/namespacesetup.html#a5b08034343aa2be607722a8b315f3625", null ],
@@ -114,6 +175,9 @@ var namespaces_dup =
       [ "transfer_input", "db/d31/namespacetest__driver__2.html#af456577c7dbdef89eea4aca363f79a51", null ],
       [ "txid", "db/d31/namespacetest__driver__2.html#a413aead47c392146c14dff5e39ce10c9", null ]
     ] ],
+    [ "test_mcp_tools", "df/da9/namespacetest__mcp__tools.html", [
+      [ "test_tools", "df/da9/namespacetest__mcp__tools.html#a3c27f3d578ff8d52dcaf7e92b0d19af4", null ]
+    ] ],
     [ "test_sdk", "d5/de3/namespacetest__sdk.html", [
       [ "alice", "d5/de3/namespacetest__sdk.html#a5c78206b55cb38d80fbb207b62cdefcd", null ],
       [ "bob", "d5/de3/namespacetest__sdk.html#ae573a9cc5ac19b9b4552210c09dc376f", null ],
@@ -147,6 +211,19 @@ var namespaces_dup =
       [ "transfer_asset", "d7/d62/namespacetest__update__metadata.html#a9ae971a8edb108c86bd7013dff5c655c", null ],
       [ "transfer_input", "d7/d62/namespacetest__update__metadata.html#abb71e53e3ff513f13b209f3cad535133", null ]
     ] ],
+    [ "update_mdx_section", "d8/dc3/namespaceupdate__mdx__section.html", [
+      [ "ensure_doc_file", "d8/dc3/namespaceupdate__mdx__section.html#a6b5511c629d1a9aadef1feda5357bf54", null ],
+      [ "find_tool_entry", "d8/dc3/namespaceupdate__mdx__section.html#aac33bb85f4c7e733c743600ccf8efeb6", null ],
+      [ "load_tool_map", "d8/dc3/namespaceupdate__mdx__section.html#aeedcc3d3a2a0b8eab6a167efc0618118", null ],
+      [ "main", "d8/dc3/namespaceupdate__mdx__section.html#aa407b2932213b5c3c5e62161144dcc79", null ],
+      [ "replace_block", "d8/dc3/namespaceupdate__mdx__section.html#adf241aa5cc4ffcffa255496fcb228330", null ],
+      [ "run_prettier", "d8/dc3/namespaceupdate__mdx__section.html#ac9b4b4982c387a06629c97d1f24ed422", null ],
+      [ "DEFAULT_TEMPLATE", "d8/dc3/namespaceupdate__mdx__section.html#afaaddb9c6b8f0d2882bba47d9951a82d", null ],
+      [ "exc", "d8/dc3/namespaceupdate__mdx__section.html#acacbe730501e71a494aeaaec3b01d5f0", null ],
+      [ "file", "d8/dc3/namespaceupdate__mdx__section.html#a2b592aa898cb6a422bc0b4e038f9cebd", null ],
+      [ "REPO_ROOT", "d8/dc3/namespaceupdate__mdx__section.html#a5d2123a5591e9f32291116522822ba81", null ]
+    ] ],
+    [ "utils", "d6/d84/namespaceutils.html", "d6/d84/namespaceutils" ],
     [ "validator", "d6/d3b/namespacevalidator.html", [
       [ "is_valid_tx", "d6/d3b/namespacevalidator.html#ac99538d12d2d45ca70ae031e47a21525", null ],
       [ "ret", "d6/d3b/namespacevalidator.html#a63bf06ac2486e4eb73b79ae5b41c02c8", null ],

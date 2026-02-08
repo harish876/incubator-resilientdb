@@ -30,7 +30,7 @@ var NAVTREE =
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ],
+        [ "Variables", "namespacemembers_vars.html", "namespacemembers_vars" ],
         [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
         [ "Enumerator", "namespacemembers_eval.html", null ]
@@ -64,24 +64,27 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d1/d44/classresdb_1_1Recovery.html#a16d630355aca59e4cf89d258939d761e",
-"d2/d02/resdb__txn__accessor_8h_source.html",
-"d3/d56/namespaceresdb_1_1common.html#a3fa16a6ab86b7d4bb7df6274807b9cf0",
-"d4/d2d/classresdb_1_1ServiceNetwork.html#ac1c908c92c1c6386bee2a35b64f982cf",
-"d5/d02/classresdb__driver_1_1driver_1_1TransactionsEndpoint.html",
-"d5/d3e/classresdb_1_1LRUCache.html",
-"d6/d49/certificate__tools__test_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627",
-"d7/d70/namespaceresilient__python__cache_1_1cache.html#a2a0b5bbf24c2ed4a06ef674c8a68945c",
-"d8/dcb/classresdb_1_1MockCheckPoint.html",
-"da/d19/classresdb_1_1ConsensusManager.html#a6ee5d408e5db8134290afa5dbe162568",
-"da/de5/hash_8cpp_source.html",
-"db/deb/classresdb_1_1common_1_1Consensus.html#aae02ac41fa631ef21db79090eb1ff8c3",
-"dc/db0/classresdb_1_1CheckPointManager.html#a01a5417fd7d2d4f1a3b2da681d3c0e11",
-"dd/d68/mock__geo__global__executor_8h_source.html",
-"de/d3b/namespacetest__driver.html#a1d693f578ee6aaf581b83243decf11c5",
-"de/df1/classresdb__driver_1_1exceptions_1_1KeypairMismatchException.html",
-"df/ddc/classresdb_1_1utxo_1_1Wallet.html",
-"namespacemembers_w.html"
+"d0/ded/classresdb_1_1ConsensusManagerPBFT.html#accbe75d7be210c0357cde550d4947198",
+"d1/db2/classresdb_1_1ViewChangeManager.html#a458c26e26eb29aefd222f9d414799a48",
+"d3/d16/resdb__config__utils_8h_source.html",
+"d3/d97/classresilient__python__cache_1_1cache_1_1ResilientPythonCache.html#a2b0f57c15f255fc5ba00bb4be53adcfd",
+"d4/d4b/classKVServiceTransactionManager.html#a5e80249843db6d61e25eb84092290a88",
+"d5/d10/namespaceresdb.html#a9365b7af8267b084d545559cc0f87cb0a61578c8a1b468d7935d2bdf02dea3d1c",
+"d5/d57/classresdb_1_1contract_1_1MemoryDB.html#afe32dd32a35027fc80a91e4c7728952a",
+"d6/da0/classresdb_1_1DuplicateManager.html",
+"d7/d95/classresdb_1_1TransactionCollector.html#a656230a242f692f8dc71297b8ef971f3",
+"d8/d80/service_2tools_2kv_2api__tools_2kv__service__tools_8cpp.html#a91da2a7f6c244a57f3f8a5fa094dcb7b",
+"d9/d68/common_2framework_2performance__manager_8cpp.html",
+"da/d3b/classresdb_1_1ServerFactory.html#aa4e53e3a85ad4182338f446f1dd11674",
+"da/dfa/classresdb_1_1TransactionExecutor.html#a283b962690108a1385ae038c2d81141d",
+"db/deb/classresdb_1_1common_1_1Consensus.html#ae165ad2f31aa1a26978764234502dad0",
+"dc/da3/classresdb_1_1common_1_1ProtocolBase.html#afeba52c4f39026349767611314d3c4d6",
+"dd/d33/classresdb_1_1ResDBTest.html#aced83c443a3f699654a72775f03dc8a1",
+"de/d0d/classresdb_1_1Stats.html#a834d3cec4dfb02876b510d7fc6fea4cf",
+"de/d6d/classresdb_1_1Query.html#abd33855912c07e2fa6835188e630b2c9",
+"df/d58/classresdb_1_1contract_1_1EVMState.html",
+"dir_231b3b3f7f5bb572a12a634049497c25.html",
+"namespacemembers_vars_d.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
