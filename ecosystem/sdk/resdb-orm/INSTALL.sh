@@ -214,4 +214,9 @@ echo "Installation and verification completed successfully."
 # Deactivate virtual environment
 deactivate
 
+# Install RDMA userspace & NIC utilities
+echo "Installing RDMA userspace and NIC utilities..."
+sudo apt update
+sudo apt install -y rdma-core ibverbs-providers perftest mstflint ethtool iperf3 ibverbs-utils rdmacm-utils libibverbs-dev librdmacm-dev cmake infiniband-diags qperf
+
 echo "Installation script has completed. Please start the ResilientDB-GraphQL server manually as described in the instructions."
