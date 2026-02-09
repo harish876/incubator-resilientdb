@@ -77,6 +77,21 @@ cc_binary(
     ],
 )
 
+cc_binary(
+    name = "rdma_proposal_optimized",
+    srcs = ["rdma_proposal_optimized.cpp"],
+    copts = ["-std=c++20"],
+    linkopts = [
+        "-libverbs",
+        "-lmlx5",
+        "-lpthread",
+    ],
+    deps = [
+        "//third_party/rdmapp:rdmapp",
+        "//third_party/rdmapp:rdmapp_examples",
+    ],
+)
+
 py_binary(
     name = "generate_region_config",
     srcs = ["generate_region_config.py"],

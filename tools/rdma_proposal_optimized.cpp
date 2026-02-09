@@ -1,6 +1,7 @@
 #include <rdmapp/rdmapp.h>
 
 #include <array>
+#include <atomic>
 #include <cassert>
 #include <chrono>
 #include <cstdint>
@@ -10,9 +11,14 @@
 #include <memory>
 #include <stdexcept>
 #include <thread>
+#include <vector>
+
+#include <infiniband/verbs.h>
 
 #include "acceptor.h"
 #include "connector.h"
+
+static constexpr int kPrepostRecvCount = 256;
 
 struct SlotTable {
   static constexpr int kNumSlots = 256;
@@ -73,7 +79,8 @@ struct SlotTableWriter {
 };
 
 rdmapp::task<void> server(rdmapp::acceptor& acceptor,
-                          std::shared_ptr<rdmapp::pd> pd) {
+                          std::shared_ptr<rdmapp::pd> pd,
+                          std::shared_ptr<rdmapp::cq> recv_cq) {
   auto buffer = std::make_shared<std::array<char, SlotTable::kSlotTableSize>>();
   std::memset(buffer->data(), 0, buffer->size());
   uint8_t* bitmap = reinterpret_cast<uint8_t*>(buffer->data());
@@ -90,27 +97,84 @@ rdmapp::task<void> server(rdmapp::acceptor& acceptor,
             << " B/slot)" << std::endl;
 
   auto qp = co_await acceptor.accept();
-  std::cout
-      << "[Server] QP established; data plane: recv loop (slot table + bitmap)"
-      << std::endl;
+  std::cout << "[Server] QP established; preposting " << kPrepostRecvCount
+            << " recvs (reuse: repost after each completion)" << std::endl;
 
-  char dummy_recv_buf[1];
-  int count = 0;
-  while (true) {
-    auto [len, imm] = co_await qp->recv(dummy_recv_buf, sizeof(dummy_recv_buf));
-    ++count;
-    uint32_t slot_id = imm.has_value() ? imm.value() : 0u;
-    if (slot_id >= static_cast<uint32_t>(SlotTable::kNumSlots)) slot_id = 0;
-    int sid = static_cast<int>(slot_id);
-    SlotTable::set_slot_in_use(bitmap, sid);
-    const char* slot_data = buffer->data() + SlotTable::slot_offset(sid);
-    std::cout << "[Server] recv #" << count << " slot=" << slot_id << " data=\""
-              << slot_data << "\"" << std::endl;
-    if (kServerWorkMs > 0) {
-      std::this_thread::sleep_for(std::chrono::milliseconds(kServerWorkMs));
-    }
-    SlotTable::set_slot_free(bitmap, sid);
+  using RecvBuf = std::array<char, kPrepostRecvCount>;
+  auto recv_buf = std::make_shared<RecvBuf>();
+  std::memset(recv_buf->data(), 0, recv_buf->size());
+  auto recv_mr = std::make_shared<rdmapp::local_mr>(
+      pd->reg_mr(recv_buf->data(), recv_buf->size()));
+
+  std::vector<struct ibv_sge> sges(kPrepostRecvCount);
+  std::vector<struct ibv_recv_wr> wrs(kPrepostRecvCount);
+  for (int i = 0; i < kPrepostRecvCount; ++i) {
+    std::memset(&sges[i], 0, sizeof(sges[i]));
+    sges[i].addr = reinterpret_cast<uint64_t>(recv_buf->data() + i);
+    sges[i].length = 1;
+    sges[i].lkey = recv_mr->lkey();
+    std::memset(&wrs[i], 0, sizeof(wrs[i]));
+    wrs[i].wr_id = static_cast<uint64_t>(i);
+    wrs[i].next = (i + 1 < kPrepostRecvCount) ? &wrs[i + 1] : nullptr;
+    wrs[i].sg_list = &sges[i];
+    wrs[i].num_sge = 1;
   }
+
+  struct ibv_recv_wr* bad_wr = nullptr;
+  qp->post_recv(wrs[0], bad_wr);
+  if (bad_wr != nullptr) {
+    throw std::runtime_error("prepost recv failed");
+  }
+
+  std::atomic<uint64_t> count{0};
+  std::atomic<bool> stop{false};
+
+  std::thread recv_thread([qp, recv_cq, buffer, bitmap, &wrs, &count, &stop]() {
+    std::vector<struct ibv_wc> wc_vec(64);
+    while (!stop.load(std::memory_order_acquire)) {
+      size_t n = recv_cq->poll(wc_vec);
+      for (size_t i = 0; i < n; ++i) {
+        const struct ibv_wc& wc = wc_vec[i];
+        if (wc.opcode != IBV_WC_RECV && wc.opcode != IBV_WC_RECV_RDMA_WITH_IMM)
+          continue;
+        if (wc.status != IBV_WC_SUCCESS) {
+          std::cerr << "[Server] recv completion error status=" << wc.status
+                    << std::endl;
+          continue;
+        }
+
+        uint32_t slot_id = (wc.wc_flags & IBV_WC_WITH_IMM) ? wc.imm_data : 0;
+        if (slot_id >= static_cast<uint32_t>(SlotTable::kNumSlots)) slot_id = 0;
+        int sid = static_cast<int>(slot_id);
+        SlotTable::set_slot_in_use(bitmap, sid);
+        const char* slot_data = buffer->data() + SlotTable::slot_offset(sid);
+        uint64_t c = count.fetch_add(1, std::memory_order_relaxed) + 1;
+        std::cout << "[Server] recv #" << c << " slot=" << slot_id << " data=\""
+                  << slot_data << "\"" << std::endl;
+        if (kServerWorkMs > 0) {
+          std::this_thread::sleep_for(
+              std::chrono::milliseconds(kServerWorkMs));
+        }
+        SlotTable::set_slot_free(bitmap, sid);
+
+        int idx = static_cast<int>(wc.wr_id);
+        if (idx >= 0 && idx < kPrepostRecvCount) {
+          wrs[idx].next = nullptr;
+          struct ibv_recv_wr* repost_bad = nullptr;
+          qp->post_recv(wrs[idx], repost_bad);
+          if (repost_bad != nullptr) {
+            std::cerr << "[Server] repost recv failed" << std::endl;
+          }
+        }
+      }
+    }
+  });
+
+  while (true) {
+    std::this_thread::sleep_for(std::chrono::hours(1));
+  }
+  stop.store(true, std::memory_order_release);
+  recv_thread.join();
   co_return;
 }
 
@@ -150,15 +214,17 @@ rdmapp::task<void> client(rdmapp::connector& connector, int num_requests) {
 int main(int argc, char* argv[]) {
   auto device = std::make_shared<rdmapp::device>(0, 1, 3);
   auto pd = std::make_shared<rdmapp::pd>(device);
-  auto cq = std::make_shared<rdmapp::cq>(device);
-  auto cq_poller = std::make_shared<rdmapp::cq_poller>(cq);
+  auto recv_cq = std::make_shared<rdmapp::cq>(device, kPrepostRecvCount * 2);
+  auto send_cq = std::make_shared<rdmapp::cq>(device, 128);
+  auto cq_poller = std::make_shared<rdmapp::cq_poller>(send_cq);
   auto loop = rdmapp::socket::event_loop::new_loop();
   auto looper = std::thread([loop]() { loop->loop(); });
   if (argc == 2) {
-    rdmapp::acceptor acceptor(loop, std::stoi(argv[1]), pd, cq);
-    server(acceptor, pd);
+    rdmapp::acceptor acceptor(loop, std::stoi(argv[1]), pd, recv_cq, send_cq);
+    server(acceptor, pd, recv_cq);
   } else if (argc >= 3) {
-    rdmapp::connector connector(loop, argv[1], std::stoi(argv[2]), pd, cq);
+    rdmapp::connector connector(loop, argv[1], std::stoi(argv[2]), pd, recv_cq,
+                                send_cq);
     int num_requests = (argc >= 4) ? std::stoi(argv[3]) : kNumDataTransfers;
     client(connector, num_requests);
   } else {
