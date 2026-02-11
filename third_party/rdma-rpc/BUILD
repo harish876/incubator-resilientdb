@@ -19,28 +19,12 @@
 
 package(default_visibility = ["//visibility:public"])
 
-load("@rules_foreign_cc//foreign_cc:defs.bzl", "make")
-load("@hedron_compile_commands//:refresh_compile_commands.bzl", "refresh_compile_commands")
-
-make(
-    name = "cryptopp",
-    lib_source = "@cryptopp//:all_srcs",
-    out_static_libs = ["libcryptopp.a"],
-)
-
 cc_library(
-    name = "cryptopp_lib",
-    deps = [
-        ":cryptopp",
-    ],
-)
-
-# Generates compile_commands.json for IDE IntelliSense. Does NOT run on "bazel build".
-# Run once (or after adding new C++ targets): bazel run //:refresh_compile_commands
-refresh_compile_commands(
-    name = "refresh_compile_commands",
-    targets = [
-        "//tools:rdma_proposal",
-        "//tools:rdma_rpc_simple",
+    name = "rdma_rpc",
+    hdrs = glob(["lib/include/rdma_rpc/**/*.hpp"]),
+    includes = ["lib/include/rdma_rpc"],
+    linkopts = [
+        "-libverbs",
+        "-lrdmacm",
     ],
 )
