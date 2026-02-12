@@ -911,7 +911,7 @@ class CircularNotifyReceiver:  public ReceiveCommunicator {
             if(wcs[i].opcode == IBV_WC_RECV_RDMA_WITH_IMM){
                 uint32_t length = wcs[i].byte_len;
                 char* whole_message = local_buffer->Read(length);
-                v.push_back({0, whole_message, (uint32_t)length, 0 }); 
+                v.push_back({0, whole_message, (uint32_t)length, 0 }); //this is copying in a sense
                 c++;
             }
         }
