@@ -322,7 +322,7 @@ void bw_shared_test(SendCommunicator& sc, std::vector<Region> &send_regions, uin
 }
 
 // shoud work for latency and bw
-void shared_test( PartialReceiveCommunicator& rc, Region & recv_region){ 
+void shared_test(PartialReceiveCommunicator& rc, Region & recv_region){ 
   std::vector<Region> recvs;
   printf("recv size is %u\n",recv_region.length);
 
@@ -679,8 +679,6 @@ int main(int argc, char* argv[]){
       uint64_t rem_tail = info.addr_magic; // magic byte
       uint32_t rem_tail_rkey = info.rkey_magic;
 
-
-           
       struct ibv_mr mr; 
       mr.addr = (void*)info.ctx.addr;
       mr.rkey = info.ctx.rkey;

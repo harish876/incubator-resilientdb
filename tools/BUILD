@@ -101,6 +101,15 @@ cc_binary(
     ],
 )
 
+cc_binary(
+    name = "rdma_rpc_multi",
+    srcs = ["rdma_rpc_multi.cpp"],
+    copts = ["-std=c++11"],
+    deps = [
+        "//third_party/rdma-rpc:rdma_rpc",
+    ],
+)
+
 py_binary(
     name = "generate_region_config",
     srcs = ["generate_region_config.py"],
