@@ -28,3 +28,9 @@ cc_library(
         "-lrdmacm",
     ],
 )
+
+cc_library(
+    name = "cxxopts",
+    hdrs = ["examples/third_party/cxxopts.hpp"],
+    includes = ["examples/third_party"],
+)

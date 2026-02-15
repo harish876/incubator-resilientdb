@@ -98,6 +98,7 @@ cc_binary(
     copts = ["-std=c++11"],
     deps = [
         "//third_party/rdma-rpc:rdma_rpc",
+        "//third_party/rdma-rpc:cxxopts",
     ],
 )
 
@@ -107,6 +108,7 @@ cc_binary(
     copts = ["-std=c++11"],
     deps = [
         "//third_party/rdma-rpc:rdma_rpc",
+        "//third_party/rdma-rpc:cxxopts",
     ],
 )
 
