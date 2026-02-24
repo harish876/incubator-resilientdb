@@ -62,35 +62,35 @@ cc_binary(
     ],
 )
 
-cc_binary(
-    name = "rdma_proposal",
-    srcs = ["rdma_proposal.cpp"],
-    copts = ["-std=c++20"],
-    linkopts = [
-        "-libverbs",
-        "-lmlx5",
-        "-lpthread",
-    ],
-    deps = [
-        "//third_party/rdmapp:rdmapp",
-        "//third_party/rdmapp:rdmapp_examples",
-    ],
-)
+# cc_binary(
+#     name = "rdma_proposal",
+#     srcs = ["rdma_proposal.cpp"],
+#     copts = ["-std=c++20"],
+#     linkopts = [
+#         "-libverbs",
+#         "-lmlx5",
+#         "-lpthread",
+#     ],
+#     deps = [
+#         "//third_party/rdmapp:rdmapp",
+#         "//third_party/rdmapp:rdmapp_examples",
+#     ],
+# )
 
-cc_binary(
-    name = "rdma_proposal_optimized",
-    srcs = ["rdma_proposal_optimized.cpp"],
-    copts = ["-std=c++20"],
-    linkopts = [
-        "-libverbs",
-        "-lmlx5",
-        "-lpthread",
-    ],
-    deps = [
-        "//third_party/rdmapp:rdmapp",
-        "//third_party/rdmapp:rdmapp_examples",
-    ],
-)
+# cc_binary(
+#     name = "rdma_proposal_optimized",
+#     srcs = ["rdma_proposal_optimized.cpp"],
+#     copts = ["-std=c++20"],
+#     linkopts = [
+#         "-libverbs",
+#         "-lmlx5",
+#         "-lpthread",
+#     ],
+#     deps = [
+#         "//third_party/rdmapp:rdmapp",
+#         "//third_party/rdmapp:rdmapp_examples",
+#     ],
+# )
 
 cc_binary(
     name = "rdma_rpc_simple",
