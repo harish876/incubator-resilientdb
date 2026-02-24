@@ -112,6 +112,20 @@ cc_binary(
     ],
 )
 
+cc_binary(
+    name = "rdma_rpc_basic",
+    srcs = ["rdma_rpc_basic.cpp"],
+    copts = ["-std=c++20"],
+    linkopts = [
+        "-libverbs",
+        "-lmlx5",
+        "-lpthread",
+    ],
+    deps = [
+        "//third_party/rdma-rpc:rdma_rpc",
+    ],
+)
+
 py_binary(
     name = "generate_region_config",
     srcs = ["generate_region_config.py"],
