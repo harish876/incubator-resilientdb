@@ -100,6 +100,17 @@ public:
         return this->_pd;
     }
 
+    void Stop() {
+        if (_ec) {
+            rdma_destroy_event_channel(_ec);
+            _ec = nullptr;
+        }
+        if (_listen_id) {
+            rdma_destroy_id(_listen_id);
+            _listen_id = nullptr;
+        }
+    }
+
     uint8_t get_ibport() const 
     {
         return _listen_id->port_num;
@@ -179,10 +190,9 @@ public:
         void* connect_buffer = NULL;
 
         while(!has_pending){
-        
+              if (!this->_ec) return std::make_pair(nullptr, nullptr);
               if(rdma_get_cm_event(this->_ec, &event)) {
-                printf("Event poll unsuccesful, reason %d %s\n", errno, strerror(errno));
-                exit(1);
+                return std::make_pair(nullptr, nullptr);
               }
  
               switch (event->event) {
