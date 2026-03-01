@@ -23,6 +23,7 @@
 #include "platform/proto/broadcast.pb.h"
 #include "platform/proto/resdb.pb.h"
 
+#include <atomic>
 #include <chrono>
 #include <cstdlib>
 #include <functional>
@@ -348,6 +349,104 @@ static bool TestRdmaReplicaCommunicatorSendHeartBeat() {
   return true;
 }
 
+// Simple test: 2 replicas, each has server + client, everyone talks to everyone.
+// No mocks - real RdmaAcceptor and RdmaReplicaCommunicator.
+static bool TestRdmaReplicasEveryoneTalks() {
+  std::cout << "[TEST] RdmaReplicasEveryoneTalks (2 replicas, each server+client)"
+            << std::endl;
+  const int kBasePort = 20002;
+  const int kRdmaPortOffset = 20000;
+  const int kNumReplicas = 2;
+  std::string host_ip = GetHostIp();
+
+  std::vector<std::string> replica_received(2);
+  std::promise<void> both_received;
+  std::future<void> both_future = both_received.get_future();
+  std::atomic<int> receive_count{0};
+
+  std::vector<std::unique_ptr<resdb::RdmaAcceptor>> acceptors;
+  for (int i = 0; i < kNumReplicas; ++i) {
+    int replica_id = i;
+    acceptors.push_back(std::make_unique<resdb::RdmaAcceptor>(
+        kBasePort + replica_id + kRdmaPortOffset, 1,
+        [&, replica_id](uint32_t /*client_id*/, const char* buff, size_t len) {
+          replica_received[replica_id] = std::string(buff, len);
+          if (++receive_count == kNumReplicas) {
+            both_received.set_value();
+          }
+        }));
+    acceptors.back()->StartAccept();
+  }
+  std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+  std::vector<resdb::ReplicaInfo> all_replicas;
+  for (int i = 0; i < kNumReplicas; ++i) {
+    resdb::ReplicaInfo r;
+    r.set_id(i + 1);
+    r.set_ip(host_ip);
+    r.set_port(kBasePort + i);
+    all_replicas.push_back(r);
+  }
+
+  {
+    resdb::RdmaReplicaCommunicator comm0({all_replicas[1]}, nullptr,
+                                         kRdmaPortOffset);
+    resdb::RdmaReplicaCommunicator comm1({all_replicas[0]}, nullptr,
+                                         kRdmaPortOffset);
+
+    resdb::Request req0;
+    req0.set_type(resdb::Request::TYPE_CLIENT_REQUEST);
+    req0.set_sender_id(1);
+    req0.set_data("from_replica_0");
+
+    resdb::Request req1;
+    req1.set_type(resdb::Request::TYPE_CLIENT_REQUEST);
+    req1.set_sender_id(2);
+    req1.set_data("from_replica_1");
+
+    comm0.SendMessage(req0, all_replicas[1]);
+    comm1.SendMessage(req1, all_replicas[0]);
+
+    both_future.get();
+  }
+  std::this_thread::sleep_for(std::chrono::milliseconds(200));
+
+  for (int i = 0; i < kNumReplicas; ++i) {
+    const std::string& msg = replica_received[i];
+    if (msg.empty()) {
+      std::cerr << "[FAIL] Replica " << i << " received nothing" << std::endl;
+      return false;
+    }
+    BroadcastData broadcast_data;
+    if (!broadcast_data.ParseFromString(msg)) {
+      std::cerr << "[FAIL] Replica " << i << ": parse BroadcastData failed"
+                << std::endl;
+      return false;
+    }
+    resdb::ResDBMessage resdb_msg;
+    if (!resdb_msg.ParseFromString(broadcast_data.data(0))) {
+      std::cerr << "[FAIL] Replica " << i << ": parse ResDBMessage failed"
+                << std::endl;
+      return false;
+    }
+    resdb::Request recv;
+    if (!recv.ParseFromString(resdb_msg.data())) {
+      std::cerr << "[FAIL] Replica " << i << ": parse Request failed"
+                << std::endl;
+      return false;
+    }
+    std::string expected = (i == 0) ? "from_replica_1" : "from_replica_0";
+    if (recv.data() != expected) {
+      std::cerr << "[FAIL] Replica " << i << ": expected '" << expected
+                << "', got '" << recv.data() << "'" << std::endl;
+      return false;
+    }
+  }
+
+  std::cout << "[PASS] RdmaReplicasEveryoneTalks" << std::endl;
+  return true;
+}
+
 int main(int argc, char* argv[]) {
   const std::map<std::string, std::function<bool()>> tests = {
       {"RdmaReplicaCommunicatorBroadcast",
@@ -356,6 +455,7 @@ int main(int argc, char* argv[]) {
        TestRdmaReplicaCommunicatorBroadcastMulti},
       {"RdmaReplicaCommunicatorSendHeartBeat",
        TestRdmaReplicaCommunicatorSendHeartBeat},
+      {"RdmaReplicasEveryoneTalks", TestRdmaReplicasEveryoneTalks},
   };
 
   if (argc >= 2) {
