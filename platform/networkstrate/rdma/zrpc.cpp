@@ -50,13 +50,10 @@
 namespace zrpc {
 namespace {
 
-constexpr uint32_t kBufferLen = 4096;
 constexpr uint32_t kRecvBatch = 16;
 constexpr uint32_t kMaxSendWr = 128;
 constexpr uint32_t kMaxRecvWr = 128;
 constexpr uint32_t kExperimentCode = 6;
-constexpr uint32_t kMaxPayload = 4096;
-constexpr uint32_t kSendSlotSize = kMaxPayload;
 constexpr uint32_t kDefaultOutstanding = 8;
 constexpr uint32_t kMailboxSize = sizeof(uint64_t) * 2;
 constexpr uint32_t kLocalMemSize = sizeof(uint64_t) * 32;
@@ -118,9 +115,14 @@ Endpoint ConnectEndpoint(struct rdma_cm_id* id, const connect_info& local_info,
 class ClientImpl {
  public:
   ClientImpl(const std::string& server_ip, int port,
-             uint32_t max_outstanding = kDefaultOutstanding)
-      : ip_(server_ip), port_(port), max_outstanding_(max_outstanding) {
-    ring_mem_ = static_cast<char*>(GetMagicBuffer(kBufferLen));
+             uint32_t max_outstanding = kDefaultOutstanding,
+             uint32_t buffer_len = 65536, uint32_t max_payload = 65536)
+      : ip_(server_ip),
+        port_(port),
+        max_outstanding_(max_outstanding),
+        buffer_len_(buffer_len),
+        max_payload_(max_payload) {
+    ring_mem_ = static_cast<char*>(GetMagicBuffer(buffer_len_));
     if (!ring_mem_) {
       std::cerr << "Failed to allocate magic buffer" << std::endl;
       std::exit(1);
@@ -135,7 +137,7 @@ class ClientImpl {
       id_->pd = ibv_alloc_pd(id_->verbs);
     }
 
-    ring_mr_ = ibv_reg_mr(id_->pd, ring_mem_, kBufferLen * 2,
+    ring_mr_ = ibv_reg_mr(id_->pd, ring_mem_, buffer_len_ * 2,
                           IBV_ACCESS_LOCAL_WRITE | IBV_ACCESS_REMOTE_WRITE |
                               IBV_ACCESS_REMOTE_READ);
     if (!ring_mr_) {
@@ -144,7 +146,7 @@ class ClientImpl {
     }
 
     local_buffer_ = std::unique_ptr<MagicRingBuffer>(
-        new MagicRingBuffer(ring_mr_, log2_pow2(kBufferLen), true));
+        new MagicRingBuffer(ring_mr_, log2_pow2(buffer_len_), true));
     connect_info info{};
     info.code = kExperimentCode;
     info.ctx = local_buffer_->GetContext();
@@ -202,7 +204,7 @@ class ClientImpl {
       std::cerr << "Invalid max_outstanding" << std::endl;
       std::exit(1);
     }
-    const uint32_t send_mem_len = max_outstanding_ * kSendSlotSize;
+    const uint32_t send_mem_len = max_outstanding_ * max_payload_;
     char* send_mem = static_cast<char*>(aligned_alloc(4096, send_mem_len));
     if (!send_mem) {
       std::cerr << "Failed to allocate send buffer" << std::endl;
@@ -217,13 +219,13 @@ class ClientImpl {
     send_regions_.reserve(max_outstanding_);
     for (uint32_t i = 0; i < max_outstanding_; ++i) {
       send_regions_.push_back(
-          {0, send_mem + (i * kSendSlotSize), 0, send_mr_->lkey});
+          {0, send_mem + (i * max_payload_), 0, send_mr_->lkey});
     }
   }
 
   void Send(const std::string& message) {
     uint32_t msg_len = static_cast<uint32_t>(message.size());
-    if (msg_len > kMaxPayload) msg_len = kMaxPayload;
+    if (msg_len > max_payload_) msg_len = max_payload_;
     Region& region = send_regions_[send_index_];
     RpcSendBlocking(*sender_, region, message.data(), msg_len);
     send_index_ = (send_index_ + 1) % max_outstanding_;
@@ -231,7 +233,7 @@ class ClientImpl {
 
   uint64_t SendAsync(const std::string& message) {
     uint32_t msg_len = static_cast<uint32_t>(message.size());
-    if (msg_len > kMaxPayload) msg_len = kMaxPayload;
+    if (msg_len > max_payload_) msg_len = max_payload_;
     while (outstanding_ >= max_outstanding_) {
       ProgressOnce();
     }
@@ -256,6 +258,7 @@ class ClientImpl {
 
   uint32_t Outstanding() const { return outstanding_; }
   uint32_t MaxOutstanding() const { return max_outstanding_; }
+  uint32_t MaxPayload() const { return max_payload_; }
 
   ~ClientImpl() {
     if (endpoint_.ep) {
@@ -269,6 +272,8 @@ class ClientImpl {
   std::string ip_;
   int port_;
   uint32_t max_outstanding_;
+  uint32_t buffer_len_;
+  uint32_t max_payload_;
   char* ring_mem_ = nullptr;
   struct rdma_cm_id* id_ = nullptr;
   struct ibv_mr* ring_mr_ = nullptr;
@@ -287,8 +292,12 @@ class ClientImpl {
 
 class MultiServerImpl {
  public:
-  MultiServerImpl(int port, uint32_t max_outstanding, uint32_t max_clients)
-      : port_(port), max_clients_(max_clients) {
+  MultiServerImpl(int port, uint32_t max_outstanding, uint32_t max_clients,
+                  uint32_t buffer_len = 65536, uint32_t max_payload = 65536)
+      : port_(port),
+        max_clients_(max_clients),
+        buffer_len_(buffer_len),
+        max_payload_(max_payload) {
     (void)max_outstanding;
     ip_ = GetHostIpV4Impl();
     if (ip_.empty()) {
@@ -300,12 +309,12 @@ class MultiServerImpl {
         new ServerRDMA(const_cast<char*>(ip_.c_str()), port_));
     attr_ = prepare_qp(server_->getPD(), kMaxSendWr, kMaxRecvWr, true);
 
-    ring_mem_ = static_cast<char*>(GetMagicBuffer(kBufferLen));
+    ring_mem_ = static_cast<char*>(GetMagicBuffer(buffer_len_));
     if (!ring_mem_) {
       std::cerr << "Failed to allocate magic buffer" << std::endl;
       std::exit(1);
     }
-    ring_mr_ = ibv_reg_mr(server_->getPD(), ring_mem_, kBufferLen * 2,
+    ring_mr_ = ibv_reg_mr(server_->getPD(), ring_mem_, buffer_len_ * 2,
                           IBV_ACCESS_LOCAL_WRITE | IBV_ACCESS_REMOTE_WRITE |
                               IBV_ACCESS_REMOTE_READ);
     if (!ring_mr_) {
@@ -313,7 +322,7 @@ class MultiServerImpl {
       std::exit(1);
     }
     local_buffer_ = std::unique_ptr<MagicRingBuffer>(
-        new MagicRingBuffer(ring_mr_, log2_pow2(kBufferLen), true));
+        new MagicRingBuffer(ring_mr_, log2_pow2(buffer_len_), true));
 
     mailbox_mem_ = static_cast<char*>(aligned_alloc(4096, kMailboxSize));
     if (!mailbox_mem_) {
@@ -434,6 +443,8 @@ class MultiServerImpl {
   int port_;
   std::string ip_;
   uint32_t max_clients_;
+  uint32_t buffer_len_;
+  uint32_t max_payload_;
   struct ibv_qp_init_attr attr_{};
   std::unique_ptr<ServerRDMA> server_{};
   char* ring_mem_ = nullptr;
@@ -589,19 +600,23 @@ std::string GetHostIpV4() {
 
 struct Client::Impl {
   ClientImpl client;
-  Impl(const std::string& ip, int port, uint32_t max_out)
-      : client(ip, port, max_out) {}
+  Impl(const std::string& ip, int port, uint32_t max_out,
+       uint32_t buffer_len, uint32_t max_payload)
+      : client(ip, port, max_out, buffer_len, max_payload) {}
 };
 
 struct MultiServer::Impl {
   MultiServerImpl server;
-  Impl(int port, uint32_t max_out, uint32_t max_clients)
-      : server(port, max_out, max_clients) {}
+  Impl(int port, uint32_t max_out, uint32_t max_clients,
+       uint32_t buffer_len, uint32_t max_payload)
+      : server(port, max_out, max_clients, buffer_len, max_payload) {}
 };
 
 Client::Client(const std::string& server_ip, int port,
-               uint32_t max_outstanding)
-    : impl_(new Impl(server_ip, port, max_outstanding)) {}
+               uint32_t max_outstanding, uint32_t buffer_len,
+               uint32_t max_payload)
+    : impl_(new Impl(server_ip, port, max_outstanding, buffer_len,
+                    max_payload)) {}
 
 Client::~Client() {
   delete impl_;
@@ -631,9 +646,15 @@ uint32_t Client::MaxOutstanding() const {
   return impl_->client.MaxOutstanding();
 }
 
+uint32_t Client::MaxPayload() const {
+  return impl_->client.MaxPayload();
+}
+
 MultiServer::MultiServer(int port, uint32_t max_outstanding,
-                         uint32_t max_clients)
-    : impl_(new Impl(port, max_outstanding, max_clients)) {}
+                         uint32_t max_clients, uint32_t buffer_len,
+                         uint32_t max_payload)
+    : impl_(new Impl(port, max_outstanding, max_clients, buffer_len,
+                    max_payload)) {}
 
 MultiServer::~MultiServer() {
   delete impl_;

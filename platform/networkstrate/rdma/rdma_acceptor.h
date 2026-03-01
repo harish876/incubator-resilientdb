@@ -33,7 +33,8 @@ class RdmaAcceptor {
                              size_t len)>
       CallBack;
 
-  RdmaAcceptor(int port, uint32_t max_clients, CallBack call_back_func);
+  RdmaAcceptor(int port, uint32_t max_clients, CallBack call_back_func,
+               uint32_t buffer_len = 65536, uint32_t max_payload = 65536);
   virtual ~RdmaAcceptor();
 
   void StartAccept();
@@ -41,6 +42,8 @@ class RdmaAcceptor {
  private:
   int port_;
   uint32_t max_clients_;
+  uint32_t buffer_len_;
+  uint32_t max_payload_;
   CallBack call_back_func_;
   std::unique_ptr<zrpc::MultiServer> server_;
   std::thread server_thread_;

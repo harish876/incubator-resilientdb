@@ -28,7 +28,8 @@ namespace zrpc {
 class Client {
  public:
   Client(const std::string& server_ip, int port,
-         uint32_t max_outstanding = 8);
+         uint32_t max_outstanding = 8, uint32_t buffer_len = 65536,
+         uint32_t max_payload = 65536);
   ~Client();
 
   void Send(const std::string& message);
@@ -37,6 +38,7 @@ class Client {
   void Progress();
   uint32_t Outstanding() const;
   uint32_t MaxOutstanding() const;
+  uint32_t MaxPayload() const;
 
  private:
   class Impl;
@@ -45,7 +47,8 @@ class Client {
 
 class MultiServer {
  public:
-  MultiServer(int port, uint32_t max_outstanding, uint32_t max_clients);
+  MultiServer(int port, uint32_t max_outstanding, uint32_t max_clients,
+              uint32_t buffer_len = 65536, uint32_t max_payload = 65536);
   ~MultiServer();
 
   void Run(const std::function<void(uint32_t, const std::string&)>& handler);

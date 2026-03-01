@@ -22,17 +22,21 @@
 namespace resdb {
 
 RdmaAsyncReplicaClient::RdmaAsyncReplicaClient(const std::string& ip, int port,
-                                               uint32_t max_outstanding)
-    : client_(new zrpc::Client(ip, port, max_outstanding)),
+                                               uint32_t max_outstanding,
+                                               uint32_t buffer_len,
+                                               uint32_t max_payload)
+    : client_(new zrpc::Client(ip, port, max_outstanding, buffer_len,
+                               max_payload)),
       ip_(ip),
       port_(port),
-      max_outstanding_(max_outstanding) {}
+      max_outstanding_(max_outstanding),
+      max_payload_(max_payload) {}
 
 RdmaAsyncReplicaClient::~RdmaAsyncReplicaClient() {}
 
 int RdmaAsyncReplicaClient::SendMessage(const std::string& data,
                                         bool use_async) {
-  if (data.size() > 4096) {
+  if (data.size() > max_payload_) {
     return -1;
   }
   if (use_async) {
