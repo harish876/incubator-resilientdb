@@ -53,10 +53,12 @@ cc_library(
     hdrs = ["consensus_manager.h"],
     deps = [
         ":replica_communicator",
+        ":replica_communicator_interface",
         ":service_interface",
         "//common:comm",
         "//platform/common/queue:blocking_queue",
         "//platform/config:resdb_config",
+        "//platform/networkstrate/rdma:rdma_replica_communicator",
         "//platform/proto:broadcast_cc_proto",
         "//platform/proto:resdb_cc_proto",
         "//platform/statistic:stats",
@@ -71,6 +73,27 @@ cc_test(
         ":mock_replica_communicator",
         "//common/test:test_main",
     ],
+)
+
+cc_binary(
+    name = "consensus_manager_rdma_test_main",
+    srcs = ["consensus_manager_rdma_test_main.cpp"],
+    tags = ["manual"],
+    deps = [
+        "//platform/networkstrate/rdma:rdma_acceptor",
+        "//platform/networkstrate/rdma:rdma_replica_communicator",
+        "//platform/networkstrate/rdma:zrpc",
+        "//platform/proto:broadcast_cc_proto",
+        "//platform/proto:resdb_cc_proto",
+    ],
+)
+
+sh_test(
+    name = "consensus_manager_rdma_test",
+    srcs = ["consensus_manager_rdma_test.sh"],
+    data = [":consensus_manager_rdma_test_main"],
+    timeout = "long",
+    tags = ["manual", "no-sandbox"],
 )
 
 cc_library(
@@ -106,6 +129,8 @@ cc_library(
         "//platform/common/data_comm:network_comm",
         "//platform/common/network:tcp_socket",
         "//platform/common/queue:lock_free_queue",
+        "//platform/config:resdb_config",
+        "//platform/networkstrate/rdma:rdma_acceptor",
         "//platform/proto:broadcast_cc_proto",
         "//platform/rdbc:acceptor",
         "//platform/statistic:stats",
@@ -160,12 +185,22 @@ cc_library(
 )
 
 cc_library(
+    name = "replica_communicator_interface",
+    hdrs = ["replica_communicator_interface.h"],
+    visibility = ["//platform:__subpackages__"],
+    deps = [
+        "//platform/proto:resdb_cc_proto",
+    ],
+)
+
+cc_library(
     name = "replica_communicator",
     srcs = ["replica_communicator.cpp"],
     hdrs = ["replica_communicator.h"],
     visibility = ["//platform:__subpackages__"],
     deps = [
         ":async_replica_client",
+        ":replica_communicator_interface",
         "//interface/rdbc:net_channel",
         "//platform/common/queue:batch_queue",
         "//platform/proto:broadcast_cc_proto",

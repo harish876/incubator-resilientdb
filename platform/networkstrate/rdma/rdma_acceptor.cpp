@@ -32,7 +32,9 @@ RdmaAcceptor::RdmaAcceptor(int port, uint32_t max_clients,
       server_(new zrpc::MultiServer(port, 8, max_clients, buffer_len,
                                     max_payload)) {}
 
-RdmaAcceptor::~RdmaAcceptor() {
+RdmaAcceptor::~RdmaAcceptor() { Stop(); }
+
+void RdmaAcceptor::Stop() {
   if (server_thread_.joinable()) {
     server_->Stop();
     server_thread_.join();

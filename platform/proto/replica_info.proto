@@ -64,6 +64,9 @@ message ResConfigData{
   optional int32 max_client_complaint_num = 21;
 
   optional int32 duplicate_check_frequency_useconds = 22;
+
+  optional bool enable_rdma = 25;
+  optional int32 rdma_port_offset = 26;  // RDMA listens on port + offset (default 20000)
 }
 
 message ReplicaStates {

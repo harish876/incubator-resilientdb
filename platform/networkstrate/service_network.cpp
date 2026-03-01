@@ -25,6 +25,7 @@
 #include <thread>
 
 #include "platform/common/network/tcp_socket.h"
+#include "platform/networkstrate/rdma/rdma_acceptor.h"
 #include "platform/proto/broadcast.pb.h"
 
 namespace resdb {
@@ -51,6 +52,19 @@ ServiceNetwork::ServiceNetwork(const ResDBConfig& config,
       std::bind(&ServiceNetwork::AcceptorHandler, this, std::placeholders::_1,
                 std::placeholders::_2));
   async_acceptor_->StartAccept();
+
+  if (config.UseRdma()) {
+    int rdma_port = config.GetRdmaPort();
+    uint32_t max_clients =
+        static_cast<uint32_t>(config.GetReplicaNum() + 10);
+    rdma_acceptor_ = std::make_unique<RdmaAcceptor>(
+        rdma_port, max_clients,
+        [this](uint32_t /*client_id*/, const char* buff, size_t len) {
+          AcceptorHandler(buff, len);
+        });
+    rdma_acceptor_->StartAccept();
+  }
+
   global_stats_ = Stats::GetGlobalStats();
 }
 
@@ -133,6 +147,9 @@ bool ServiceNetwork::IsRunning() { return service_->IsRunning(); }
 
 void ServiceNetwork::Stop() {
   acceptor_->Stop();
+  if (rdma_acceptor_) {
+    rdma_acceptor_.reset();
+  }
   service_->Stop();
 }
 

@@ -47,6 +47,19 @@ cc_library(
     ],
 )
 
+cc_library(
+    name = "rdma_replica_communicator",
+    srcs = ["rdma_replica_communicator.cpp"],
+    hdrs = ["rdma_replica_communicator.h"],
+    deps = [
+        ":rdma_async_replica_client",
+        "//common/crypto:signature_verifier",
+        "//interface/rdbc:net_channel",
+        "//platform/networkstrate:replica_communicator_interface",
+        "//platform/proto:broadcast_cc_proto",
+    ],
+)
+
 cc_binary(
     name = "rdma_send_message_main",
     srcs = ["rdma_send_message_main.cpp"],
@@ -75,30 +88,4 @@ sh_test(
     data = [":rdma_test_main"],
     timeout = "long",
     tags = ["manual", "no-sandbox"],
-)
-
-cc_test(
-    name = "rdma_acceptor_test",
-    srcs = ["rdma_acceptor_test.cpp"],
-    # args = ["--gtest_no_fork", "--gtest_break_on_failure"],
-    tags = ["manual", "no-sandbox"],
-    deps = [
-        ":rdma_acceptor",
-        ":rdma_async_replica_client",
-        ":zrpc",
-        "//common/test:test_main",
-    ],
-)
-
-cc_test(
-    name = "rdma_async_replica_client_test",
-    srcs = ["rdma_async_replica_client_test.cpp"],
-    # args = ["--gtest_no_fork", "--gtest_break_on_failure"],
-    tags = ["manual", "no-sandbox"],
-    deps = [
-        ":rdma_acceptor",
-        ":rdma_async_replica_client",
-        ":zrpc",
-        "//common/test:test_main",
-    ],
 )

@@ -30,6 +30,10 @@
 #include "platform/statistic/stats.h"
 
 namespace resdb {
+class RdmaAcceptor;
+}
+
+namespace resdb {
 
 // ServiceNetwork is a service running in BFT environment.
 // It receives messages from other servers or clients and delivers them to
@@ -61,6 +65,7 @@ class ServiceNetwork {
   bool is_running = false;
   LockFreeQueue<QueueItem> input_queue_, resp_queue_;
   std::unique_ptr<AsyncAcceptor> async_acceptor_;
+  std::unique_ptr<RdmaAcceptor> rdma_acceptor_;
   ResDBConfig config_;
   Stats* global_stats_;
 };

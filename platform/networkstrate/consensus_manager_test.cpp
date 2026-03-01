@@ -48,7 +48,7 @@ class MockConsensusManager : public ConsensusManager {
  public:
   MockConsensusManager(const ResDBConfig& config) : ConsensusManager(config) {}
 
-  MOCK_METHOD(std::unique_ptr<ReplicaCommunicator>, GetReplicaClient,
+  MOCK_METHOD(std::unique_ptr<IReplicaCommunicator>, GetReplicaClient,
               (const std::vector<ReplicaInfo>&, bool), (override));
   MOCK_METHOD(int, ConsensusCommit,
               (std::unique_ptr<Context>, std::unique_ptr<Request>), (override));
@@ -63,7 +63,7 @@ class MockConsensusManager : public ConsensusManager {
     return ConsensusManager::UpdateBroadCastClient();
   }
 
-  ReplicaCommunicator* GetBroadCastClient() {
+  IReplicaCommunicator* GetBroadCastClient() {
     return ConsensusManager::GetBroadCastClient();
   }
 
@@ -265,7 +265,7 @@ TEST_F(ConsensusManagerTest, DiscoverNewClient) {
   EXPECT_EQ(impl_->Dispatch(std::make_unique<Context>(), std::move(request)),
             0);
 
-  ReplicaCommunicator* bc_client = impl_->GetBroadCastClient();
+  IReplicaCommunicator* bc_client = impl_->GetBroadCastClient();
   EXPECT_NE(bc_client, nullptr);
 
   std::vector<ReplicaInfo> client_infos = bc_client->GetClientReplicas();

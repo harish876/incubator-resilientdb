@@ -38,6 +38,7 @@ class RdmaAcceptor {
   virtual ~RdmaAcceptor();
 
   void StartAccept();
+  void Stop();
 
  private:
   int port_;

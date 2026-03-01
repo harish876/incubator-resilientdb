@@ -243,6 +243,16 @@ uint32_t ResDBConfig::GetTcpBatchNum() const {
   return config_data_.tcp_batch_num();
 }
 
+bool ResDBConfig::UseRdma() const {
+  return config_data_.enable_rdma();
+}
+
+int ResDBConfig::GetRdmaPort() const {
+  int offset = config_data_.rdma_port_offset() ? config_data_.rdma_port_offset()
+                                               : 20000;
+  return self_info_.port() + offset;
+}
+
 uint32_t ResDBConfig::GetViewchangeCommitTimeout() const {
   return config_data_.view_change_timeout_ms()
              ? config_data_.view_change_timeout_ms()

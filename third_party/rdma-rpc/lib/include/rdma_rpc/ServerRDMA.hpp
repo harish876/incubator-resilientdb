@@ -1,10 +1,13 @@
 #pragma once 
 
+#include <atomic>
 #include <cstdio>
+#include <tuple>
 #include <cstdlib>
 #include <cerrno>
 #include <string>
 #include <vector>
+#include <poll.h>
 #include <infiniband/verbs.h>
 #include <rdma/rdma_cma.h>
 #include <rdma/rdma_verbs.h>
@@ -181,63 +184,104 @@ public:
 
  
 
-    std::pair<struct rdma_cm_id*, void*> get_connect_request( )
-    {
+    // Poll-based version: checks stop_flag and uses poll() with timeout so the
+    // caller can exit for shutdown. Returns (nullptr, nullptr) when stop_flag
+    // is set or on timeout (caller retries).
+    std::pair<struct rdma_cm_id*, void*> get_connect_request(
+        std::atomic<bool>* stop_flag, int timeout_ms = 100) {
+        if (!this->_ec) return std::make_pair(nullptr, nullptr);
+        if (stop_flag && stop_flag->load(std::memory_order_acquire)) {
+            return std::make_pair(nullptr, nullptr);
+        }
 
+        struct pollfd pfd = {this->_ec->fd, POLLIN, 0};
+        int ret = poll(&pfd, 1, timeout_ms);
+        if (ret < 0) return std::make_pair(nullptr, nullptr);
+        if (ret == 0) return std::make_pair(nullptr, nullptr);  // timeout, retry
+        if (stop_flag && stop_flag->load(std::memory_order_acquire)) {
+            return std::make_pair(nullptr, nullptr);
+        }
+        if (!(pfd.revents & POLLIN)) return std::make_pair(nullptr, nullptr);
+
+        return process_one_event();
+    }
+
+    // Legacy blocking version (for other callers: tools, examples).
+    std::pair<struct rdma_cm_id*, void*> get_connect_request() {
         int has_pending = 0;
         rdma_cm_event* event;
         struct rdma_cm_id* id = NULL;
         void* connect_buffer = NULL;
 
-        while(!has_pending){
-              if (!this->_ec) return std::make_pair(nullptr, nullptr);
-              if(rdma_get_cm_event(this->_ec, &event)) {
+        while (!has_pending) {
+            if (!this->_ec) return std::make_pair(nullptr, nullptr);
+            if (rdma_get_cm_event(this->_ec, &event)) {
                 return std::make_pair(nullptr, nullptr);
-              }
- 
-              switch (event->event) {
-
-                case RDMA_CM_EVENT_CONNECT_REQUEST:
-                  has_pending=1;
-     
-                  id = event->id;  
-
-                  if(event->param.conn.private_data_len){
-                    printf("connect request had data with it: %u bytes\n",event->param.conn.private_data_len);
-                    connect_buffer = malloc(event->param.conn.private_data_len);
-                    memcpy(connect_buffer,event->param.conn.private_data,event->param.conn.private_data_len);
-                  }
- 
-                  break;
-                case RDMA_CM_EVENT_ESTABLISHED: {
-                  printf("connection is esteblished for id %p\n",event->id);
-
-   
-                    }
-                  break;
-                case RDMA_CM_EVENT_DISCONNECTED:
-                  printf("connection is disconnected for id %p\n",event->id);
-                  break;
-                case RDMA_CM_EVENT_ADDR_ERROR:
-                case RDMA_CM_EVENT_ROUTE_ERROR:
-                case RDMA_CM_EVENT_CONNECT_ERROR:
-                case RDMA_CM_EVENT_UNREACHABLE:
-                case RDMA_CM_EVENT_REJECTED:
-                case RDMA_CM_EVENT_ADDR_RESOLVED:
-                case RDMA_CM_EVENT_ROUTE_RESOLVED:
-                  printf("[RDMAPassive]: Unexpected to receive;\n");
-                  break;
-
-
-                case RDMA_CM_EVENT_DEVICE_REMOVAL:
-                  printf("[TODO]:  need to disconnect everything;\n");
-
-                  break;
-                default:
-                  break;
             }
+
+            std::tie(has_pending, id, connect_buffer) =
+                handle_event(event, has_pending, id, connect_buffer);
             rdma_ack_cm_event(event);
         }
         return std::make_pair(id, connect_buffer);
     }
+
+ private:
+    std::tuple<int, struct rdma_cm_id*, void*> handle_event(
+        rdma_cm_event* event, int has_pending, struct rdma_cm_id* id,
+        void* connect_buffer) {
+        switch (event->event) {
+            case RDMA_CM_EVENT_CONNECT_REQUEST:
+                has_pending = 1;
+                id = event->id;
+                if (event->param.conn.private_data_len) {
+                    printf("connect request had data with it: %u bytes\n",
+                           event->param.conn.private_data_len);
+                    connect_buffer =
+                        malloc(event->param.conn.private_data_len);
+                    memcpy(connect_buffer, event->param.conn.private_data,
+                           event->param.conn.private_data_len);
+                }
+                break;
+            case RDMA_CM_EVENT_ESTABLISHED:
+                printf("connection is esteblished for id %p\n", event->id);
+                break;
+            case RDMA_CM_EVENT_DISCONNECTED:
+                printf("connection is disconnected for id %p\n", event->id);
+                break;
+            case RDMA_CM_EVENT_ADDR_ERROR:
+            case RDMA_CM_EVENT_ROUTE_ERROR:
+            case RDMA_CM_EVENT_CONNECT_ERROR:
+            case RDMA_CM_EVENT_UNREACHABLE:
+            case RDMA_CM_EVENT_REJECTED:
+            case RDMA_CM_EVENT_ADDR_RESOLVED:
+            case RDMA_CM_EVENT_ROUTE_RESOLVED:
+                printf("[RDMAPassive]: Unexpected to receive;\n");
+                break;
+            case RDMA_CM_EVENT_DEVICE_REMOVAL:
+                printf("[TODO]:  need to disconnect everything;\n");
+                break;
+            default:
+                break;
+        }
+        return std::make_tuple(has_pending, id, connect_buffer);
+    }
+
+    std::pair<struct rdma_cm_id*, void*> process_one_event() {
+        rdma_cm_event* event;
+        struct rdma_cm_id* id = NULL;
+        void* connect_buffer = NULL;
+        int has_pending = 0;
+
+        if (!this->_ec) return std::make_pair(nullptr, nullptr);
+        if (rdma_get_cm_event(this->_ec, &event)) {
+            return std::make_pair(nullptr, nullptr);
+        }
+        std::tie(has_pending, id, connect_buffer) =
+            handle_event(event, 0, id, connect_buffer);
+        rdma_ack_cm_event(event);
+        return std::make_pair(id, connect_buffer);
+    }
+
+ public:
 };

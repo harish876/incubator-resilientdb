@@ -24,6 +24,7 @@
 #include "platform/common/queue/batch_queue.h"
 #include "platform/common/queue/lock_free_queue.h"
 #include "platform/networkstrate/async_replica_client.h"
+#include "platform/networkstrate/replica_communicator_interface.h"
 #include "platform/proto/replica_info.pb.h"
 #include "platform/proto/resdb.pb.h"
 #include "platform/statistic/stats.h"
@@ -31,8 +32,8 @@
 namespace resdb {
 
 // ReplicaCommunicator is used for replicas to send messages
-// between replicas.
-class ReplicaCommunicator {
+// between replicas (TCP implementation).
+class ReplicaCommunicator : public IReplicaCommunicator {
  public:
   ReplicaCommunicator(const std::vector<ReplicaInfo>& replicas,
                       SignatureVerifier* verifier = nullptr,
@@ -42,21 +43,21 @@ class ReplicaCommunicator {
 
   // HeartBeat message is used to broadcast public keys.
   // It doesn't need the signature.
-  virtual int SendHeartBeat(const Request& hb_info);
+  int SendHeartBeat(const Request& hb_info) override;
 
-  virtual int SendMessage(const google::protobuf::Message& message);
-  virtual int SendMessage(const google::protobuf::Message& message,
-                          const ReplicaInfo& replica_info);
+  int SendMessage(const google::protobuf::Message& message) override;
+  int SendMessage(const google::protobuf::Message& message,
+                  const ReplicaInfo& replica_info) override;
 
-  virtual void BroadCast(const google::protobuf::Message& message);
-  virtual void SendMessage(const google::protobuf::Message& message,
-                           int64_t node_id);
-  virtual int SendBatchMessage(
+  void BroadCast(const google::protobuf::Message& message) override;
+  void SendMessage(const google::protobuf::Message& message,
+                   int64_t node_id) override;
+  int SendBatchMessage(
       const std::vector<std::unique_ptr<Request>>& messages,
-      const ReplicaInfo& replica_info);
+      const ReplicaInfo& replica_info) override;
 
-  void UpdateClientReplicas(const std::vector<ReplicaInfo>& replicas);
-  std::vector<ReplicaInfo> GetClientReplicas();
+  void UpdateClientReplicas(const std::vector<ReplicaInfo>& replicas) override;
+  std::vector<ReplicaInfo> GetClientReplicas() override;
 
  protected:
   virtual std::unique_ptr<NetChannel> GetClient(const std::string& ip,

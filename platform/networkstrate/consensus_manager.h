@@ -23,7 +23,7 @@
 
 #include "platform/common/queue/blocking_queue.h"
 #include "platform/config/resdb_config.h"
-#include "platform/networkstrate/replica_communicator.h"
+#include "platform/networkstrate/replica_communicator_interface.h"
 #include "platform/networkstrate/service_interface.h"
 #include "platform/proto/replica_info.pb.h"
 #include "platform/proto/resdb.pb.h"
@@ -69,7 +69,7 @@ class ConsensusManager : public ServiceInterface {
                        std::unique_ptr<Request> request);
   // =======================================================
 
-  virtual std::unique_ptr<ReplicaCommunicator> GetReplicaClient(
+  virtual std::unique_ptr<IReplicaCommunicator> GetReplicaClient(
       const std::vector<ReplicaInfo>& replicas, bool is_use_long_conn = false);
 
   virtual std::vector<ReplicaInfo> GetReplicas() = 0;
@@ -81,7 +81,7 @@ class ConsensusManager : public ServiceInterface {
   virtual void SetPrimary(uint32_t primary, uint64_t version);
   void AddNewClient(const ReplicaInfo& info);
 
-  ReplicaCommunicator* GetBroadCastClient();
+  IReplicaCommunicator* GetBroadCastClient();
   // Update broad cast client to reflush the replica list.
   void UpdateBroadCastClient();
 
@@ -103,7 +103,7 @@ class ConsensusManager : public ServiceInterface {
  private:
   std::thread heartbeat_thread_;
   std::atomic<bool> is_ready_ = false;
-  std::unique_ptr<ReplicaCommunicator> bc_client_;
+  std::unique_ptr<IReplicaCommunicator> bc_client_;
   std::vector<ReplicaInfo> clients_;
   Stats* global_stats_;
   uint64_t version_;

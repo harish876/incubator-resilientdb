@@ -350,8 +350,11 @@ class MultiServerImpl {
   }
 
   bool AcceptNext() {
-    std::pair<struct rdma_cm_id*, void*> req = server_->get_connect_request();
-    if (!req.first) return false;
+    std::pair<struct rdma_cm_id*, void*> req;
+    do {
+      req = server_->get_connect_request(&stop_, 100);
+      if (stop_.load(std::memory_order_acquire)) return false;
+    } while (!req.first);  // Timeout: retry. Stop: handled above.
     uint32_t cid = next_cid_.load(std::memory_order_relaxed);
     Endpoint endpoint =
         AcceptEndpointWithRequest(*server_, req.first, req.second, info_, attr_, cid);
@@ -434,8 +437,8 @@ class MultiServerImpl {
 
   void Stop() {
     stop_.store(true, std::memory_order_release);
-    if (server_) server_->Stop();
     if (accept_thread_.joinable()) accept_thread_.join();
+    if (server_) server_->Stop();
   }
 
  private:

@@ -117,6 +117,9 @@ class ResDBConfig {
   uint32_t GetOutputWorkerNum() const;
   uint32_t GetTcpBatchNum() const;
 
+  bool UseRdma() const;
+  int GetRdmaPort() const;  // Self replica's RDMA port (port + rdma_port_offset)
+
   // ViewChange Timeout
   uint32_t GetViewchangeCommitTimeout() const;
   void SetViewchangeCommitTimeout(uint64_t timeout_ms);

@@ -20,6 +20,8 @@
 #include "platform/networkstrate/consensus_manager.h"
 
 #include <glog/logging.h>
+
+#include "platform/networkstrate/rdma/rdma_replica_communicator.h"
 #include <unistd.h>
 
 #include "platform/proto/broadcast.pb.h"
@@ -58,7 +60,7 @@ void ConsensusManager::UpdateBroadCastClient() {
   bc_client_ = GetReplicaClient(GetReplicas(), true);
 }
 
-ReplicaCommunicator* ConsensusManager::GetBroadCastClient() {
+IReplicaCommunicator* ConsensusManager::GetBroadCastClient() {
   return bc_client_.get();
 }
 
@@ -349,8 +351,19 @@ void ConsensusManager::SendMessage(const google::protobuf::Message& message,
   }
 }
 
-std::unique_ptr<ReplicaCommunicator> ConsensusManager::GetReplicaClient(
+std::unique_ptr<IReplicaCommunicator> ConsensusManager::GetReplicaClient(
     const std::vector<ReplicaInfo>& replicas, bool is_use_long_conn) {
+  if (config_.UseRdma()) {
+    int rdma_port_offset = config_.GetConfigData().rdma_port_offset()
+                              ? config_.GetConfigData().rdma_port_offset()
+                              : 20000;
+    return std::make_unique<RdmaReplicaCommunicator>(
+        replicas,
+        verifier_ == nullptr || config_.GetConfigData().not_need_signature()
+            ? nullptr
+            : verifier_.get(),
+        rdma_port_offset);
+  }
   return std::make_unique<ReplicaCommunicator>(
       replicas,
       verifier_ == nullptr || config_.GetConfigData().not_need_signature()
