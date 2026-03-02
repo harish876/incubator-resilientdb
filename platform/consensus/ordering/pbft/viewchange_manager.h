@@ -26,7 +26,7 @@
 #include "platform/consensus/execution/system_info.h"
 #include "platform/consensus/ordering/pbft/checkpoint_manager.h"
 #include "platform/consensus/ordering/pbft/message_manager.h"
-#include "platform/networkstrate/replica_communicator.h"
+#include "platform/networkstrate/replica_communicator_interface.h"
 #include "platform/proto/viewchange_message.pb.h"
 #include "platform/statistic/stats.h"
 
@@ -83,7 +83,7 @@ class ViewChangeManager {
   ViewChangeManager(const ResDBConfig& config,
                     CheckPointManager* checkpoint_manager,
                     MessageManager* message_manager, SystemInfo* system_info,
-                    ReplicaCommunicator* replica_communicator,
+                    IReplicaCommunicator* replica_communicator,
                     SignatureVerifier* verifier);
   virtual ~ViewChangeManager();
 
@@ -131,7 +131,7 @@ class ViewChangeManager {
   MessageManager* message_manager_;
   Stats* global_stats_;
   SystemInfo* system_info_;
-  ReplicaCommunicator* replica_communicator_;
+  IReplicaCommunicator* replica_communicator_;
   SignatureVerifier* verifier_;
   std::thread monitor_thread_;
   std::map<uint64_t, std::map<uint32_t, ViewChangeMessage>> viewchange_request_;

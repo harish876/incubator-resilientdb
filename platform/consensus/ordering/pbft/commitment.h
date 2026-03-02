@@ -24,7 +24,7 @@
 #include "platform/consensus/execution/duplicate_manager.h"
 #include "platform/consensus/ordering/pbft/message_manager.h"
 #include "platform/consensus/ordering/pbft/response_manager.h"
-#include "platform/networkstrate/replica_communicator.h"
+#include "platform/networkstrate/replica_communicator_interface.h"
 #include "platform/statistic/stats.h"
 
 namespace resdb {
@@ -32,7 +32,7 @@ namespace resdb {
 class Commitment {
  public:
   Commitment(const ResDBConfig& config, MessageManager* message_manager,
-             ReplicaCommunicator* replica_communicator,
+             IReplicaCommunicator* replica_communicator,
              SignatureVerifier* verifier);
   virtual ~Commitment();
 
@@ -64,7 +64,7 @@ class Commitment {
   MessageManager* message_manager_;
   std::thread executed_thread_;
   std::atomic<bool> stop_;
-  ReplicaCommunicator* replica_communicator_;
+  IReplicaCommunicator* replica_communicator_;
 
   SignatureVerifier* verifier_;
   Stats* global_stats_;

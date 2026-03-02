@@ -26,13 +26,13 @@
 #include "platform/consensus/ordering/poc/pow/shift_manager.h"
 #include "platform/consensus/ordering/poc/pow/transaction_accessor.h"
 #include "platform/consensus/ordering/poc/proto/pow.pb.h"
-#include "platform/networkstrate/replica_communicator.h"
+#include "platform/networkstrate/replica_communicator_interface.h"
 
 namespace resdb {
 
 class PoWManager {
  public:
-  PoWManager(const ResDBPoCConfig& config, ReplicaCommunicator* bc_client);
+  PoWManager(const ResDBPoCConfig& config, IReplicaCommunicator* bc_client);
   virtual ~PoWManager();
 
   void Start();
@@ -92,7 +92,7 @@ class PoWManager {
   std::mutex broad_cast_mtx_, mutex_, tx_mutex_;
   std::condition_variable broad_cast_cv_, cv_;
   std::atomic<BlockStatus> current_status_ = BlockStatus::GENERATE_NEW;
-  ReplicaCommunicator* bc_client_;
+  IReplicaCommunicator* bc_client_;
   SliceInfo need_slice_info_;
   PrometheusHandler* prometheus_handler_;
 };

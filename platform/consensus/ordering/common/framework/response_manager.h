@@ -21,7 +21,8 @@
 
 #include "platform/config/resdb_config.h"
 #include "platform/consensus/ordering/common/framework/transaction_utils.h"
-#include "platform/networkstrate/replica_communicator.h"
+#include "platform/common/queue/lock_free_queue.h"
+#include "platform/networkstrate/replica_communicator_interface.h"
 #include "platform/networkstrate/server_comm.h"
 #include "platform/statistic/stats.h"
 
@@ -31,7 +32,7 @@ namespace common {
 class ResponseManager {
  public:
   ResponseManager(const ResDBConfig& config,
-                  ReplicaCommunicator* replica_communicator,
+                  IReplicaCommunicator* replica_communicator,
                   SignatureVerifier* verifier);
 
   ~ResponseManager();
@@ -62,7 +63,7 @@ class ResponseManager {
 
  private:
   ResDBConfig config_;
-  ReplicaCommunicator* replica_communicator_;
+  IReplicaCommunicator* replica_communicator_;
   LockFreeQueue<QueueItem> batch_queue_;
   std::thread user_req_thread_;
   std::atomic<bool> stop_;

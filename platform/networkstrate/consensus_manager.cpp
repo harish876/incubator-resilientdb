@@ -21,6 +21,7 @@
 
 #include <glog/logging.h>
 
+#include "platform/networkstrate/replica_communicator.h"
 #include "platform/networkstrate/rdma/rdma_replica_communicator.h"
 #include <unistd.h>
 
@@ -49,11 +50,13 @@ ConsensusManager::ConsensusManager(const ResDBConfig& config)
         config_.GetPrivateKey(), config_.GetPublicKeyCertificateInfo());
   }
   bc_client_ = GetReplicaClient(config_.GetReplicaInfos(), true);
+  hb_client_ = GetReplicaClient(GetAllReplicas(), false);
 }
 
 ConsensusManager::~ConsensusManager() {
-  bc_client_.reset();
   Stop();
+  bc_client_.reset();
+  hb_client_.reset();
 }
 
 void ConsensusManager::UpdateBroadCastClient() {
@@ -127,10 +130,13 @@ void ConsensusManager::SendHeartBeat() {
   for (const auto& client : client_replicas) {
     replicas.push_back(client);
   }
-  auto client = GetReplicaClient(replicas, false);
-  if (client == nullptr) {
+  if (hb_client_ == nullptr) {
+    hb_client_ = GetReplicaClient(GetAllReplicas(), false);
+  }
+  if (hb_client_ == nullptr) {
     return;
   }
+  hb_client_->UpdateClientReplicas(client_replicas);
 
   // If it is not a client node, broadcost the current primary to the client.
   if (config_.GetPublicKeyCertificateInfo()
@@ -153,7 +159,7 @@ void ConsensusManager::SendHeartBeat() {
       config_.GetConfigData().self_region_id());
   hb_info.SerializeToString(request.mutable_data());
 
-  int ret = client->SendHeartBeat(request);
+  int ret = hb_client_->SendHeartBeat(request);
   if (ret <= 0) {
     LOG(ERROR) << " server:" << config_.GetSelfInfo().id()
                << " sends HB fail:" << ret;
@@ -227,7 +233,7 @@ int ConsensusManager::ProcessHeartBeat(std::unique_ptr<Context> context,
     return -1;
   }
 
-  LOG(ERROR) << "receive public size:" << hb_info.public_keys().size()
+  LOG(INFO) << "receive public size:" << hb_info.public_keys().size()
              << " primary:" << hb_info.primary()
              << " version:" << hb_info.version()
              << " from region:" << request->region_info().region_id()
@@ -356,7 +362,7 @@ std::unique_ptr<IReplicaCommunicator> ConsensusManager::GetReplicaClient(
   if (config_.UseRdma()) {
     int rdma_port_offset = config_.GetConfigData().rdma_port_offset()
                               ? config_.GetConfigData().rdma_port_offset()
-                              : 20000;
+                              : 0;
     return std::make_unique<RdmaReplicaCommunicator>(
         replicas,
         verifier_ == nullptr || config_.GetConfigData().not_need_signature()
@@ -377,6 +383,9 @@ void ConsensusManager::AddNewReplica(const ReplicaInfo& info) {}
 void ConsensusManager::AddNewClient(const ReplicaInfo& info) {
   clients_.push_back(info);
   bc_client_->UpdateClientReplicas(clients_);
+  if (hb_client_) {
+    hb_client_->UpdateClientReplicas(clients_);
+  }
 }
 
 void ConsensusManager::SetPrimary(uint32_t primary, uint64_t version) {}

@@ -56,7 +56,7 @@ ServiceNetwork::ServiceNetwork(const ResDBConfig& config,
   if (config.UseRdma()) {
     int rdma_port = config.GetRdmaPort();
     uint32_t max_clients =
-        static_cast<uint32_t>(config.GetReplicaNum() + 10);
+        static_cast<uint32_t>(config.GetReplicaNum());
     rdma_acceptor_ = std::make_unique<RdmaAcceptor>(
         rdma_port, max_clients,
         [this](uint32_t /*client_id*/, const char* buff, size_t len) {

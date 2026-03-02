@@ -27,7 +27,7 @@
 namespace resdb {
 
 CheckPointManager::CheckPointManager(const ResDBConfig& config,
-                                     ReplicaCommunicator* replica_communicator,
+                                     IReplicaCommunicator* replica_communicator,
                                      SignatureVerifier* verifier,
                                      SystemInfo* sys_info)
     : config_(config),

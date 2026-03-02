@@ -28,12 +28,12 @@ namespace resdb {
 GeoPBFTCommitment::GeoPBFTCommitment(
     std::unique_ptr<GeoGlobalExecutor> global_executor,
     const ResDBConfig& config, std::unique_ptr<SystemInfo> system_info,
-    ReplicaCommunicator* replica_communicator, SignatureVerifier* verifier)
+    IReplicaCommunicator* replica_communicator, SignatureVerifier* verifier)
     : global_executor_(std::move(global_executor)),
       stop_(false),
       config_(std::move(config)),
       system_info_(std::move(system_info)),
-      replica_communicator_(std::move(replica_communicator)),
+      replica_communicator_(replica_communicator),
       verifier_(verifier) {
   global_stats_ = Stats::GetGlobalStats();
   executed_thread_ =

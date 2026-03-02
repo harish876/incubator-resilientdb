@@ -30,7 +30,7 @@ namespace poe {
 class PoEPerformanceManager : public common::PerformanceManager {
  public:
   PoEPerformanceManager(const ResDBConfig& config,
-                        ReplicaCommunicator* replica_communicator,
+                        IReplicaCommunicator* replica_communicator,
                         SignatureVerifier* verifier);
 
   int NeedResponse() override;

@@ -71,7 +71,7 @@ ViewChangeManager::ViewChangeManager(const ResDBConfig& config,
                                      CheckPointManager* checkpoint_manager,
                                      MessageManager* message_manager,
                                      SystemInfo* system_info,
-                                     ReplicaCommunicator* replica_communicator,
+                                     IReplicaCommunicator* replica_communicator,
                                      SignatureVerifier* verifier)
     : config_(config),
       checkpoint_manager_(checkpoint_manager),

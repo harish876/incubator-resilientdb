@@ -39,6 +39,7 @@ int RdmaAsyncReplicaClient::SendMessage(const std::string& data,
   if (data.size() > max_payload_) {
     return -1;
   }
+  std::lock_guard<std::mutex> lk(send_mutex_);
   if (use_async) {
     client_->SendAsync(data);  // Asynchronous: User has to use
                                // client_->Progress() to manually Poll

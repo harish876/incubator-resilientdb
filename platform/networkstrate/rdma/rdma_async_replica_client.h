@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include <mutex>
 #include <memory>
 #include <string>
 
@@ -44,6 +45,7 @@ class RdmaAsyncReplicaClient {
   int port_;
   uint32_t max_outstanding_;
   uint32_t max_payload_;
+  mutable std::mutex send_mutex_;
 };
 
 }  // namespace resdb

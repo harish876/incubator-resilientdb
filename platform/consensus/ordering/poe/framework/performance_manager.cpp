@@ -29,7 +29,7 @@ namespace poe {
 using comm::CollectorResultCode;
 
 PoEPerformanceManager::PoEPerformanceManager(
-    const ResDBConfig& config, ReplicaCommunicator* replica_communicator,
+    const ResDBConfig& config, IReplicaCommunicator* replica_communicator,
     SignatureVerifier* verifier)
     : PerformanceManager(config, replica_communicator, verifier) {
   f_ = config_.GetMaxMaliciousReplicaNum();

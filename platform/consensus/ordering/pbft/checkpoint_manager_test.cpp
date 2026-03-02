@@ -45,7 +45,7 @@ using ::testing::Test;
 class MyCheckPointManager : public CheckPointManager {
  public:
   MyCheckPointManager(const ResDBConfig& config,
-                      ReplicaCommunicator* replica_communicator,
+                      IReplicaCommunicator* replica_communicator,
                       SignatureVerifier* verifier,
                       std::function<void(int64_t)> call_back = nullptr)
       : CheckPointManager(config, replica_communicator, verifier, &sys_info_),

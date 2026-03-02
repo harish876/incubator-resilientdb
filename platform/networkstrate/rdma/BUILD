@@ -89,3 +89,24 @@ sh_test(
     timeout = "long",
     tags = ["manual", "no-sandbox"],
 )
+
+cc_binary(
+    name = "consensus_manager_rdma_test_main",
+    srcs = ["consensus_manager_rdma_test_main.cpp"],
+    tags = ["manual"],
+    deps = [
+        "//platform/networkstrate/rdma:rdma_acceptor",
+        "//platform/networkstrate/rdma:rdma_replica_communicator",
+        "//platform/networkstrate/rdma:zrpc",
+        "//platform/proto:broadcast_cc_proto",
+        "//platform/proto:resdb_cc_proto",
+    ],
+)
+
+sh_test(
+    name = "consensus_manager_rdma_test",
+    srcs = ["consensus_manager_rdma_test.sh"],
+    data = [":consensus_manager_rdma_test_main"],
+    timeout = "long",
+    tags = ["manual", "no-sandbox"],
+)

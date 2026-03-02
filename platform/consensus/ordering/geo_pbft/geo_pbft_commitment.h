@@ -23,7 +23,7 @@
 #include "platform/consensus/execution/geo_global_executor.h"
 #include "platform/consensus/execution/system_info.h"
 #include "platform/consensus/ordering/geo_pbft/hash_set.h"
-#include "platform/networkstrate/replica_communicator.h"
+#include "platform/networkstrate/replica_communicator_interface.h"
 #include "platform/networkstrate/server_comm.h"
 #include "platform/proto/resdb.pb.h"
 
@@ -34,7 +34,7 @@ class GeoPBFTCommitment {
   GeoPBFTCommitment(std::unique_ptr<GeoGlobalExecutor> global_executor,
                     const ResDBConfig& config,
                     std::unique_ptr<SystemInfo> system_info_,
-                    ReplicaCommunicator* replica_communicator_,
+                    IReplicaCommunicator* replica_communicator_,
                     SignatureVerifier* verifier);
 
   ~GeoPBFTCommitment();
@@ -57,7 +57,7 @@ class GeoPBFTCommitment {
   std::set<uint32_t> checklist_[1 << 20];
   ResDBConfig config_;
   std::unique_ptr<SystemInfo> system_info_ = nullptr;
-  ReplicaCommunicator* replica_communicator_;
+  IReplicaCommunicator* replica_communicator_;
   SignatureVerifier* verifier_;
   Stats* global_stats_;
   std::mutex mutex_;

@@ -349,6 +349,58 @@ static bool TestRdmaReplicaCommunicatorSendHeartBeat() {
   return true;
 }
 
+static bool TestRdmaReplicaCommunicatorSendHeartBeatSelf() {
+  std::cout << "[TEST] RdmaReplicaCommunicatorSendHeartBeatSelf..."
+            << std::endl;
+  const int kPort = 20008;
+  const int kRdmaPortOffset = 0;
+  std::string host_ip = GetHostIp();
+
+  std::promise<std::string> received;
+  std::future<std::string> received_future = received.get_future();
+
+  resdb::RdmaAcceptor acceptor(
+      kPort + kRdmaPortOffset, 1,
+      [&](uint32_t /*client_id*/, const char* buff, size_t len) {
+        received.set_value(std::string(buff, len));
+      });
+  acceptor.StartAccept();
+  std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+  resdb::ReplicaInfo self_replica;
+  self_replica.set_id(1);
+  self_replica.set_ip(host_ip);
+  self_replica.set_port(kPort);
+
+  {
+    std::vector<resdb::ReplicaInfo> replicas = {self_replica};
+    resdb::RdmaReplicaCommunicator communicator(replicas, nullptr,
+                                                kRdmaPortOffset);
+
+    resdb::Request hb_request;
+    hb_request.set_type(resdb::Request::TYPE_HEART_BEAT);
+    hb_request.set_sender_id(1);
+    hb_request.set_data("self_heartbeat_data");
+
+    int sent = communicator.SendHeartBeat(hb_request);
+    if (sent != 0) {
+      std::cerr << "[FAIL] SendHeartBeat returned " << sent
+                << ", expected 0 when only self target exists" << std::endl;
+      return false;
+    }
+
+    if (received_future.wait_for(std::chrono::milliseconds(300)) !=
+        std::future_status::timeout) {
+      std::cerr << "[FAIL] Unexpected self-heartbeat delivery" << std::endl;
+      return false;
+    }
+  }
+
+  std::cout << "[PASS] RdmaReplicaCommunicatorSendHeartBeatSelf (self skipped)"
+            << std::endl;
+  return true;
+}
+
 // Simple test: 2 replicas, each has server + client, everyone talks to everyone.
 // No mocks - real RdmaAcceptor and RdmaReplicaCommunicator.
 static bool TestRdmaReplicasEveryoneTalks() {
@@ -389,9 +441,11 @@ static bool TestRdmaReplicasEveryoneTalks() {
   }
 
   {
-    resdb::RdmaReplicaCommunicator comm0({all_replicas[1]}, nullptr,
+    std::vector<resdb::ReplicaInfo> targets_for_0 = {all_replicas[1]};
+    std::vector<resdb::ReplicaInfo> targets_for_1 = {all_replicas[0]};
+    resdb::RdmaReplicaCommunicator comm0(targets_for_0, nullptr,
                                          kRdmaPortOffset);
-    resdb::RdmaReplicaCommunicator comm1({all_replicas[0]}, nullptr,
+    resdb::RdmaReplicaCommunicator comm1(targets_for_1, nullptr,
                                          kRdmaPortOffset);
 
     resdb::Request req0;
@@ -455,6 +509,8 @@ int main(int argc, char* argv[]) {
        TestRdmaReplicaCommunicatorBroadcastMulti},
       {"RdmaReplicaCommunicatorSendHeartBeat",
        TestRdmaReplicaCommunicatorSendHeartBeat},
+      {"RdmaReplicaCommunicatorSendHeartBeatSelf",
+       TestRdmaReplicaCommunicatorSendHeartBeatSelf},
       {"RdmaReplicasEveryoneTalks", TestRdmaReplicasEveryoneTalks},
   };
 

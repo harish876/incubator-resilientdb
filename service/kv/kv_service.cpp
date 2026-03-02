@@ -82,6 +82,10 @@ int main(int argc, char** argv) {
 
   auto server = GenerateResDBServer(
       config_file, private_key_file, cert_file,
-      std::make_unique<KVExecutor>(NewStorage(db_path, config_data)), nullptr);
+      std::make_unique<KVExecutor>(NewStorage(db_path, config_data)), nullptr,
+      [](ResDBConfig* cfg) {
+        cfg->SetHeartBeatEnabled(false);
+        cfg->SetSignatureVerifierEnabled(false);
+      });
   server->Run();
 }

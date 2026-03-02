@@ -90,7 +90,7 @@ void Consensus::SetupPerformanceDataFunc(std::function<std::string()> func) {
   performance_manager_->SetDataFunc(func);
 }
 
-void Consensus::SetCommunicator(ReplicaCommunicator* replica_communicator) {
+void Consensus::SetCommunicator(IReplicaCommunicator* replica_communicator) {
   replica_communicator_ = replica_communicator;
 }
 

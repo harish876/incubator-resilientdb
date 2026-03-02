@@ -421,7 +421,7 @@ void Stats::MonitorGlobal() {
     run_req_num = run_req_num_;
     run_req_run_time = run_req_run_time_;
 
-    LOG(ERROR) << "=========== monitor =========\n"
+    LOG(INFO) << "=========== monitor =========\n"
                << "server call:" << server_call - last_server_call
                << " server process:" << server_process - last_server_process
                << " socket recv:" << socket_recv - last_socket_recv

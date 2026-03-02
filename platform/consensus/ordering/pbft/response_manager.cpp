@@ -43,7 +43,7 @@ bool ResponseClientTimeout::operator<(
 }
 
 ResponseManager::ResponseManager(const ResDBConfig& config,
-                                 ReplicaCommunicator* replica_communicator,
+                                 IReplicaCommunicator* replica_communicator,
                                  SystemInfo* system_info,
                                  SignatureVerifier* verifier)
     : config_(config),

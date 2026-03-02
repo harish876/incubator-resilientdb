@@ -41,7 +41,7 @@ class Consensus : public ConsensusManager {
 
   void SetupPerformanceDataFunc(std::function<std::string()> func);
 
-  void SetCommunicator(ReplicaCommunicator* replica_communicator);
+  void SetCommunicator(IReplicaCommunicator* replica_communicator);
 
   void InitProtocol(ProtocolBase* protocol);
 
@@ -63,7 +63,7 @@ class Consensus : public ConsensusManager {
       std::unique_ptr<PerformanceManager> performance_manger);
 
  protected:
-  ReplicaCommunicator* replica_communicator_;
+  IReplicaCommunicator* replica_communicator_;
   std::unique_ptr<PerformanceManager> performance_manager_;
   std::unique_ptr<ResponseManager> response_manager_;
   std::unique_ptr<TransactionExecutor> transaction_executor_;

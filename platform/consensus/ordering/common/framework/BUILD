@@ -39,8 +39,10 @@ cc_library(
     hdrs = ["performance_manager.h"],
     deps = [
         ":transaction_utils",
-        "//platform/networkstrate:replica_communicator",
+        "//platform/common/queue:lock_free_queue",
+        "//platform/networkstrate:replica_communicator_interface",
         "//platform/networkstrate:server_comm",
+        "//platform/statistic:stats",
     ],
 )
 
@@ -50,8 +52,10 @@ cc_library(
     hdrs = ["response_manager.h"],
     deps = [
         ":transaction_utils",
-        "//platform/networkstrate:replica_communicator",
+        "//platform/common/queue:lock_free_queue",
+        "//platform/networkstrate:replica_communicator_interface",
         "//platform/networkstrate:server_comm",
+        "//platform/statistic:stats",
     ],
 )
 

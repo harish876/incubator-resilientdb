@@ -38,7 +38,7 @@ std::unique_ptr<Request> NewRequest(PoWRequest type,
 }  // namespace
 
 PoWManager::PoWManager(const ResDBPoCConfig& config,
-                       ReplicaCommunicator* client)
+                       IReplicaCommunicator* client)
     : config_(config), bc_client_(client) {
   Reset();
   is_stop_ = false;

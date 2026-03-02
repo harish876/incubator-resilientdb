@@ -29,7 +29,7 @@ namespace common {
 using namespace resdb::comm;
 
 ResponseManager::ResponseManager(const ResDBConfig& config,
-                                 ReplicaCommunicator* replica_communicator,
+                                 IReplicaCommunicator* replica_communicator,
                                  SignatureVerifier* verifier)
     : config_(config),
       replica_communicator_(replica_communicator),

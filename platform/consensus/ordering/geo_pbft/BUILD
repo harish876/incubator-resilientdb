@@ -41,7 +41,7 @@ cc_library(
         "//platform/consensus/execution:geo_global_executor",
         "//platform/consensus/execution:system_info",
         "//platform/consensus/ordering/common:transaction_utils",
-        "//platform/networkstrate:replica_communicator",
+        "//platform/networkstrate:replica_communicator_interface",
         "//platform/networkstrate:server_comm",
         "//platform/proto:resdb_cc_proto",
     ],

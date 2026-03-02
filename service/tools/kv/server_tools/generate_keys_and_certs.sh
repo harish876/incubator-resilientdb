@@ -17,18 +17,24 @@
 # under the License.
 #
 
+HOST_IP=$(hostname -I | awk '{print $1}')
+if [ -z "${HOST_IP}" ]; then
+  echo "Failed to resolve host IP from hostname -I"
+  exit 1
+fi
+
 iplist=(
-127.0.0.1
-127.0.0.1
-127.0.0.1
-127.0.0.1
-127.0.0.1
+${HOST_IP}
+${HOST_IP}
+${HOST_IP}
+${HOST_IP}
+${HOST_IP}
 )
 
 WORKSPACE=$PWD
 CERT_PATH=$PWD/service/tools/data/cert/
 CONFIG_PATH=$PWD/service/tools/config/
-PORT_BASE=10000
+PORT_BASE=20000
 CLIENT_NUM=1
 
 ./service/tools/config/generate_keys_and_certs.sh ${WORKSPACE} ${CERT_PATH} ${CERT_PATH} ${PORT_BASE} ${CLIENT_NUM} ${iplist[@]} 

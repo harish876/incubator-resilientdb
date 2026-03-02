@@ -41,6 +41,10 @@ RdmaAsyncReplicaClient* RdmaReplicaCommunicator::GetOrCreateClient(
   auto key = std::make_pair(ip, rdma_port);
   std::lock_guard<std::mutex> lock(clients_mutex_);
   if (rdma_clients_.find(key) == rdma_clients_.end()) {
+    LOG(ERROR) << "[RDMA] create client ip=" << ip
+               << " base_port=" << port
+               << " rdma_port=" << rdma_port
+               << " offset=" << rdma_port_offset_;
     rdma_clients_[key] =
         std::make_unique<RdmaAsyncReplicaClient>(ip, rdma_port, 8, 65536, 65536);
   }
@@ -51,18 +55,36 @@ int RdmaReplicaCommunicator::SendToReplica(
     const google::protobuf::Message& message,
     const ReplicaInfo& replica_info) {
   if (!replica_info.ip().size() || !replica_info.port()) {
+    LOG(ERROR) << "[RDMA] invalid target ip/port. id=" << replica_info.id()
+               << " ip='" << replica_info.ip()
+               << "' port=" << replica_info.port();
     return -1;
   }
+  const int rdma_port = replica_info.port() + rdma_port_offset_;
   std::string raw =
       NetChannel::GetRawMessageString(message, verifier_);
   BroadcastData broadcast_data;
   broadcast_data.add_data()->assign(raw);
   std::string data;
   if (!broadcast_data.SerializeToString(&data)) {
+    LOG(ERROR) << "[RDMA] BroadcastData serialize failed for id="
+               << replica_info.id();
     return -1;
   }
+  LOG(ERROR) << "[RDMA] send target id=" << replica_info.id()
+             << " ip=" << replica_info.ip()
+             << " base_port=" << replica_info.port()
+             << " rdma_port=" << rdma_port
+             << " payload_bytes=" << data.size();
   auto* client = GetOrCreateClient(replica_info.ip(), replica_info.port());
-  return client->SendMessage(data, false);
+  int ret = client->SendMessage(data, false);
+  if (ret != 0) {
+    LOG(ERROR) << "[RDMA] send failed target id=" << replica_info.id()
+               << " ip=" << replica_info.ip()
+               << " rdma_port=" << rdma_port
+               << " ret=" << ret;
+  }
+  return ret;
 }
 
 void RdmaReplicaCommunicator::UpdateClientReplicas(
@@ -80,7 +102,24 @@ int RdmaReplicaCommunicator::SendHeartBeat(const Request& hb_info) {
   for (const auto& client : client_replicas_) {
     targets.push_back(client);
   }
+  LOG(ERROR) << "[RDMA] heartbeat sender=" << hb_info.sender_id()
+             << " targets=" << targets.size();
+
+  // Phase 1: establish/reuse connections for all heartbeat targets.
   for (const auto& replica : targets) {
+    if (hb_info.sender_id() > 0 && replica.id() == hb_info.sender_id()) {
+      continue;
+    }
+    if (!replica.ip().empty() && replica.port()) {
+      GetOrCreateClient(replica.ip(), replica.port());
+    }
+  }
+
+  // Phase 2: send heartbeat after all target connections are ready.
+  for (const auto& replica : targets) {
+    if (hb_info.sender_id() > 0 && replica.id() == hb_info.sender_id()) {
+      continue;
+    }
     if (SendToReplica(hb_info, replica) == 0) {
       ret++;
     }
@@ -91,7 +130,26 @@ int RdmaReplicaCommunicator::SendHeartBeat(const Request& hb_info) {
 int RdmaReplicaCommunicator::SendMessage(
     const google::protobuf::Message& message) {
   int ret = 0;
+  int64_t sender_id = 0;
+  if (const auto* request = dynamic_cast<const Request*>(&message)) {
+    sender_id = request->sender_id();
+  }
+
+  // Phase 1: establish/reuse connections for all broadcast targets.
   for (const auto& replica : replicas_) {
+    if (sender_id > 0 && replica.id() == sender_id) {
+      continue;
+    }
+    if (!replica.ip().empty() && replica.port()) {
+      GetOrCreateClient(replica.ip(), replica.port());
+    }
+  }
+
+  // Phase 2: send after all target connections are ready.
+  for (const auto& replica : replicas_) {
+    if (sender_id > 0 && replica.id() == sender_id) {
+      continue;
+    }
     if (SendToReplica(message, replica) == 0) {
       ret++;
     }

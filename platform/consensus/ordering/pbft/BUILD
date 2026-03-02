@@ -44,7 +44,8 @@ cc_library(
     deps = [
         ":lock_free_collector_pool",
         ":transaction_utils",
-        "//platform/networkstrate:replica_communicator",
+        "//platform/networkstrate:replica_communicator_interface",
+        "//platform/statistic:stats",
     ],
 )
 
@@ -67,7 +68,8 @@ cc_library(
     deps = [
         ":lock_free_collector_pool",
         ":transaction_utils",
-        "//platform/networkstrate:replica_communicator",
+        "//platform/networkstrate:replica_communicator_interface",
+        "//platform/statistic:stats",
     ],
 )
 
@@ -108,7 +110,7 @@ cc_library(
         "//platform/common/queue:batch_queue",
         "//platform/config:resdb_config",
         "//platform/consensus/execution:duplicate_manager",
-        "//platform/networkstrate:replica_communicator",
+        "//platform/networkstrate:replica_communicator_interface",
         "//platform/proto:resdb_cc_proto",
         "//platform/statistic:stats",
     ],
@@ -139,7 +141,7 @@ cc_library(
         "//platform/config:resdb_config",
         "//platform/consensus/checkpoint",
         "//platform/consensus/execution:transaction_executor",
-        "//platform/networkstrate:replica_communicator",
+        "//platform/networkstrate:replica_communicator_interface",
         "//platform/networkstrate:server_comm",
         "//platform/proto:checkpoint_info_cc_proto",
     ],
@@ -168,7 +170,7 @@ cc_library(
         ":transaction_utils",
         "//platform/config:resdb_config",
         "//platform/consensus/execution:system_info",
-        "//platform/networkstrate:replica_communicator",
+        "//platform/networkstrate:replica_communicator_interface",
         "//platform/proto:viewchange_message_cc_proto",
         "//platform/statistic:stats",
     ],

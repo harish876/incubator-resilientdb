@@ -249,7 +249,7 @@ bool ResDBConfig::UseRdma() const {
 
 int ResDBConfig::GetRdmaPort() const {
   int offset = config_data_.rdma_port_offset() ? config_data_.rdma_port_offset()
-                                               : 20000;
+                                               : 0;
   return self_info_.port() + offset;
 }
 

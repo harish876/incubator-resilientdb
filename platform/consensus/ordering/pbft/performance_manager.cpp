@@ -43,7 +43,7 @@ bool PerformanceClientTimeout::operator<(
 }
 
 PerformanceManager::PerformanceManager(
-    const ResDBConfig& config, ReplicaCommunicator* replica_communicator,
+    const ResDBConfig& config, IReplicaCommunicator* replica_communicator,
     SystemInfo* system_info, SignatureVerifier* verifier)
     : config_(config),
       replica_communicator_(replica_communicator),

@@ -27,7 +27,7 @@
 #include "platform/config/resdb_config.h"
 #include "platform/consensus/checkpoint/checkpoint.h"
 #include "platform/consensus/execution/transaction_executor.h"
-#include "platform/networkstrate/replica_communicator.h"
+#include "platform/networkstrate/replica_communicator_interface.h"
 #include "platform/networkstrate/server_comm.h"
 #include "platform/proto/checkpoint_info.pb.h"
 #include "platform/proto/resdb.pb.h"
@@ -37,7 +37,7 @@ namespace resdb {
 class CheckPointManager : public CheckPoint {
  public:
   CheckPointManager(const ResDBConfig& config,
-                    ReplicaCommunicator* replica_communicator,
+                    IReplicaCommunicator* replica_communicator,
                     SignatureVerifier* verifier, SystemInfo* sys_info);
   virtual ~CheckPointManager();
 
@@ -108,7 +108,7 @@ class CheckPointManager : public CheckPoint {
  protected:
   uint64_t last_executed_seq_ = 0;
   ResDBConfig config_;
-  ReplicaCommunicator* replica_communicator_;
+  IReplicaCommunicator* replica_communicator_;
   std::thread checkpoint_thread_, stable_checkpoint_thread_, status_thread_;
   SignatureVerifier* verifier_;
   std::atomic<bool> stop_;

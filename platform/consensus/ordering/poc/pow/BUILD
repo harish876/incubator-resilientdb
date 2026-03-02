@@ -202,7 +202,7 @@ cc_library(
         "//common/utils",
         "//platform/common/queue:blocking_queue",
         "//platform/consensus/ordering/poc/proto:pow_cc_proto",
-        "//platform/networkstrate:replica_communicator",
+        "//platform/networkstrate:replica_communicator_interface",
     ],
 )
 

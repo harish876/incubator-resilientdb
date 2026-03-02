@@ -23,7 +23,7 @@
 #include "platform/config/resdb_config.h"
 #include "platform/consensus/ordering/pbft/lock_free_collector_pool.h"
 #include "platform/consensus/ordering/pbft/transaction_utils.h"
-#include "platform/networkstrate/replica_communicator.h"
+#include "platform/networkstrate/replica_communicator_interface.h"
 #include "platform/statistic/stats.h"
 
 namespace resdb {
@@ -41,7 +41,7 @@ class ResponseClientTimeout {
 class ResponseManager {
  public:
   ResponseManager(const ResDBConfig& config,
-                  ReplicaCommunicator* replica_communicator,
+                  IReplicaCommunicator* replica_communicator,
                   SystemInfo* system_info, SignatureVerifier* verifier);
 
   ~ResponseManager();
@@ -85,7 +85,7 @@ class ResponseManager {
 
  private:
   ResDBConfig config_;
-  ReplicaCommunicator* replica_communicator_;
+  IReplicaCommunicator* replica_communicator_;
   std::unique_ptr<LockFreeCollectorPool> collector_pool_, context_pool_;
   LockFreeQueue<QueueItem> batch_queue_;
   std::thread user_req_thread_;
