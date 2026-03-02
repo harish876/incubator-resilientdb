@@ -92,6 +92,14 @@ void RdmaReplicaCommunicator::UpdateClientReplicas(
   client_replicas_ = replicas;
 }
 
+void RdmaReplicaCommunicator::PreWarmConnections(int64_t self_id) {
+  for (const auto& replica : replicas_) {
+    if (!replica.ip().empty() && replica.port()) {
+      GetOrCreateClient(replica.ip(), replica.port());
+    }
+  }
+}
+
 std::vector<ReplicaInfo> RdmaReplicaCommunicator::GetClientReplicas() {
   return client_replicas_;
 }
@@ -107,9 +115,6 @@ int RdmaReplicaCommunicator::SendHeartBeat(const Request& hb_info) {
 
   // Phase 1: establish/reuse connections for all heartbeat targets.
   for (const auto& replica : targets) {
-    if (hb_info.sender_id() > 0 && replica.id() == hb_info.sender_id()) {
-      continue;
-    }
     if (!replica.ip().empty() && replica.port()) {
       GetOrCreateClient(replica.ip(), replica.port());
     }
@@ -117,9 +122,6 @@ int RdmaReplicaCommunicator::SendHeartBeat(const Request& hb_info) {
 
   // Phase 2: send heartbeat after all target connections are ready.
   for (const auto& replica : targets) {
-    if (hb_info.sender_id() > 0 && replica.id() == hb_info.sender_id()) {
-      continue;
-    }
     if (SendToReplica(hb_info, replica) == 0) {
       ret++;
     }
@@ -137,9 +139,6 @@ int RdmaReplicaCommunicator::SendMessage(
 
   // Phase 1: establish/reuse connections for all broadcast targets.
   for (const auto& replica : replicas_) {
-    if (sender_id > 0 && replica.id() == sender_id) {
-      continue;
-    }
     if (!replica.ip().empty() && replica.port()) {
       GetOrCreateClient(replica.ip(), replica.port());
     }
@@ -147,9 +146,6 @@ int RdmaReplicaCommunicator::SendMessage(
 
   // Phase 2: send after all target connections are ready.
   for (const auto& replica : replicas_) {
-    if (sender_id > 0 && replica.id() == sender_id) {
-      continue;
-    }
     if (SendToReplica(message, replica) == 0) {
       ret++;
     }

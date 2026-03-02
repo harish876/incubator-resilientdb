@@ -67,6 +67,15 @@ IReplicaCommunicator* ConsensusManager::GetBroadCastClient() {
   return bc_client_.get();
 }
 
+void ConsensusManager::PreWarmRdmaConnections() {
+  if (config_.UseRdma()) {
+    if (auto* rdma =
+            dynamic_cast<RdmaReplicaCommunicator*>(bc_client_.get())) {
+      rdma->PreWarmConnections(config_.GetSelfInfo().id());
+    }
+  }
+}
+
 SignatureVerifier* ConsensusManager::GetSignatureVerifier() {
   return verifier_ == nullptr ? nullptr : verifier_.get();
 }

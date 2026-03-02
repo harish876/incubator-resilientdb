@@ -51,6 +51,12 @@ class ConsensusManager : public ServiceInterface {
   // Should be called by the instance or test.
   virtual void Start();
 
+  IReplicaCommunicator* GetBroadCastClient();
+  void UpdateBroadCastClient();
+  // RDMA: establish connections before first send. No-op if not using RDMA.
+  void PreWarmRdmaConnections();
+  SignatureVerifier* GetSignatureVerifier();
+
  protected:
   // BroadCast will generate signatures whiling sending data to other replicas.
   virtual void BroadCast(const Request& request);
@@ -80,12 +86,6 @@ class ConsensusManager : public ServiceInterface {
   virtual uint32_t GetVersion();
   virtual void SetPrimary(uint32_t primary, uint64_t version);
   void AddNewClient(const ReplicaInfo& info);
-
-  IReplicaCommunicator* GetBroadCastClient();
-  // Update broad cast client to reflush the replica list.
-  void UpdateBroadCastClient();
-
-  SignatureVerifier* GetSignatureVerifier();
 
  private:
   void HeartBeat();

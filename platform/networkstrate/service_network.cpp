@@ -25,6 +25,7 @@
 #include <thread>
 
 #include "platform/common/network/tcp_socket.h"
+#include "platform/networkstrate/consensus_manager.h"
 #include "platform/networkstrate/rdma/rdma_acceptor.h"
 #include "platform/proto/broadcast.pb.h"
 
@@ -154,5 +155,11 @@ void ServiceNetwork::Stop() {
 }
 
 bool ServiceNetwork::ServiceIsReady() const { return service_->IsReady(); }
+
+void ServiceNetwork::PreWarmRdmaConnections() {
+  if (auto* cm = dynamic_cast<ConsensusManager*>(service_.get())) {
+    cm->PreWarmRdmaConnections();
+  }
+}
 
 }  // namespace resdb

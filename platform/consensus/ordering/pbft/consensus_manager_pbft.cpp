@@ -200,7 +200,7 @@ int ConsensusManagerPBFT::InternalConsensusCommit(
              << "sender id:" << request->sender_id()
              << " seq:" << request->seq()
              << " primary:" << system_info_->GetPrimaryId()
-             << " is convery:" << request->is_recovery();
+             << " is recovery:" << request->is_recovery();
 
   switch (request->type()) {
     case Request::TYPE_CLIENT_REQUEST:

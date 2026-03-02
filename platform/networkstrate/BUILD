@@ -103,6 +103,7 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         ":async_acceptor",
+        ":consensus_manager",
         ":service_interface",
         "//platform/common/data_comm",
         "//platform/common/data_comm:network_comm",

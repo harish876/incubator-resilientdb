@@ -224,6 +224,8 @@ void ResponseManager::SendResponseToClient(
     const BatchUserResponse& batch_response) {
   uint64_t create_time = batch_response.createtime();
   uint64_t local_id = batch_response.local_id();
+  LOG(ERROR) << "SendResponseToClient local_id:" << local_id
+             << " seq:" << batch_response.seq() << " proxy_id:" << batch_response.proxy_id();
   if (create_time > 0) {
     uint64_t run_time = GetCurrentTime() - create_time;
     global_stats_->AddLatency(run_time);
@@ -253,6 +255,9 @@ void ResponseManager::SendResponseToClient(
     int ret = context->client->SendRawMessageData(batch_response.response(i));
     if (ret) {
       LOG(ERROR) << "send resp fail ret:" << ret;
+    } else {
+      LOG(ERROR) << "response sent to client local_id:" << local_id
+                 << " seq:" << batch_response.seq();
     }
   }
 }

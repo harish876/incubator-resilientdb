@@ -87,11 +87,24 @@ int RunSelfTest(bool use_rdma, const std::string& ip, int base_port) {
     servers.push_back(CreateServer(cfg));
   }
 
-  for (auto& server : servers) {
-    server_threads.emplace_back([&server]() { server->Run(); });
+  for (size_t i = 0; i < servers.size(); ++i) {
+    if (i > 0) {
+      std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
+    ServiceNetwork* s = servers[i].get();
+    server_threads.emplace_back([s]() { s->Run(); });
   }
 
   std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+  // RDMA: pre-warm connections so all replicas can reach each other before
+  // consensus starts. Reduces connection setup races in single-process mode.
+  if (use_rdma) {
+    for (auto& server : servers) {
+      server->PreWarmRdmaConnections();
+    }
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+  }
 
   ResDBConfig client_cfg(replicas, ReplicaInfo(), data);
   client_cfg.SetClientTimeoutMs(5000000);

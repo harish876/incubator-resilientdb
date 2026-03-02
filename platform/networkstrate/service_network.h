@@ -51,6 +51,8 @@ class ServiceNetwork {
   void Stop();
   // Whether the service is ready to process the request.
   bool ServiceIsReady() const;
+  // RDMA: establish connections before first consensus. No-op if not RDMA.
+  void PreWarmRdmaConnections();
 
  private:
   void Process();
