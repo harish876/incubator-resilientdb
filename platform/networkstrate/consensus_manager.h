@@ -53,8 +53,9 @@ class ConsensusManager : public ServiceInterface {
 
   IReplicaCommunicator* GetBroadCastClient();
   void UpdateBroadCastClient();
-  // RDMA: establish connections before first send. No-op if not using RDMA.
-  void PreWarmRdmaConnections();
+  // RDMA: establish control-plane connections before data-plane traffic.
+  // No-op if not using RDMA.
+  void EstablishRdmaControlPlane();
   SignatureVerifier* GetSignatureVerifier();
 
  protected:

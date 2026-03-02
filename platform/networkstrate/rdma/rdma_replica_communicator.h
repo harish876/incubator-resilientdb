@@ -54,9 +54,9 @@ class RdmaReplicaCommunicator : public IReplicaCommunicator {
   void UpdateClientReplicas(const std::vector<ReplicaInfo>& replicas) override;
   std::vector<ReplicaInfo> GetClientReplicas() override;
 
-  // Establish RDMA connections to all replicas except self. Call before first
-  // consensus to avoid connection setup races in single-process selftest.
-  void PreWarmConnections(int64_t self_id);
+  // Establish control-plane connections to all replicas except self. Call
+  // before data-plane traffic to avoid connection setup races in selftest.
+  void EstablishControlPlaneConnections(int64_t self_id);
 
  private:
   RdmaAsyncReplicaClient* GetOrCreateClient(const std::string& ip, int port);

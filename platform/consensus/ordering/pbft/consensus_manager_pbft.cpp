@@ -78,6 +78,15 @@ ConsensusManagerPBFT::ConsensusManagerPBFT(
   LOG(ERROR) << " recovery is done";
 }
 
+ConsensusManagerPBFT::~ConsensusManagerPBFT() { Stop(); }
+
+void ConsensusManagerPBFT::Stop() {
+  ConsensusManager::Stop();
+  if (recovery_thread_.joinable()) {
+    recovery_thread_.join();
+  }
+}
+
 void ConsensusManagerPBFT::SetNeedCommitQC(bool need_qc) {
   commitment_->SetNeedCommitQC(need_qc);
 }

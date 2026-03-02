@@ -38,7 +38,9 @@ class ConsensusManagerPBFT : public ConsensusManager {
   ConsensusManagerPBFT(const ResDBConfig& config,
                        std::unique_ptr<TransactionManager> executor,
                        std::unique_ptr<CustomQuery> query_executor = nullptr);
-  virtual ~ConsensusManagerPBFT() = default;
+  ~ConsensusManagerPBFT() override;
+
+  void Stop() override;
 
   int ConsensusCommit(std::unique_ptr<Context> context,
                       std::unique_ptr<Request> request) override;

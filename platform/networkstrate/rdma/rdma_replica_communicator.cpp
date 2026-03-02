@@ -92,7 +92,7 @@ void RdmaReplicaCommunicator::UpdateClientReplicas(
   client_replicas_ = replicas;
 }
 
-void RdmaReplicaCommunicator::PreWarmConnections(int64_t self_id) {
+void RdmaReplicaCommunicator::EstablishControlPlaneConnections(int64_t self_id) {
   for (const auto& replica : replicas_) {
     if (!replica.ip().empty() && replica.port()) {
       GetOrCreateClient(replica.ip(), replica.port());
@@ -113,14 +113,6 @@ int RdmaReplicaCommunicator::SendHeartBeat(const Request& hb_info) {
   LOG(ERROR) << "[RDMA] heartbeat sender=" << hb_info.sender_id()
              << " targets=" << targets.size();
 
-  // Phase 1: establish/reuse connections for all heartbeat targets.
-  for (const auto& replica : targets) {
-    if (!replica.ip().empty() && replica.port()) {
-      GetOrCreateClient(replica.ip(), replica.port());
-    }
-  }
-
-  // Phase 2: send heartbeat after all target connections are ready.
   for (const auto& replica : targets) {
     if (SendToReplica(hb_info, replica) == 0) {
       ret++;
@@ -137,14 +129,6 @@ int RdmaReplicaCommunicator::SendMessage(
     sender_id = request->sender_id();
   }
 
-  // Phase 1: establish/reuse connections for all broadcast targets.
-  for (const auto& replica : replicas_) {
-    if (!replica.ip().empty() && replica.port()) {
-      GetOrCreateClient(replica.ip(), replica.port());
-    }
-  }
-
-  // Phase 2: send after all target connections are ready.
   for (const auto& replica : replicas_) {
     if (SendToReplica(message, replica) == 0) {
       ret++;

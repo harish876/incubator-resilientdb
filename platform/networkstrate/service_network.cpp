@@ -156,9 +156,9 @@ void ServiceNetwork::Stop() {
 
 bool ServiceNetwork::ServiceIsReady() const { return service_->IsReady(); }
 
-void ServiceNetwork::PreWarmRdmaConnections() {
+void ServiceNetwork::EstablishRdmaControlPlane() {
   if (auto* cm = dynamic_cast<ConsensusManager*>(service_.get())) {
-    cm->PreWarmRdmaConnections();
+    cm->EstablishRdmaControlPlane();
   }
 }
 

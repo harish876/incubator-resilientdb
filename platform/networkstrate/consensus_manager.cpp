@@ -67,11 +67,11 @@ IReplicaCommunicator* ConsensusManager::GetBroadCastClient() {
   return bc_client_.get();
 }
 
-void ConsensusManager::PreWarmRdmaConnections() {
+void ConsensusManager::EstablishRdmaControlPlane() {
   if (config_.UseRdma()) {
     if (auto* rdma =
             dynamic_cast<RdmaReplicaCommunicator*>(bc_client_.get())) {
-      rdma->PreWarmConnections(config_.GetSelfInfo().id());
+      rdma->EstablishControlPlaneConnections(config_.GetSelfInfo().id());
     }
   }
 }

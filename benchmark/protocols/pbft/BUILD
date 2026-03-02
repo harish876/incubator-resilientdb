@@ -43,24 +43,14 @@ cc_binary(
 )
 
 cc_binary(
-    name = "lightweight_consensus_server",
-    srcs = ["lightweight_consensus_server.cpp"],
+    name = "consensus_server",
+    srcs = ["consensus_server.cpp"],
     deps = [
         "//executor/common:transaction_manager",
         "//interface/rdbc:transaction_constructor",
         "//platform/config:resdb_config_utils",
         "//platform/consensus/ordering/pbft:consensus_manager_pbft",
         "//platform/networkstrate:service_network",
-        "//proto/kv:kv_cc_proto",
-    ],
-)
-
-cc_binary(
-    name = "lightweight_consensus_client",
-    srcs = ["lightweight_consensus_client.cpp"],
-    deps = [
-        "//interface/rdbc:transaction_constructor",
-        "//platform/config:resdb_config_utils",
         "//proto/kv:kv_cc_proto",
     ],
 )

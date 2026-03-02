@@ -53,6 +53,11 @@ ReplicaCommunicator::~ReplicaCommunicator() {
   if (broadcast_thread_.joinable()) {
     broadcast_thread_.join();
   }
+  for (auto& th : single_thread_) {
+    if (th.joinable()) {
+      th.join();
+    }
+  }
   if (is_use_long_conn_) {
     for (auto& cli : client_pools_) {
       cli.second.reset();

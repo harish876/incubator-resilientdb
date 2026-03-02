@@ -56,8 +56,6 @@ std::unique_ptr<ServiceNetwork> CreateServer(const ResDBConfig& config) {
   return std::make_unique<ServiceNetwork>(config, std::move(consensus));
 }
 
-// One-shot local benchmark helper:
-// starts 4 replicas, sends one SET request, verifies response is "ok".
 int RunSelfTest(bool use_rdma, const std::string& ip, int base_port) {
   std::vector<ReplicaInfo> replicas = {
       GenerateReplicaInfo(1, ip, base_port + 1),
@@ -97,11 +95,11 @@ int RunSelfTest(bool use_rdma, const std::string& ip, int base_port) {
 
   std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
-  // RDMA: pre-warm connections so all replicas can reach each other before
-  // consensus starts. Reduces connection setup races in single-process mode.
+  // RDMA: establish control-plane connections before data-plane traffic.
+  // Reduces connection setup races in single-process selftest.
   if (use_rdma) {
     for (auto& server : servers) {
-      server->PreWarmRdmaConnections();
+      server->EstablishRdmaControlPlane();
     }
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
   }
@@ -166,7 +164,6 @@ int main(int argc, char** argv) {
   std::unique_ptr<resdb::ResDBConfig> config =
       resdb::GenerateResDBConfig(argv[1], argv[2], argv[3]);
 
-  // Keep the benchmark focused on consensus transport behavior.
   config->SetHeartBeatEnabled(false);
   config->SetSignatureVerifierEnabled(false);
 
