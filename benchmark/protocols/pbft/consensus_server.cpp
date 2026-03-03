@@ -56,7 +56,8 @@ std::unique_ptr<ServiceNetwork> CreateServer(const ResDBConfig& config) {
   return std::make_unique<ServiceNetwork>(config, std::move(consensus));
 }
 
-int RunSelfTest(bool use_rdma, const std::string& ip, int base_port) {
+int RunSelfTest(bool use_rdma, const std::string& ip, int base_port,
+                bool use_basic_ring = false) {
   std::vector<ReplicaInfo> replicas = {
       GenerateReplicaInfo(1, ip, base_port + 1),
       GenerateReplicaInfo(2, ip, base_port + 2),
@@ -70,6 +71,7 @@ int RunSelfTest(bool use_rdma, const std::string& ip, int base_port) {
   data.set_enable_faulty_switch(false);
   data.set_enable_rdma(use_rdma);
   data.set_rdma_port_offset(0);
+  data.set_use_basic_ring_rdma(use_basic_ring);
 
   std::vector<std::unique_ptr<ServiceNetwork>> servers;
   std::vector<std::thread> server_threads;
@@ -131,7 +133,8 @@ int RunSelfTest(bool use_rdma, const std::string& ip, int base_port) {
                << " response_value=" << resp.value();
     return 1;
   }
-  LOG(ERROR) << "Self-test passed mode=" << (use_rdma ? "rdma" : "tcp")
+  std::string mode_str = use_rdma ? (use_basic_ring ? "basic_ring" : "rdma") : "tcp";
+  LOG(ERROR) << "Self-test passed mode=" << mode_str
              << " response_value=" << resp.value();
   return 0;
 }
@@ -146,17 +149,18 @@ int main(int argc, char** argv) {
   //   <bin> --selftest [tcp|rdma] [ip] [base_port]
   if (argc >= 2 && std::string(argv[1]) == "--selftest") {
     const std::string mode = (argc >= 3) ? argv[2] : "tcp";
-    const bool use_rdma = (mode == "rdma");
+    const bool use_rdma = (mode == "rdma" || mode == "basic_ring");
+    const bool use_basic_ring = (mode == "basic_ring");
     const std::string ip = (argc >= 4) ? argv[3] : "127.0.0.1";
     const int base_port = (argc >= 5) ? atoi(argv[4]) : 23000;
-    return resdb::RunSelfTest(use_rdma, ip, base_port);
+    return resdb::RunSelfTest(use_rdma, ip, base_port, use_basic_ring);
   }
 
   if (argc < 4) {
     printf(
         "Usage:\n"
         "  %s <server.config> <node_private_key.key.pri> <cert_file.cert>\n"
-        "  %s --selftest [tcp|rdma] [ip] [base_port]\n",
+        "  %s --selftest [tcp|rdma|basic_ring] [ip] [base_port]\n",
         argv[0], argv[0]);
     return 1;
   }
