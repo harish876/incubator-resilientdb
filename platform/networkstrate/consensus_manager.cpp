@@ -372,12 +372,13 @@ std::unique_ptr<IReplicaCommunicator> ConsensusManager::GetReplicaClient(
     int rdma_port_offset = config_.GetConfigData().rdma_port_offset()
                               ? config_.GetConfigData().rdma_port_offset()
                               : 0;
+    bool use_basic_ring = config_.UseBasicRingRdma();
     return std::make_unique<RdmaReplicaCommunicator>(
         replicas,
         verifier_ == nullptr || config_.GetConfigData().not_need_signature()
             ? nullptr
             : verifier_.get(),
-        rdma_port_offset);
+        rdma_port_offset, use_basic_ring);
   }
   return std::make_unique<ReplicaCommunicator>(
       replicas,

@@ -37,7 +37,8 @@ class RdmaReplicaCommunicator : public IReplicaCommunicator {
  public:
   RdmaReplicaCommunicator(const std::vector<ReplicaInfo>& replicas,
                           SignatureVerifier* verifier = nullptr,
-                          int rdma_port_offset = 20000);
+                          int rdma_port_offset = 20000,
+                          bool use_basic_ring = false);
   ~RdmaReplicaCommunicator() override;
 
   int SendHeartBeat(const Request& hb_info) override;
@@ -64,6 +65,7 @@ class RdmaReplicaCommunicator : public IReplicaCommunicator {
                     const ReplicaInfo& replica_info);
 
   int rdma_port_offset_;
+  bool use_basic_ring_;
   std::vector<ReplicaInfo> replicas_;
   std::vector<ReplicaInfo> client_replicas_;
   SignatureVerifier* verifier_;

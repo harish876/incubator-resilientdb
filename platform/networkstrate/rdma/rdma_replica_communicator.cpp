@@ -28,8 +28,9 @@ namespace resdb {
 
 RdmaReplicaCommunicator::RdmaReplicaCommunicator(
     const std::vector<ReplicaInfo>& replicas, SignatureVerifier* verifier,
-    int rdma_port_offset)
+    int rdma_port_offset, bool use_basic_ring)
     : rdma_port_offset_(rdma_port_offset),
+      use_basic_ring_(use_basic_ring),
       replicas_(replicas),
       verifier_(verifier) {}
 
@@ -45,8 +46,8 @@ RdmaAsyncReplicaClient* RdmaReplicaCommunicator::GetOrCreateClient(
                << " base_port=" << port
                << " rdma_port=" << rdma_port
                << " offset=" << rdma_port_offset_;
-    rdma_clients_[key] =
-        std::make_unique<RdmaAsyncReplicaClient>(ip, rdma_port, 8, 65536, 65536);
+    rdma_clients_[key] = std::make_unique<RdmaAsyncReplicaClient>(
+        ip, rdma_port, 8, 65536, 65536, use_basic_ring_);
   }
   return rdma_clients_[key].get();
 }

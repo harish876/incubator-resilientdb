@@ -58,11 +58,13 @@ ServiceNetwork::ServiceNetwork(const ResDBConfig& config,
     int rdma_port = config.GetRdmaPort();
     uint32_t max_clients =
         static_cast<uint32_t>(config.GetReplicaNum());
+    bool use_basic_ring = config.UseBasicRingRdma();
     rdma_acceptor_ = std::make_unique<RdmaAcceptor>(
         rdma_port, max_clients,
         [this](uint32_t /*client_id*/, const char* buff, size_t len) {
           AcceptorHandler(buff, len);
-        });
+        },
+        /*buffer_len=*/65536, /*max_payload=*/65536, use_basic_ring);
     rdma_acceptor_->StartAccept();
   }
 

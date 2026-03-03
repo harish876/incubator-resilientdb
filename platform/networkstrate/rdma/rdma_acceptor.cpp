@@ -23,14 +23,14 @@ namespace resdb {
 
 RdmaAcceptor::RdmaAcceptor(int port, uint32_t max_clients,
                            CallBack call_back_func, uint32_t buffer_len,
-                           uint32_t max_payload)
+                           uint32_t max_payload, bool use_basic_ring)
     : port_(port),
       max_clients_(max_clients),
       buffer_len_(buffer_len),
       max_payload_(max_payload),
       call_back_func_(call_back_func),
       server_(new zrpc::MultiServer(port, 8, max_clients, buffer_len,
-                                    max_payload)) {}
+                                    max_payload, use_basic_ring)) {}
 
 RdmaAcceptor::~RdmaAcceptor() { Stop(); }
 

@@ -24,9 +24,10 @@ namespace resdb {
 RdmaAsyncReplicaClient::RdmaAsyncReplicaClient(const std::string& ip, int port,
                                                uint32_t max_outstanding,
                                                uint32_t buffer_len,
-                                               uint32_t max_payload)
+                                               uint32_t max_payload,
+                                               bool use_basic_ring)
     : client_(new zrpc::Client(ip, port, max_outstanding, buffer_len,
-                               max_payload)),
+                               max_payload, use_basic_ring)),
       ip_(ip),
       port_(port),
       max_outstanding_(max_outstanding),
