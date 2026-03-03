@@ -29,7 +29,7 @@ class Client {
  public:
   Client(const std::string& server_ip, int port,
          uint32_t max_outstanding = 8, uint32_t buffer_len = 65536,
-         uint32_t max_payload = 65536);
+         uint32_t max_payload = 65536, bool use_basic_ring = false);
   ~Client();
 
   void Send(const std::string& message);
@@ -48,7 +48,8 @@ class Client {
 class MultiServer {
  public:
   MultiServer(int port, uint32_t max_outstanding, uint32_t max_clients,
-              uint32_t buffer_len = 65536, uint32_t max_payload = 65536);
+              uint32_t buffer_len = 65536, uint32_t max_payload = 65536,
+              bool use_basic_ring = false);
   ~MultiServer();
 
   void Run(const std::function<void(uint32_t, const std::string&)>& handler);

@@ -247,6 +247,10 @@ bool ResDBConfig::UseRdma() const {
   return config_data_.enable_rdma();
 }
 
+bool ResDBConfig::UseBasicRingRdma() const {
+  return config_data_.use_basic_ring_rdma();
+}
+
 int ResDBConfig::GetRdmaPort() const {
   int offset = config_data_.rdma_port_offset() ? config_data_.rdma_port_offset()
                                                : 0;

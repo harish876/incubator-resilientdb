@@ -67,6 +67,7 @@ message ResConfigData{
 
   optional bool enable_rdma = 25;
   optional int32 rdma_port_offset = 26;  // RDMA listens on port + offset (default 20000)
+  optional bool use_basic_ring_rdma = 27;  // Use BasicRingBuffer RDMA transport (default false = MagicRingBuffer)
 }
 
 message ReplicaStates {

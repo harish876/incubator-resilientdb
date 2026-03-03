@@ -32,7 +32,8 @@ class RdmaAsyncReplicaClient {
   RdmaAsyncReplicaClient(const std::string& ip, int port,
                          uint32_t max_outstanding = 8,
                          uint32_t buffer_len = 65536,
-                         uint32_t max_payload = 65536);
+                         uint32_t max_payload = 65536,
+                         bool use_basic_ring = false);
   virtual ~RdmaAsyncReplicaClient();
 
   virtual int SendMessage(const std::string& data, bool use_async = false);

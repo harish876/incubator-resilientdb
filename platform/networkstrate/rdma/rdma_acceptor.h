@@ -34,7 +34,8 @@ class RdmaAcceptor {
       CallBack;
 
   RdmaAcceptor(int port, uint32_t max_clients, CallBack call_back_func,
-               uint32_t buffer_len = 4096, uint32_t max_payload = 4096);
+               uint32_t buffer_len = 4096, uint32_t max_payload = 4096,
+               bool use_basic_ring = false);
   virtual ~RdmaAcceptor();
 
   void StartAccept();
