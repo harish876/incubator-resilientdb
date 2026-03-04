@@ -52,5 +52,20 @@ cc_binary(
         "//platform/consensus/ordering/pbft:consensus_manager_pbft",
         "//platform/networkstrate:service_network",
         "//proto/kv:kv_cc_proto",
+        "//third_party/rdma-rpc:cxxopts",
+    ],
+)
+
+cc_binary(
+    name = "consensus_server_bench",
+    srcs = ["consensus_server_bench.cpp"],
+    deps = [
+        "//executor/common:transaction_manager",
+        "//interface/rdbc:transaction_constructor",
+        "//platform/config:resdb_config_utils",
+        "//platform/consensus/ordering/pbft:consensus_manager_pbft",
+        "//platform/networkstrate:service_network",
+        "//proto/kv:kv_cc_proto",
+        "//third_party/rdma-rpc:cxxopts",
     ],
 )

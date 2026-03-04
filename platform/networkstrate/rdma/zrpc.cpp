@@ -106,16 +106,15 @@ void RpcSendBlocking(SharedCircularConnectionNotify& sender,
   sender.WaitSend(send_id);
 }
 
-Endpoint AcceptEndpointWithRequest(ServerRDMA& server,
-                                   struct rdma_cm_id* id, void* buf,
-                                   const connect_info& local_info,
+Endpoint AcceptEndpointWithRequest(ServerRDMA& server, struct rdma_cm_id* id,
+                                   void* buf, const connect_info& local_info,
                                    struct ibv_qp_init_attr attr, uint32_t cid);
 Endpoint ConnectEndpoint(struct rdma_cm_id* id, const connect_info& local_info,
                          struct ibv_qp_init_attr attr);
 
-class ClientImpl {
+class MultiClientImpl {
  public:
-  ClientImpl(const std::string& server_ip, int port,
+  MultiClientImpl(const std::string& server_ip, int port,
              uint32_t max_outstanding = kDefaultOutstanding,
              uint32_t buffer_len = 65536, uint32_t max_payload = 65536)
       : ip_(server_ip),
@@ -261,7 +260,7 @@ class ClientImpl {
   uint32_t MaxOutstanding() const { return max_outstanding_; }
   uint32_t MaxPayload() const { return max_payload_; }
 
-  ~ClientImpl() {
+  ~MultiClientImpl() {
     if (endpoint_.ep) {
       rdma_disconnect(endpoint_.ep->id);
       delete endpoint_.ep;
@@ -291,10 +290,11 @@ class ClientImpl {
   uint32_t outstanding_ = 0;
 };
 
-class MultiServerImpl {
+class MultiClientRingServerImpl {
  public:
-  MultiServerImpl(int port, uint32_t max_outstanding, uint32_t max_clients,
-                  uint32_t buffer_len = 65536, uint32_t max_payload = 65536)
+  MultiClientRingServerImpl(int port, uint32_t max_outstanding,
+                            uint32_t max_clients, uint32_t buffer_len = 65536,
+                            uint32_t max_payload = 65536)
       : port_(port),
         max_clients_(max_clients),
         buffer_len_(buffer_len),
@@ -357,8 +357,8 @@ class MultiServerImpl {
       if (stop_.load(std::memory_order_acquire)) return false;
     } while (!req.first);  // Timeout: retry. Stop: handled above.
     uint32_t cid = next_cid_.load(std::memory_order_relaxed);
-    Endpoint endpoint =
-        AcceptEndpointWithRequest(*server_, req.first, req.second, info_, attr_, cid);
+    Endpoint endpoint = AcceptEndpointWithRequest(
+        *server_, req.first, req.second, info_, attr_, cid);
     if (cid >= max_clients_) {
       std::cerr << "[Server] rejected client id " << cid << std::endl;
       rdma_disconnect(endpoint.ep->id);
@@ -469,9 +469,9 @@ class MultiServerImpl {
 };
 
 // ── BasicRingBuffer client implementation ─────────────────────────────────
-class BasicClientImpl {
+class PerClientImpl {
  public:
-  BasicClientImpl(const std::string& server_ip, int port,
+  PerClientImpl(const std::string& server_ip, int port,
                   uint32_t max_outstanding = kDefaultOutstanding,
                   uint32_t buffer_len = 65536, uint32_t max_payload = 65536)
       : ip_(server_ip),
@@ -494,8 +494,8 @@ class BasicClientImpl {
       std::cerr << "[BasicClient] Failed to allocate send buffer" << std::endl;
       std::exit(1);
     }
-    send_mr_ = ibv_reg_mr(id_->pd, send_mem, send_mem_len,
-                          IBV_ACCESS_LOCAL_WRITE);
+    send_mr_ =
+        ibv_reg_mr(id_->pd, send_mem, send_mem_len, IBV_ACCESS_LOCAL_WRITE);
     if (!send_mr_) {
       std::cerr << "[BasicClient] Failed to register send MR" << std::endl;
       std::exit(1);
@@ -553,8 +553,7 @@ class BasicClientImpl {
 
   uint32_t ProgressOnce() {
     uint32_t completed = 0;
-    while (!inflight_.empty() &&
-           sender_->TestSend(inflight_.front().first)) {
+    while (!inflight_.empty() && sender_->TestSend(inflight_.front().first)) {
       sender_->AckSentBytes(inflight_.front().second);
       inflight_.pop_front();
       if (outstanding_ > 0) --outstanding_;
@@ -567,7 +566,7 @@ class BasicClientImpl {
   uint32_t MaxOutstanding() const { return max_outstanding_; }
   uint32_t MaxPayload() const { return max_payload_; }
 
-  ~BasicClientImpl() {
+  ~PerClientImpl() {
     if (endpoint_.ep) {
       rdma_disconnect(endpoint_.ep->id);
       delete endpoint_.ep;
@@ -593,10 +592,11 @@ class BasicClientImpl {
 };
 
 // ── BasicRingBuffer server implementation ─────────────────────────────────
-class BasicMultiServerImpl {
+class PerClientRingServerImpl {
  public:
-  BasicMultiServerImpl(int port, uint32_t max_outstanding, uint32_t max_clients,
-                       uint32_t buffer_len = 65536, uint32_t max_payload = 65536)
+  PerClientRingServerImpl(int port, uint32_t max_outstanding,
+                          uint32_t max_clients, uint32_t buffer_len = 65536,
+                          uint32_t max_payload = 65536)
       : port_(port),
         max_clients_(max_clients),
         buffer_len_(buffer_len),
@@ -624,10 +624,10 @@ class BasicMultiServerImpl {
         std::exit(1);
       }
       std::memset(ring_mems_[i], 0, buffer_len_);
-      ring_mrs_[i] = ibv_reg_mr(
-          server_->getPD(), ring_mems_[i], buffer_len_,
-          IBV_ACCESS_LOCAL_WRITE | IBV_ACCESS_REMOTE_WRITE |
-              IBV_ACCESS_REMOTE_READ);
+      ring_mrs_[i] =
+          ibv_reg_mr(server_->getPD(), ring_mems_[i], buffer_len_,
+                     IBV_ACCESS_LOCAL_WRITE | IBV_ACCESS_REMOTE_WRITE |
+                         IBV_ACCESS_REMOTE_READ);
       if (!ring_mrs_[i]) {
         std::cerr << "[BasicServer] MR failed " << i << std::endl;
         std::exit(1);
@@ -658,8 +658,8 @@ class BasicMultiServerImpl {
     info.code = kExperimentCode;
     info.ctx = rings_[cid]->GetContext();
 
-    Endpoint endpoint = AcceptEndpointWithRequest(
-        *server_, req.first, req.second, info, attr_, cid);
+    Endpoint endpoint = AcceptEndpointWithRequest(*server_, req.first,
+                                                  req.second, info, attr_, cid);
     next_cid_.store(cid + 1, std::memory_order_relaxed);
 
     VerbsEP* old_ep = eps_[cid];
@@ -740,9 +740,8 @@ class BasicMultiServerImpl {
   std::vector<VerbsEP*> eps_{};
 };
 
-Endpoint AcceptEndpointWithRequest(ServerRDMA& server,
-                                   struct rdma_cm_id* id, void* buf,
-                                   const connect_info& local_info,
+Endpoint AcceptEndpointWithRequest(ServerRDMA& server, struct rdma_cm_id* id,
+                                   void* buf, const connect_info& local_info,
                                    struct ibv_qp_init_attr attr, uint32_t cid) {
   if (!id) {
     std::cerr << "Failed to accept connection" << std::endl;
@@ -876,49 +875,46 @@ std::string GetHostIpV4() {
 
 struct Client::Impl {
   bool use_basic;
-  std::unique_ptr<ClientImpl> magic;
-  std::unique_ptr<BasicClientImpl> basic;
-  Impl(const std::string& ip, int port, uint32_t max_out,
-       uint32_t buffer_len, uint32_t max_payload, bool use_basic_ring)
+  std::unique_ptr<MultiClientImpl> magic;
+  std::unique_ptr<PerClientImpl> basic;
+  Impl(const std::string& ip, int port, uint32_t max_out, uint32_t buffer_len,
+       uint32_t max_payload, bool use_basic_ring)
       : use_basic(use_basic_ring) {
     if (use_basic_ring) {
-      basic = std::unique_ptr<BasicClientImpl>(
-          new BasicClientImpl(ip, port, max_out, buffer_len, max_payload));
+      basic = std::unique_ptr<PerClientImpl>(
+          new PerClientImpl(ip, port, max_out, buffer_len, max_payload));
     } else {
-      magic = std::unique_ptr<ClientImpl>(
-          new ClientImpl(ip, port, max_out, buffer_len, max_payload));
+      magic = std::unique_ptr<MultiClientImpl>(
+          new MultiClientImpl(ip, port, max_out, buffer_len, max_payload));
     }
   }
 };
 
 struct MultiServer::Impl {
   bool use_basic;
-  std::unique_ptr<MultiServerImpl> magic;
-  std::unique_ptr<BasicMultiServerImpl> basic;
-  Impl(int port, uint32_t max_out, uint32_t max_clients,
-       uint32_t buffer_len, uint32_t max_payload, bool use_basic_ring)
+  std::unique_ptr<MultiClientRingServerImpl> magic;
+  std::unique_ptr<PerClientRingServerImpl> basic;
+  Impl(int port, uint32_t max_out, uint32_t max_clients, uint32_t buffer_len,
+       uint32_t max_payload, bool use_basic_ring)
       : use_basic(use_basic_ring) {
     if (use_basic_ring) {
-      basic = std::unique_ptr<BasicMultiServerImpl>(
-          new BasicMultiServerImpl(port, max_out, max_clients, buffer_len,
-                                   max_payload));
+      basic =
+          std::unique_ptr<PerClientRingServerImpl>(new PerClientRingServerImpl(
+              port, max_out, max_clients, buffer_len, max_payload));
     } else {
-      magic = std::unique_ptr<MultiServerImpl>(
-          new MultiServerImpl(port, max_out, max_clients, buffer_len,
-                              max_payload));
+      magic = std::unique_ptr<MultiClientRingServerImpl>(
+          new MultiClientRingServerImpl(port, max_out, max_clients, buffer_len,
+                                        max_payload));
     }
   }
 };
 
-Client::Client(const std::string& server_ip, int port,
-               uint32_t max_outstanding, uint32_t buffer_len,
-               uint32_t max_payload, bool use_basic_ring)
-    : impl_(new Impl(server_ip, port, max_outstanding, buffer_len,
-                    max_payload, use_basic_ring)) {}
+Client::Client(const std::string& server_ip, int port, uint32_t max_outstanding,
+               uint32_t buffer_len, uint32_t max_payload, bool use_basic_ring)
+    : impl_(new Impl(server_ip, port, max_outstanding, buffer_len, max_payload,
+                     use_basic_ring)) {}
 
-Client::~Client() {
-  delete impl_;
-}
+Client::~Client() { delete impl_; }
 
 void Client::Send(const std::string& message) {
   if (impl_->use_basic) {
@@ -975,11 +971,9 @@ MultiServer::MultiServer(int port, uint32_t max_outstanding,
                          uint32_t max_clients, uint32_t buffer_len,
                          uint32_t max_payload, bool use_basic_ring)
     : impl_(new Impl(port, max_outstanding, max_clients, buffer_len,
-                    max_payload, use_basic_ring)) {}
+                     max_payload, use_basic_ring)) {}
 
-MultiServer::~MultiServer() {
-  delete impl_;
-}
+MultiServer::~MultiServer() { delete impl_; }
 
 void MultiServer::Run(
     const std::function<void(uint32_t, const std::string&)>& handler) {

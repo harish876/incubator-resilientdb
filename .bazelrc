@@ -1,4 +1,7 @@
 build --cxxopt='-std=c++17' --copt=-O3 --jobs=40
+
+# Profile build configuration (debug symbols, no optimization)
+build:profile --cxxopt='-std=c++17' --copt="-g" --copt="-fno-omit-frame-pointer" --cxxopt="-fno-omit-frame-pointer" --linkopt="-g" --strip=never
 #build --action_env=PYTHON_BIN_PATH="/usr/bin/python3.10"
 #build --action_env=PYTHON_LIB_PATH="/usr/include/python3.10"
 
