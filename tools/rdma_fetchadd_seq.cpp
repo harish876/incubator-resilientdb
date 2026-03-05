@@ -50,7 +50,8 @@ static inline void backoff(int &iters) {
   // small spin then sleep
   if (iters < 1000) {
     // CPU relax-ish
-    asm volatile("pause" ::: "memory");
+    /* This Line GIVES ERROR... commenting for now */
+    //asm volatile("pause" ::: "memory");
   } else {
     std::this_thread::sleep_for(std::chrono::microseconds(50));
   }
@@ -154,7 +155,8 @@ rdmapp::task<void> server(rdmapp::acceptor &acceptor,
     // Wait until producer published (seq == head+1)
     while (*seq_ptr != expected_ready) {
       // tight local spin is fine; could yield if needed
-      asm volatile("pause" ::: "memory");
+      /* This Line GIVES ERROR... commenting for now */
+      //asm volatile("pause" ::: "memory");
     }
 
     // Read payload locally
