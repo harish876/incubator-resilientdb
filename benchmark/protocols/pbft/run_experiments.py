@@ -24,7 +24,7 @@ USAGE EXAMPLES:
    python3 run_experiments.py --ip 128.110.216.215 --base-port 26000 --variants tcp rdma --trials 3 --build
 
 3) Add strace and perf (often requires sudo):
-   sudo python3 ecs251_run_experiments.py --ip 128.110.216.215 --base-port 26000 --num-requests 1000 --trials 3 --build --enable-strace --enable-perf
+   sudo python3 run_experiments.py --ip 128.110.216.215 --base-port 26000 --num-requests 1000 --trials 3 --build --enable-strace
 
 Notes:
 - Selftest creates 4 replicas in-process and sends 2 requests (SET+GET).
@@ -49,7 +49,7 @@ from typing import Dict, List, Optional, Tuple
 # Hardcoded fixed paths
 # -----------------------------
 REPO_PATH = "/users/Pranav14/incubator-resilientdb"
-RESULTS_CSV_PATH = "/users/Pranav14/incubator-resilientdb/benchmark/protocols/pbft/results_csv/dataset_75req.csv"
+RESULTS_CSV_PATH = "/users/Pranav14/incubator-resilientdb/benchmark/protocols/pbft/results_csv/memory_test.csv"
 
 # Bazel target + built binary for consensus_server
 DEFAULT_BAZEL_TARGET = "//benchmark/protocols/pbft:consensus_server"
