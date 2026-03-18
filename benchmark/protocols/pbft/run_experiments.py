@@ -49,7 +49,7 @@ from typing import Dict, List, Optional, Tuple
 # Hardcoded fixed paths
 # -----------------------------
 REPO_PATH = "/users/Pranav14/incubator-resilientdb"
-RESULTS_CSV_PATH = "/users/Pranav14/incubator-resilientdb/benchmark/protocols/pbft/results_csv/main_dataset_20req.csv"
+RESULTS_CSV_PATH = "/users/Pranav14/incubator-resilientdb/benchmark/protocols/pbft/results_csv/dataset_75req.csv"
 
 # Bazel target + built binary for consensus_server
 DEFAULT_BAZEL_TARGET = "//benchmark/protocols/pbft:consensus_server"
