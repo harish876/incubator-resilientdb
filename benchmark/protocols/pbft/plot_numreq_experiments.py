@@ -220,7 +220,7 @@ def plot_metric_vs_requests(
             capsize=4,
         )
 
-    ax.set_xlabel("Number of requests")
+    ax.set_xlabel("Number of requests (×10³)")
     ax.set_ylabel(ylabel)
     ax.set_title(title)
     ax.legend(frameon=False)
@@ -262,7 +262,7 @@ def plot_percentile_panel(
                 linestyle=style["linestyle"],
                 capsize=4,
             )
-        ax.set_xlabel("Number of requests")
+        ax.set_xlabel("Number of requests (×10³)")
         ax.set_ylabel(ylabel)
         ax.grid(True, alpha=0.25, linestyle="--")
 
@@ -305,7 +305,7 @@ def plot_latency_speedup(summary: pd.DataFrame, variants: List[str], title_prefi
         )
 
     ax.axhline(1.0, color="gray", linestyle="--", linewidth=1)
-    ax.set_xlabel("Number of requests")
+    ax.set_xlabel("Number of requests (×10³)")
     ax.set_ylabel("Latency speedup vs TCP (higher is better)")
     ax.set_title(f"{title_prefix}: Average Latency Speedup vs TCP")
     ax.legend(frameon=False)
@@ -349,7 +349,7 @@ def main() -> None:
         args.variants,
         mean_col="throughput_mean",
         std_col="throughput_std",
-        ylabel="Throughput (requests/sec)",
+        ylabel=r"Throughput ($\times 10^3$ requests/sec)",
         title=f"{title_prefix}: Throughput vs Number of Requests",
         outpath=str(outdir / "throughput_vs_num_requests.png"),
     )
