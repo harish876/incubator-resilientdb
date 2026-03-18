@@ -1,0 +1,991 @@
+timestamp_iso,variant,ip,base_port,num_requests,trial,exit_code,wall_time_s,client_latency_s,selftest_mode_reported,result_mode,result_num_requests,result_total_time_s,result_throughput_rps,result_avg_us,result_p50_us,result_p95_us,result_p99_us,result_min_us,result_max_us,result_status,stdout_tail,stderr_tail,strace_summary,perf_stat
+2026-03-17T16:33:51,tcp,128.110.216.196,28000,50,1,0,35.03078526002355,0.00010396,tcp,tcp,50,10.016,4.99201,200315.0,200302.0,200533.0,200638.0,200020.0,200672.0,OK,,"E20260317 16:33:29.011770 424286 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:33:29.011793 424308 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:33:29.011833 424318 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:33:29.011837 424486 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:33:29.011871 424451 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:33:29.012181 424362 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:33:29.011919 424340 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:33:29.012068 424293 commitment.cpp:363] send back to proxy:1
+E20260317 16:33:29.012312 424347 commitment.cpp:363] send back to proxy:1
+E20260317 16:33:29.012164 424486 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:33:29.011729 424281 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:33:29.012212 424366 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:33:29.012133 424320 commitment.cpp:363] send back to proxy:1
+E20260317 16:33:29.012504 424374 commitment.cpp:363] send back to proxy:1
+E20260317 16:33:29.019034 424390 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:33:29.019099 424456 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:33:29.019058 424431 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:33:29.019172 424431 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:33:29.019140 424456 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:33:29.019105 424494 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:33:29.019101 424390 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:33:29.019300 424494 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:33:29.042925 424389 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:1 seq:51 primary:1 is recovery:0
+E20260317 16:33:29.042979 424389 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:33:29.043013 424389 response_manager.cpp:214]  get receive count:0 seq:51
+E20260317 16:33:29.044643 424396 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:33:29.044695 424396 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:33:29.044726 424396 response_manager.cpp:214]  get receive count:1 seq:51
+E20260317 16:33:29.044754 424396 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:33:29.044783 424396 response_manager.cpp:227] SendResponseToClient local_id:51 seq:51 proxy_id:1
+E20260317 16:33:29.044809 424396 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:33:29.044915 424396 response_manager.cpp:259] response sent to client local_id:51 seq:51
+E20260317 16:33:29.044920 424272 consensus_server.cpp:223] Selftest completed request i=49 ret=0 value=light_value
+E20260317 16:33:29.045027 424394 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:33:29.045083 424394 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:33:29.046065 424397 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:33:29.046135 424397 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:33:30.067238 424272 consensus_server.cpp:291] Self-test passed mode=tcp (GET verified, last_value=light_value)
+E20260317 16:33:30.067552 424272 consensus_server.cpp:294] RESULT mode=tcp num_requests=50 total_time_s=10.016 throughput_rps=4.99201 avg_us=200315 p50_us=200302 p95_us=200533 p99_us=200638 min_us=200020 max_us=200672 status=OK
+E20260317 16:33:31.601284 424273 stats.cpp:474]   req client latency:9.94076e-05",,
+2026-03-17T16:34:26,tcp,128.110.216.196,28000,50,2,0,35.029347072937526,0.000104869,tcp,tcp,50,10.016,4.99202,200316.0,200297.0,200563.0,200682.0,199967.0,200685.0,OK,,"E20260317 16:34:04.050055 424564 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:34:04.050063 424598 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:34:04.050094 424567 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:34:04.050521 424674 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:34:04.050568 424576 commitment.cpp:363] send back to proxy:1
+E20260317 16:34:04.050590 424603 commitment.cpp:363] send back to proxy:1
+E20260317 16:34:04.050181 424624 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:34:04.050534 424711 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:34:04.050733 424630 commitment.cpp:363] send back to proxy:1
+E20260317 16:34:04.050788 424736 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:34:04.050572 424674 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:34:04.050027 424591 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:34:04.050137 424737 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:34:04.050570 424650 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:34:04.050750 424711 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:34:04.049934 424652 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:34:04.050844 424736 message_manager.cpp:204]  add request fail
+E20260317 16:34:04.051011 424650 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:34:04.051028 424537 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:34:04.051057 424546 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:34:04.051081 424652 message_manager.cpp:204]  add request fail
+E20260317 16:34:04.051278 424549 commitment.cpp:363] send back to proxy:1
+E20260317 16:34:04.071717 424641 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:1 seq:51 primary:1 is recovery:0
+E20260317 16:34:04.071771 424641 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:34:04.071801 424641 response_manager.cpp:214]  get receive count:0 seq:51
+E20260317 16:34:04.085041 424649 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:34:04.085050 424650 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:34:04.085064 424648 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:34:04.085100 424649 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:34:04.085144 424650 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:34:04.085191 424648 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:34:04.085225 424649 response_manager.cpp:214]  get receive count:1 seq:51
+E20260317 16:34:04.085318 424649 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:34:04.085354 424649 response_manager.cpp:227] SendResponseToClient local_id:51 seq:51 proxy_id:1
+E20260317 16:34:04.085382 424649 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:34:04.085481 424649 response_manager.cpp:259] response sent to client local_id:51 seq:51
+E20260317 16:34:04.085489 424528 consensus_server.cpp:223] Selftest completed request i=49 ret=0 value=light_value
+E20260317 16:34:05.085994 424528 consensus_server.cpp:291] Self-test passed mode=tcp (GET verified, last_value=light_value)
+E20260317 16:34:05.086186 424528 consensus_server.cpp:294] RESULT mode=tcp num_requests=50 total_time_s=10.016 throughput_rps=4.99202 avg_us=200316 p50_us=200297 p95_us=200563 p99_us=200682 min_us=199967 max_us=200685 status=OK
+E20260317 16:34:06.635550 424529 stats.cpp:474]   req client latency:9.95481e-05",,
+2026-03-17T16:35:01,tcp,128.110.216.196,28000,50,3,0,35.030489834956825,0.000104895,tcp,tcp,50,10.0157,4.99215,200310.0,200291.0,200484.0,200492.0,200060.0,200553.0,OK,,"E20260317 16:34:39.084542 424909 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:34:39.084581 424932 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:34:39.084643 424932 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:34:39.084681 424967 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:34:39.084343 424781 commitment.cpp:363] send back to proxy:1
+E20260317 16:34:39.084476 424881 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:34:39.084056 424946 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:34:39.084252 424970 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:34:39.084609 424909 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:34:39.084666 424796 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:34:39.084309 424858 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:34:39.084013 424906 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:34:39.085050 424862 commitment.cpp:363] send back to proxy:1
+E20260317 16:34:39.084731 424805 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:34:39.084771 424823 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:34:39.085165 424808 commitment.cpp:363] send back to proxy:1
+E20260317 16:34:39.084821 424881 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:34:39.084862 424946 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:34:39.084720 424967 message_manager.cpp:204]  add request fail
+E20260317 16:34:39.085055 424906 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:34:39.084796 424829 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:34:39.085421 424835 commitment.cpp:363] send back to proxy:1
+E20260317 16:34:39.104601 424882 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:1 seq:51 primary:1 is recovery:0
+E20260317 16:34:39.104660 424882 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:34:39.104696 424882 response_manager.cpp:214]  get receive count:0 seq:51
+E20260317 16:34:39.117992 424884 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:34:39.117993 424875 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:34:39.118049 424884 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:34:39.118099 424875 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:34:39.118148 424884 response_manager.cpp:214]  get receive count:1 seq:51
+E20260317 16:34:39.118214 424884 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:34:39.118249 424884 response_manager.cpp:227] SendResponseToClient local_id:51 seq:51 proxy_id:1
+E20260317 16:34:39.118286 424884 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:34:39.118314 424876 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:34:39.118369 424876 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:34:39.118402 424884 response_manager.cpp:259] response sent to client local_id:51 seq:51
+E20260317 16:34:39.118407 424760 consensus_server.cpp:223] Selftest completed request i=49 ret=0 value=light_value
+E20260317 16:34:40.118878 424760 consensus_server.cpp:291] Self-test passed mode=tcp (GET verified, last_value=light_value)
+E20260317 16:34:40.119150 424760 consensus_server.cpp:294] RESULT mode=tcp num_requests=50 total_time_s=10.0157 throughput_rps=4.99215 avg_us=200310 p50_us=200291 p95_us=200484 p99_us=200492 min_us=200060 max_us=200553 status=OK
+E20260317 16:34:41.668751 424761 stats.cpp:474]   req client latency:9.95161e-05",,
+2026-03-17T16:35:36,tcp,128.110.216.196,28000,50,4,0,35.03085517405998,5.49851e-05,tcp,tcp,50,7.51228,6.65577,150242.0,150232.0,150384.0,150420.0,150053.0,150427.0,OK,,"E20260317 16:35:11.610198 425029 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:35:11.610244 425056 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:35:11.610284 425040 commitment.cpp:363] send back to proxy:1
+E20260317 16:35:11.610174 425194 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:35:11.610193 425167 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:35:11.610082 425114 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:35:11.610098 425001 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:35:11.610212 425055 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:35:11.610133 425140 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:35:11.610671 425114 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:35:11.610332 425067 commitment.cpp:363] send back to proxy:1
+E20260317 16:35:11.610383 425194 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:35:11.610399 425082 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:35:11.610427 425088 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:35:11.610692 425140 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:35:11.611013 425196 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:35:11.610747 425172 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:35:11.611114 425172 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:35:11.610997 425094 commitment.cpp:363] send back to proxy:1
+E20260317 16:35:11.610152 425002 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:35:11.611020 425140 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:35:11.611268 425013 commitment.cpp:363] send back to proxy:1
+E20260317 16:35:11.610777 425114 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:35:11.611057 425196 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:35:11.627414 425117 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:35:11.627421 425112 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:35:11.627472 425117 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:35:11.627519 425112 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:35:11.627562 425117 response_manager.cpp:214]  get receive count:0 seq:51
+E20260317 16:35:11.627596 425112 response_manager.cpp:214]  get receive count:1 seq:51
+E20260317 16:35:11.627656 425112 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:35:11.627712 425112 response_manager.cpp:227] SendResponseToClient local_id:51 seq:51 proxy_id:1
+E20260317 16:35:11.627746 425112 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:35:11.627863 425112 response_manager.cpp:259] response sent to client local_id:51 seq:51
+E20260317 16:35:11.627872 424992 consensus_server.cpp:223] Selftest completed request i=49 ret=0 value=light_value
+E20260317 16:35:11.634356 425119 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:35:11.634421 425119 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:35:11.703018 424993 stats.cpp:474]   req client latency:4.94734e-05
+E20260317 16:35:12.611779 424992 consensus_server.cpp:291] Self-test passed mode=tcp (GET verified, last_value=light_value)
+E20260317 16:35:12.611871 424992 consensus_server.cpp:294] RESULT mode=tcp num_requests=50 total_time_s=7.51228 throughput_rps=6.65577 avg_us=150242 p50_us=150232 p95_us=150384 p99_us=150420 min_us=150053 max_us=150427 status=OK",,
+2026-03-17T16:36:11,tcp,128.110.216.196,28000,50,5,0,35.03036819002591,0.000104881,tcp,tcp,50,10.0159,4.99208,200313.0,200302.0,200472.0,200534.0,200088.0,200590.0,OK,,"E20260317 16:35:49.143358 425293 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:35:49.143373 425372 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:35:49.143720 425300 commitment.cpp:363] send back to proxy:1
+E20260317 16:35:49.143411 425267 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:35:49.143467 425421 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:35:49.143846 425273 commitment.cpp:363] send back to proxy:1
+E20260317 16:35:49.143518 425339 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:35:49.143517 425320 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:35:49.143533 425234 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:35:49.144045 425327 commitment.cpp:363] send back to proxy:1
+E20260317 16:35:49.143553 425239 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:35:49.144136 425343 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:35:49.143388 425261 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:35:49.144161 425374 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:35:49.144166 425246 commitment.cpp:363] send back to proxy:1
+E20260317 16:35:49.144189 425343 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:35:49.143482 425315 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:35:49.144204 425412 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:35:49.144309 425374 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:35:49.144418 425423 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:35:49.144456 425412 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:35:49.144551 425423 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:35:49.174340 425344 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:1 seq:51 primary:1 is recovery:0
+E20260317 16:35:49.174396 425344 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:35:49.174427 425344 response_manager.cpp:214]  get receive count:0 seq:51
+E20260317 16:35:49.187572 425344 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:35:49.187625 425344 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:35:49.187655 425344 response_manager.cpp:214]  get receive count:1 seq:51
+E20260317 16:35:49.187682 425344 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:35:49.187713 425344 response_manager.cpp:227] SendResponseToClient local_id:51 seq:51 proxy_id:1
+E20260317 16:35:49.187744 425344 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:35:49.187865 425344 response_manager.cpp:259] response sent to client local_id:51 seq:51
+E20260317 16:35:49.187914 425225 consensus_server.cpp:223] Selftest completed request i=49 ret=0 value=light_value
+E20260317 16:35:49.187981 425344 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:35:49.188027 425344 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:35:49.188474 425350 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:35:49.188531 425350 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:35:50.195242 425225 consensus_server.cpp:291] Self-test passed mode=tcp (GET verified, last_value=light_value)
+E20260317 16:35:50.195614 425225 consensus_server.cpp:294] RESULT mode=tcp num_requests=50 total_time_s=10.0159 throughput_rps=4.99208 avg_us=200313 p50_us=200302 p95_us=200472 p99_us=200534 min_us=200088 max_us=200590 status=OK
+E20260317 16:35:51.738287 425226 stats.cpp:474]   req client latency:9.94418e-05",,
+2026-03-17T16:36:41,rdma,128.110.216.196,28000,50,1,0,30.08583487593569,5.78624e-06,rdma,rdma,50,5.32831,9.38383,106563.0,106593.0,107312.0,108009.0,105230.0,108017.0,OK,"NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 1
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 1
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3","E20260317 16:36:19.939404 425620 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:36:19.939339 425460 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:36:19.939462 425620 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:36:19.939411 425580 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:36:19.939383 425464 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:36:19.939594 425513 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:36:19.939630 425472 commitment.cpp:363] send back to proxy:1
+E20260317 16:36:19.939662 425516 commitment.cpp:363] send back to proxy:1
+E20260317 16:36:19.939200 425646 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:36:19.939551 425504 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:36:19.938987 425578 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:36:19.939157 425639 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:36:19.939868 425482 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:36:19.939899 425483 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:36:19.939682 425472 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:36:19.939327 425575 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:36:19.940138 425561 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:1 seq:51 primary:1 is recovery:0
+E20260317 16:36:19.939844 425578 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:36:19.939965 425494 commitment.cpp:363] send back to proxy:1
+E20260317 16:36:19.940187 425638 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:36:19.939720 425516 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:36:19.940239 425561 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:36:19.940470 425561 response_manager.cpp:214]  get receive count:0 seq:51
+E20260317 16:36:19.940502 425560 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:36:19.940547 425560 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:36:19.940586 425560 response_manager.cpp:214]  get receive count:1 seq:51
+E20260317 16:36:19.940621 425560 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:36:19.940675 425560 response_manager.cpp:227] SendResponseToClient local_id:51 seq:51 proxy_id:1
+E20260317 16:36:19.940721 425560 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:36:19.940845 425560 response_manager.cpp:259] response sent to client local_id:51 seq:51
+E20260317 16:36:19.940377 425638 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:36:19.940399 425526 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:36:19.940438 425534 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:36:19.940850 425458 consensus_server.cpp:223] Selftest completed request i=49 ret=0 value=light_value
+E20260317 16:36:19.941051 425538 commitment.cpp:363] send back to proxy:1
+E20260317 16:36:19.940344 425494 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:36:19.941094 425538 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:36:21.139629 425458 consensus_server.cpp:291] Self-test passed mode=rdma (GET verified, last_value=light_value)
+E20260317 16:36:21.139995 425458 consensus_server.cpp:294] RESULT mode=rdma num_requests=50 total_time_s=5.32831 throughput_rps=9.38383 avg_us=106563 p50_us=106593 p95_us=107312 p99_us=108009 min_us=105230 max_us=108017 status=OK
+E20260317 16:36:21.772240 425459 stats.cpp:474]   req client latency:5.60807e-06",,
+2026-03-17T16:37:11,rdma,128.110.216.196,28000,50,2,0,30.085443349089473,5.75752e-06,rdma,rdma,50,5.32987,9.38109,106594.0,106595.0,107061.0,107508.0,105704.0,108779.0,OK,"NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 1
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 1
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3","E20260317 16:36:50.033274 425792 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:36:50.033306 425768 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:36:50.032183 425764 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:36:50.032953 425666 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:36:50.032994 425676 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:36:50.032770 425826 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:1 seq:51 primary:1 is recovery:0
+E20260317 16:36:50.033107 425845 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:1 seq:51 primary:1 is recovery:0
+E20260317 16:36:50.033555 425710 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:36:50.033602 425717 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:36:50.033650 425733 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:36:50.033401 425764 message_manager.cpp:204]  add request fail
+E20260317 16:36:50.033522 425678 commitment.cpp:363] send back to proxy:1
+E20260317 16:36:50.033532 425826 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:36:50.033576 425845 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:36:50.032927 425758 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:36:50.033615 425732 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:36:50.033357 425768 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:36:50.033159 425853 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=53
+E20260317 16:36:50.033671 425722 commitment.cpp:363] send back to proxy:1
+E20260317 16:36:50.034049 425722 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:36:50.034097 425821 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:36:50.034147 425821 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:36:50.034180 425761 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:36:50.034227 425761 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:36:50.034257 425761 response_manager.cpp:214]  get receive count:1 seq:51
+E20260317 16:36:50.034286 425761 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:36:50.034376 425761 response_manager.cpp:227] SendResponseToClient local_id:51 seq:51 proxy_id:1
+E20260317 16:36:50.034408 425761 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:36:50.034547 425664 consensus_server.cpp:223] Selftest completed request i=49 ret=0 value=light_value
+E20260317 16:36:50.034024 425853 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:36:50.033722 425744 commitment.cpp:363] send back to proxy:1
+E20260317 16:36:50.034682 425853 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:36:50.033783 425678 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:36:50.033973 425768 response_manager.cpp:214]  get receive count:0 seq:51
+E20260317 16:36:50.034701 425744 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:36:50.034721 425853 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:36:50.034555 425761 response_manager.cpp:259] response sent to client local_id:51 seq:51
+E20260317 16:36:51.219236 425664 consensus_server.cpp:291] Self-test passed mode=rdma (GET verified, last_value=light_value)
+E20260317 16:36:51.219341 425664 consensus_server.cpp:294] RESULT mode=rdma num_requests=50 total_time_s=5.32987 throughput_rps=9.38109 avg_us=106594 p50_us=106595 p95_us=107061 p99_us=107508 min_us=105704 max_us=108779 status=OK
+E20260317 16:36:51.865238 425665 stats.cpp:474]   req client latency:5.6854e-06",,
+2026-03-17T16:37:42,rdma,128.110.216.196,28000,50,3,0,30.086996363010257,5.83643e-06,rdma,rdma,50,5.33284,9.37587,106653.0,106647.0,107282.0,107453.0,105408.0,107464.0,OK,"NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 1
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 1
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3","E20260317 16:37:20.126153 425999 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:37:20.126422 425884 commitment.cpp:363] send back to proxy:1
+E20260317 16:37:20.126507 425896 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:37:20.126438 425999 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:37:20.126586 425906 commitment.cpp:363] send back to proxy:1
+E20260317 16:37:20.126081 426029 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=53
+E20260317 16:37:20.126521 425884 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:37:20.126456 425894 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:37:20.126667 425906 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:37:20.126721 426029 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:37:20.126796 426028 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:37:20.126853 425974 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:1 seq:51 primary:1 is recovery:0
+E20260317 16:37:20.127012 426058 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:37:20.127065 425916 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:37:20.127087 425938 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:37:20.127161 425970 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:37:20.127020 425974 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:37:20.127153 425923 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:37:20.126978 426028 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:37:20.127310 425928 commitment.cpp:363] send back to proxy:1
+E20260317 16:37:20.127208 425970 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:37:20.127087 426058 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:37:20.127240 425974 response_manager.cpp:214]  get receive count:0 seq:51
+E20260317 16:37:20.127123 425946 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:37:20.127357 425928 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:37:20.127538 425950 commitment.cpp:363] send back to proxy:1
+E20260317 16:37:20.127393 425970 response_manager.cpp:214]  get receive count:1 seq:51
+E20260317 16:37:20.127599 425950 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:37:20.127626 425970 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:37:20.127630 425971 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:37:20.127760 425975 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:37:20.127777 425971 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:37:20.127732 425970 response_manager.cpp:227] SendResponseToClient local_id:51 seq:51 proxy_id:1
+E20260317 16:37:20.127813 425975 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:37:20.127884 425970 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:37:20.128058 425970 response_manager.cpp:259] response sent to client local_id:51 seq:51
+E20260317 16:37:20.128065 425870 consensus_server.cpp:223] Selftest completed request i=49 ret=0 value=light_value
+E20260317 16:37:21.331286 425870 consensus_server.cpp:291] Self-test passed mode=rdma (GET verified, last_value=light_value)
+E20260317 16:37:21.331391 425870 consensus_server.cpp:294] RESULT mode=rdma num_requests=50 total_time_s=5.33284 throughput_rps=9.37587 avg_us=106653 p50_us=106647 p95_us=107282 p99_us=107453 min_us=105408 max_us=107464 status=OK
+E20260317 16:37:21.956756 425871 stats.cpp:474]   req client latency:5.7215e-06",,
+2026-03-17T16:38:12,rdma,128.110.216.196,28000,50,4,0,30.087283906992525,5.78676e-06,rdma,rdma,50,5.33639,9.36963,106724.0,106732.0,107328.0,107430.0,105750.0,107625.0,OK,"NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 1
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 1
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3","E20260317 16:37:50.226752 426262 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:37:50.226375 426232 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:37:50.226501 426208 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:37:50.226897 426208 message_manager.cpp:204]  add request fail
+E20260317 16:37:50.226542 426237 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:37:50.227036 426237 message_manager.cpp:204]  add request fail
+E20260317 16:37:50.226630 426199 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:37:50.226661 426103 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:37:50.226683 426261 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:37:50.226696 426112 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:37:50.227222 426147 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:37:50.227257 426148 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:37:50.226872 426125 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:37:50.227336 426159 commitment.cpp:363] send back to proxy:1
+E20260317 16:37:50.226112 426172 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:37:50.227209 426261 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:37:50.227494 426261 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:1 seq:51 primary:1 is recovery:0
+E20260317 16:37:50.227527 426261 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:37:50.227278 426115 commitment.cpp:363] send back to proxy:1
+E20260317 16:37:50.226850 426232 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:37:50.226903 426126 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:37:50.227387 426159 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:37:50.227619 426115 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:37:50.227727 426137 commitment.cpp:363] send back to proxy:1
+E20260317 16:37:50.227833 426185 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:37:50.227901 426187 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:37:50.227872 426137 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:37:50.227909 426185 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:37:50.227950 426187 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:37:50.228080 426174 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:37:50.228046 426185 response_manager.cpp:214]  get receive count:1 seq:51
+E20260317 16:37:50.228133 426174 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:37:50.228161 426185 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:37:50.228247 426185 response_manager.cpp:227] SendResponseToClient local_id:51 seq:51 proxy_id:1
+E20260317 16:37:50.228281 426185 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:37:50.228448 426185 response_manager.cpp:259] response sent to client local_id:51 seq:51
+E20260317 16:37:50.228457 426078 consensus_server.cpp:223] Selftest completed request i=49 ret=0 value=light_value
+E20260317 16:37:51.411279 426078 consensus_server.cpp:291] Self-test passed mode=rdma (GET verified, last_value=light_value)
+E20260317 16:37:51.411422 426078 consensus_server.cpp:294] RESULT mode=rdma num_requests=50 total_time_s=5.33639 throughput_rps=9.36963 avg_us=106724 p50_us=106732 p95_us=107328 p99_us=107430 min_us=105750 max_us=107625 status=OK
+E20260317 16:37:52.050031 426079 stats.cpp:474]   req client latency:5.85273e-06",,
+2026-03-17T16:38:42,rdma,128.110.216.196,28000,50,5,0,30.085179553949274,5.79886e-06,rdma,rdma,50,5.34239,9.35911,106844.0,106578.0,107029.0,108739.0,105430.0,119806.0,OK,"NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 1
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 1
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+[Server] accepted client 3","E20260317 16:38:20.323539 426464 rdma_replica_communicator.cpp:75] [RDMA] send target id=2 ip=128.110.216.196 base_port=28002 rdma_port=28002 payload_bytes=53
+E20260317 16:38:20.324229 426390 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:38:20.324501 426412 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:38:20.324560 426412 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:38:20.324597 426469 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:1 seq:51 primary:1 is recovery:0
+E20260317 16:38:20.324651 426311 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:38:20.324680 426320 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:38:20.324360 426301 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:38:20.324772 426323 commitment.cpp:363] send back to proxy:1
+E20260317 16:38:20.324826 426323 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:38:20.324857 426389 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:1 seq:51 primary:1 is recovery:0
+E20260317 16:38:20.324298 426441 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:1 seq:51 primary:1 is recovery:0
+E20260317 16:38:20.324987 426381 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:38:20.325027 426381 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:38:20.325062 426381 response_manager.cpp:214]  get receive count:0 seq:51
+E20260317 16:38:20.324105 426477 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:38:20.324414 426464 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=53
+E20260317 16:38:20.324908 426389 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:38:20.325227 426389 response_manager.cpp:214]  get receive count:1 seq:51
+E20260317 16:38:20.325196 426464 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:38:20.325264 426450 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:38:20.325265 426389 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:38:20.325392 426389 response_manager.cpp:227] SendResponseToClient local_id:51 seq:51 proxy_id:1
+E20260317 16:38:20.325413 426333 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:38:20.325366 426450 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:38:20.325423 426389 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:38:20.325335 426464 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:38:20.325500 426340 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:38:20.325618 426355 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:38:20.325662 426345 commitment.cpp:363] send back to proxy:1
+E20260317 16:38:20.325642 426389 response_manager.cpp:259] response sent to client local_id:51 seq:51
+E20260317 16:38:20.325678 426287 consensus_server.cpp:223] Selftest completed request i=49 ret=0 value=light_value
+E20260317 16:38:20.325706 426365 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:38:20.325707 426345 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:38:20.325922 426367 commitment.cpp:363] send back to proxy:1
+E20260317 16:38:20.326036 426367 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:38:20.325588 426464 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:38:21.495322 426287 consensus_server.cpp:291] Self-test passed mode=rdma (GET verified, last_value=light_value)
+E20260317 16:38:21.495493 426287 consensus_server.cpp:294] RESULT mode=rdma num_requests=50 total_time_s=5.34239 throughput_rps=9.35911 avg_us=106844 p50_us=106578 p95_us=107029 p99_us=108739 min_us=105430 max_us=119806 status=OK
+E20260317 16:38:22.143844 426288 stats.cpp:474]   req client latency:5.73473e-06",,
+2026-03-17T16:40:42,basic_ring,128.110.216.196,28000,50,1,124,120.16082369897049,6.7695e-06,,,,,,,,,,,,,"NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3","E20260317 16:38:45.281870 426688 consensus_manager_pbft.cpp:208] recv impl type:3 sender id:1 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.281881 426659 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=51
+E20260317 16:38:45.282006 426688 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=51
+E20260317 16:38:45.282092 426659 rdma_replica_communicator.cpp:75] [RDMA] send target id=2 ip=128.110.216.196 base_port=28002 rdma_port=28002 payload_bytes=51
+E20260317 16:38:45.282140 426688 rdma_replica_communicator.cpp:75] [RDMA] send target id=2 ip=128.110.216.196 base_port=28002 rdma_port=28002 payload_bytes=51
+E20260317 16:38:45.282166 426599 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:3 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.282298 426630 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:4 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.282346 426630 checkpoint_manager.cpp:495] get high prepared seq:2
+E20260317 16:38:45.282382 426630 checkpoint_manager.cpp:500] set high prepared seq:3
+E20260317 16:38:45.282299 426627 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:3 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.282169 426598 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:4 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.282322 426599 checkpoint_manager.cpp:495] get high prepared seq:2
+E20260317 16:38:45.282231 426659 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=51
+E20260317 16:38:45.282279 426688 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=51
+E20260317 16:38:45.282626 426688 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=51
+E20260317 16:38:45.282421 426630 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:38:45.282727 426630 rdma_replica_communicator.cpp:75] [RDMA] send target id=2 ip=128.110.216.196 base_port=28002 rdma_port=28002 payload_bytes=53
+E20260317 16:38:45.282764 426689 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:4 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.282585 426659 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=51
+E20260317 16:38:45.282855 426625 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.282783 426630 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=53
+E20260317 16:38:45.282646 426660 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:4 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.282965 426630 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:38:45.283003 426660 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.283072 426684 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:3 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.282645 426662 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:3 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.282792 426611 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.283087 426693 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.282537 426599 checkpoint_manager.cpp:500] set high prepared seq:3
+E20260317 16:38:45.283273 426599 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:38:45.283315 426599 rdma_replica_communicator.cpp:75] [RDMA] send target id=2 ip=128.110.216.196 base_port=28002 rdma_port=28002 payload_bytes=53
+E20260317 16:38:45.283354 426599 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=53
+E20260317 16:38:45.283396 426599 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:38:45.283401 426597 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:1 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.283582 426684 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:1 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.283476 426657 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:1 seq:3 primary:1 is recovery:0
+E20260317 16:38:45.283419 426632 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:1 seq:3 primary:1 is recovery:0
+E20260317 16:38:47.235051 426505 stats.cpp:474]   req client latency:6.7695e-06
+
+[TIMEOUT] command exceeded timeout",,
+2026-03-17T16:42:42,basic_ring,128.110.216.196,28000,50,2,124,120.16100755799562,6.3685e-06,,,,,,,,,,,,,"NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3","E20260317 16:40:45.870204 426897 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:2 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.870270 426858 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:2 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.869225 426900 consensus_manager_pbft.cpp:208] recv impl type:3 sender id:1 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.870370 426900 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=51
+E20260317 16:40:45.870419 426900 rdma_replica_communicator.cpp:75] [RDMA] send target id=2 ip=128.110.216.196 base_port=28002 rdma_port=28002 payload_bytes=51
+E20260317 16:40:45.870453 426900 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=51
+E20260317 16:40:45.869745 426913 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=51
+E20260317 16:40:45.870621 426893 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:3 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.870659 426913 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:4 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.870738 426855 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:3 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.870141 426832 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:2 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.870143 426857 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=51
+E20260317 16:40:45.870486 426836 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:3 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.870545 426900 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=51
+E20260317 16:40:45.870997 426910 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:2 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.870875 426832 checkpoint_manager.cpp:495] get high prepared seq:5
+E20260317 16:40:45.871083 426832 checkpoint_manager.cpp:500] set high prepared seq:7
+E20260317 16:40:45.870096 426911 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:1 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.871063 426910 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:3 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.871121 426832 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:40:45.871155 426911 checkpoint_manager.cpp:495] get high prepared seq:6
+E20260317 16:40:45.871263 426911 checkpoint_manager.cpp:500] set high prepared seq:7
+E20260317 16:40:45.871311 426911 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:40:45.871317 426835 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:1 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.871436 426835 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.871227 426832 rdma_replica_communicator.cpp:75] [RDMA] send target id=2 ip=128.110.216.196 base_port=28002 rdma_port=28002 payload_bytes=53
+E20260317 16:40:45.871361 426911 rdma_replica_communicator.cpp:75] [RDMA] send target id=2 ip=128.110.216.196 base_port=28002 rdma_port=28002 payload_bytes=53
+E20260317 16:40:45.871616 426911 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=53
+E20260317 16:40:45.871654 426851 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.871675 426911 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:40:45.871642 426857 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:1 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.871791 426896 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.871829 426921 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.871562 426832 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=53
+E20260317 16:40:45.871945 426832 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:40:45.871996 426886 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:1 seq:7 primary:1 is recovery:0
+E20260317 16:40:45.872078 426924 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:1 seq:7 primary:1 is recovery:0
+E20260317 16:40:47.396375 426735 stats.cpp:474]   req client latency:6.3685e-06
+
+[TIMEOUT] command exceeded timeout",,
+2026-03-17T16:43:12,basic_ring,128.110.216.196,28000,50,3,0,30.07960414502304,5.63724e-06,basic_ring,basic_ring,50,5.32859,9.38334,106568.0,106607.0,107132.0,107236.0,104875.0,108254.0,OK,"NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3","E20260317 16:42:50.720718 426992 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:42:50.721009 427051 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:42:50.721117 427010 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:42:50.721065 427002 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:42:50.721189 427014 commitment.cpp:363] send back to proxy:1
+E20260317 16:42:50.720955 427080 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:42:50.721285 427059 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:42:50.721338 427059 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:42:50.721378 427059 response_manager.cpp:214]  get receive count:1 seq:51
+E20260317 16:42:50.721413 427059 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:42:50.721300 427080 rdma_replica_communicator.cpp:75] [RDMA] send target id=2 ip=128.110.216.196 base_port=28002 rdma_port=28002 payload_bytes=53
+E20260317 16:42:50.721119 427051 response_manager.cpp:214]  get receive count:0 seq:51
+E20260317 16:42:50.721583 427078 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:42:50.721623 427078 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:42:50.720922 427145 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:42:50.721256 427014 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:42:50.721464 427059 response_manager.cpp:227] SendResponseToClient local_id:51 seq:51 proxy_id:1
+E20260317 16:42:50.721791 427059 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:42:50.721843 427057 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:42:50.721912 427057 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:42:50.721518 427080 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=53
+E20260317 16:42:50.721047 427121 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:42:50.722065 427121 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:42:50.722102 427121 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:42:50.721927 427059 response_manager.cpp:259] response sent to client local_id:51 seq:51
+E20260317 16:42:50.721932 426956 consensus_server.cpp:223] Selftest completed request i=49 ret=0 value=light_value
+E20260317 16:42:50.721356 427060 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:42:50.722024 427080 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:42:50.721719 427145 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:42:50.722432 427145 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:42:50.722445 427154 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:42:50.722559 427154 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:42:50.722272 427060 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:42:50.722537 427029 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:42:50.722527 427024 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:42:50.722720 427036 commitment.cpp:363] send back to proxy:1
+E20260317 16:42:50.722781 427036 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:42:51.923270 426956 consensus_server.cpp:291] Self-test passed mode=basic_ring (GET verified, last_value=light_value)
+E20260317 16:42:51.923552 426956 consensus_server.cpp:294] RESULT mode=basic_ring num_requests=50 total_time_s=5.32859 throughput_rps=9.38334 avg_us=106568 p50_us=106607 p95_us=107132 p99_us=107236 min_us=104875 max_us=108254 status=OK
+E20260317 16:42:52.559185 426957 stats.cpp:474]   req client latency:5.7228e-06",,
+2026-03-17T16:45:12,basic_ring,128.110.216.196,28000,50,4,124,120.15985927998554,6.322e-06,,,,,,,,,,,,,"NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3","E20260317 16:43:15.803637 427356 rdma_replica_communicator.cpp:75] [RDMA] send target id=2 ip=128.110.216.196 base_port=28002 rdma_port=28002 payload_bytes=51
+E20260317 16:43:15.803690 427356 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=51
+E20260317 16:43:15.803414 427331 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:2 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.803843 427356 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=51
+E20260317 16:43:15.803889 427331 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:4 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.803920 427356 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:4 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.803731 427265 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:4 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.803771 427300 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:4 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.803934 427331 checkpoint_manager.cpp:495] get high prepared seq:3
+E20260317 16:43:15.802485 427278 consensus_manager_pbft.cpp:208] recv impl type:3 sender id:1 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.804064 427300 checkpoint_manager.cpp:495] get high prepared seq:3
+E20260317 16:43:15.804172 427300 checkpoint_manager.cpp:500] set high prepared seq:4
+E20260317 16:43:15.804150 427278 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=51
+E20260317 16:43:15.804097 427331 checkpoint_manager.cpp:500] set high prepared seq:4
+E20260317 16:43:15.804296 427331 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:43:15.804248 427278 rdma_replica_communicator.cpp:75] [RDMA] send target id=2 ip=128.110.216.196 base_port=28002 rdma_port=28002 payload_bytes=51
+E20260317 16:43:15.804209 427300 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:43:15.804562 427300 rdma_replica_communicator.cpp:75] [RDMA] send target id=2 ip=128.110.216.196 base_port=28002 rdma_port=28002 payload_bytes=53
+E20260317 16:43:15.804607 427300 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=53
+E20260317 16:43:15.804646 427300 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:43:15.804697 427300 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.804334 427274 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:1 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.804462 427278 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=51
+E20260317 16:43:15.804529 427295 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:1 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.804926 427266 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.804955 427325 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:1 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.804759 427348 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.804430 427331 rdma_replica_communicator.cpp:75] [RDMA] send target id=2 ip=128.110.216.196 base_port=28002 rdma_port=28002 payload_bytes=53
+E20260317 16:43:15.804827 427274 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.805184 427296 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.804709 427326 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:2 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.805117 427331 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=53
+E20260317 16:43:15.804872 427278 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=51
+E20260317 16:43:15.805392 427329 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.805337 427331 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:43:15.805524 427361 consensus_manager_pbft.cpp:208] recv impl type:4 sender id:1 seq:4 primary:1 is recovery:0
+E20260317 16:43:15.805569 427351 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:4 primary:1 is recovery:0
+E20260317 16:43:17.650406 427173 stats.cpp:474]   req client latency:6.322e-06
+
+[TIMEOUT] command exceeded timeout",,
+2026-03-17T16:45:42,basic_ring,128.110.216.196,28000,50,5,0,30.080569148994982,5.77452e-06,basic_ring,basic_ring,50,5.32885,9.38288,106574.0,106593.0,107060.0,107244.0,105397.0,107732.0,OK,"NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 2
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3
+NO shared receive
+>>>>>>>> post recvs
+connect request had data with it: 56 bytes
+>>>>>>>> post recvs
+[BasicServer] accepted client 3","E20260317 16:45:20.970494 427436 commitment.cpp:363] send back to proxy:1
+E20260317 16:45:20.970563 427516 message_manager.cpp:204]  add request fail
+E20260317 16:45:20.970623 427523 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:45:20.970649 427552 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:45:20.970716 427586 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:45:20.970294 427458 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:45:20.970816 427600 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:45:20.971324 427519 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:2 seq:51 primary:1 is recovery:0
+E20260317 16:45:20.970913 427480 commitment.cpp:363] send back to proxy:1
+E20260317 16:45:20.970913 427436 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:45:20.971125 427601 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:1 seq:51 primary:1 is recovery:0
+E20260317 16:45:20.971521 427601 checkpoint_manager.cpp:530]  add commited state:51
+E20260317 16:45:20.971374 427519 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:45:20.971429 427480 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:45:20.971542 427520 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:1 seq:51 primary:1 is recovery:0
+E20260317 16:45:20.971724 427520 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:45:20.971580 427493 transaction_manager.cpp:91]  execute batch seq:50
+E20260317 16:45:20.970082 427613 rdma_replica_communicator.cpp:75] [RDMA] send target id=3 ip=128.110.216.196 base_port=28003 rdma_port=28003 payload_bytes=53
+E20260317 16:45:20.971843 427502 commitment.cpp:363] send back to proxy:1
+E20260317 16:45:20.971902 427502 rdma_replica_communicator.cpp:75] [RDMA] send target id=1 ip=128.110.216.196 base_port=28001 rdma_port=28001 payload_bytes=53
+E20260317 16:45:20.971735 427522 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:3 seq:51 primary:1 is recovery:0
+E20260317 16:45:20.971985 427522 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:45:20.972033 427521 consensus_manager_pbft.cpp:208] recv impl type:7 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:45:20.971626 427519 response_manager.cpp:214]  get receive count:0 seq:51
+E20260317 16:45:20.971868 427613 rdma_replica_communicator.cpp:75] [RDMA] send target id=4 ip=128.110.216.196 base_port=28004 rdma_port=28004 payload_bytes=53
+E20260317 16:45:20.971920 427582 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:45:20.971541 427490 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:45:20.971772 427520 response_manager.cpp:214]  get receive count:1 seq:51
+E20260317 16:45:20.972079 427521 response_manager.cpp:187]  receive request seq:51 type:7 local id:51
+E20260317 16:45:20.972191 427613 consensus_manager_pbft.cpp:208] recv impl type:5 sender id:4 seq:51 primary:1 is recovery:0
+E20260317 16:45:20.972209 427582 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:45:20.972306 427520 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:45:20.972389 427613 message_manager.cpp:188]  seq:51 type:5 has been committed
+E20260317 16:45:20.972476 427520 response_manager.cpp:227] SendResponseToClient local_id:51 seq:51 proxy_id:1
+E20260317 16:45:20.972548 427520 lock_free_collector_pool.cpp:71]  update:307 seq:307 cap:256 update seq:51
+E20260317 16:45:20.972687 427520 response_manager.cpp:259] response sent to client local_id:51 seq:51
+E20260317 16:45:20.972692 427422 consensus_server.cpp:223] Selftest completed request i=49 ret=0 value=light_value
+E20260317 16:45:22.163254 427422 consensus_server.cpp:291] Self-test passed mode=basic_ring (GET verified, last_value=light_value)
+E20260317 16:45:22.163544 427422 consensus_server.cpp:294] RESULT mode=basic_ring num_requests=50 total_time_s=5.32885 throughput_rps=9.38288 avg_us=106574 p50_us=106593 p95_us=107060 p99_us=107244 min_us=105397 max_us=107732 status=OK
+E20260317 16:45:22.806123 427423 stats.cpp:474]   req client latency:5.70663e-06",,
